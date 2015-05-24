@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 
 import datos.Ficha;
 
-public class TurnoDao 
+public class FichaDao 
 {
 	private static Session session;
     private Transaction tx;
@@ -79,7 +79,7 @@ public class TurnoDao
         }
     }
     
-    public Turno traerFicha(long idFicha) throws HibernateException 
+    public Ficha traerFicha(long idFicha) throws HibernateException 
     {
         Ficha objeto = null;
         try {
