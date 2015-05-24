@@ -29,11 +29,13 @@ public class BalanceMensual
 		this.idBalanceMensual = idBalanceMensual;
 	}
 
-	public GregorianCalendar getMesAnio() {
+	public GregorianCalendar getMesAnio()
+	{
 		return mesAnio;
 	}
 
-	public void setMesAnio(GregorianCalendar mesAnio) {
+	public void setMesAnio(GregorianCalendar mesAnio)
+	{
 		this.mesAnio = mesAnio;
 	}
 
