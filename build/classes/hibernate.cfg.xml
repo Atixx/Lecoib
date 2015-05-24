@@ -4,7 +4,7 @@
 <hibernate-configuration>
 <session-factory>
 	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-	<property name="connection.url">jdbc:mysql://localhost/proyectoLeCoib</property>
+	<property name="connection.url">jdbc:mysql://localhost/Lecoib (Pks AI).sql</property>
 	<property name="connection.username">root</property>
 	<property name="connection.password">root</property>
 	<property name="connection.pool_size">1</property>
