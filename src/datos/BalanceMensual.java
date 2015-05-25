@@ -14,7 +14,7 @@ public class BalanceMensual
 	public BalanceMensual(GregorianCalendar mesAnio, Empleado empleado)
 	{
 		super();
-		//this.horasTrabajadas= horasTrabajadas;
+		this.horasTrabajadas= 0;
 		this.mesAnio = mesAnio;
 		this.empleado = empleado;
 	}
@@ -27,6 +27,16 @@ public class BalanceMensual
 	protected void setIdBalanceMensual(int idBalanceMensual) 
 	{
 		this.idBalanceMensual = idBalanceMensual;
+	}
+
+	public int getHorasTrabajadas() 
+	{
+		return horasTrabajadas;
+	}
+
+	public void setHorasTrabajadas(int horasTrabajadas) 
+	{
+		this.horasTrabajadas = horasTrabajadas;
 	}
 
 	public GregorianCalendar getMesAnio()

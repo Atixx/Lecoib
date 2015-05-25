@@ -1,6 +1,9 @@
 package datos;
 
 import java.util.GregorianCalendar;
+import java.util.Set;
+
+
 //import java.util.Set;
 import modelo.Funciones;
 
@@ -19,6 +22,9 @@ public class Empleado
 	
 	//attribute para hibernate
 	//private Set<---> ---;
+	
+	private Set<Ficha> fichas;
+	private Set<BalanceMensual> balancesMensuales;
 	
 	public Empleado()
 	{
@@ -142,5 +148,21 @@ public class Empleado
 		return idEmpleado+" "+apellido+" "+nombre+" DNI: "+dni+" Fecha de Ingreso: "+Funciones.traerFechaCorta(fechaDeIngreso)+" "+baja;
 	}
 	
+	public Set<Ficha> getFichas()
+	{
+	    return this.fichas;
+	}
+	public void setFichas(Set<Ficha> fichas)
+	{
+	    this.fichas = fichas;
+	}
 	
+	public Set<BalanceMensual> getBalancesMensuales()
+	{
+	    return this.balancesMensuales;
+	}
+	public void setBalancesMensuales(Set<BalanceMensual> balancesMensuales)
+	{
+	    this.balancesMensuales = balancesMensuales;
+	}
 }

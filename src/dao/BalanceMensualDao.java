@@ -6,9 +6,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import datos.Empleado;
+import datos.BalanceMensual;
 
-public class EmpleadoDao 
+public class BalanceMensualDao 
 {
 	private static Session session;
     private Transaction tx;
@@ -25,7 +25,7 @@ public class EmpleadoDao
         throw new HibernateException("ERROR en la capa de acceso a datos", he);
     }
 
-    public int agregar(Empleado objeto) 
+    public int agregar(BalanceMensual objeto) 
     {
         int id = 0;
         try 
@@ -46,7 +46,7 @@ public class EmpleadoDao
         return id;
     }
     
-    public void actualizar(Empleado objeto) throws HibernateException 
+    public void actualizar(BalanceMensual objeto) throws HibernateException 
     {
         try 
         {
@@ -65,7 +65,7 @@ public class EmpleadoDao
         }
     }
 
-    public void eliminar(Empleado objeto) throws HibernateException 
+    public void eliminar(BalanceMensual objeto) throws HibernateException 
     {
         try 
         {
@@ -84,13 +84,13 @@ public class EmpleadoDao
         }
     }
 
-    public Empleado traerEmpleado(int/*long?*/ idEmpleado) throws HibernateException 
+    public BalanceMensual traerBalanceMensual(int/*long?*/ idBalanceMensual) throws HibernateException 
     {
-        Empleado objeto = null;
+        BalanceMensual objeto = null;
         try 
         {
             iniciaOperacion();
-            objeto = (Empleado) session.get(Empleado.class, idEmpleado);
+            objeto = (BalanceMensual) session.get(BalanceMensual.class, idBalanceMensual);
         } 
         finally 
         {
@@ -101,9 +101,9 @@ public class EmpleadoDao
     
 	    
     @SuppressWarnings("unchecked")
-    public List<Empleado> traerEmpleado() throws HibernateException 
+    public List<BalanceMensual> traerBalanceMensual() throws HibernateException 
     {
-    	List<Empleado> lista=null;
+    	List<BalanceMensual> lista=null;
         try 
         {
             iniciaOperacion();                    
@@ -117,6 +117,4 @@ public class EmpleadoDao
 
         return lista;
     }
-    
-
 }
