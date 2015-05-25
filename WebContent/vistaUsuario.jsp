@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<%@ include file="cabecera.jsp" %>
-		<% Usuario usuario=(Usuario) request.getAttribute("usuario") %>
+		<% Usuario usuario=(Usuario) request.getAttribute("usuario"); %>
 			<BR>Usuario<%= usuario.getNombreUsr() %><BR>
 			Ultimo cambio de clave: <%= usuario.getUltimoCambioClave%><BR>
 			Ultima sesion iniciada: <%= usuario.getUltimaSesion%><BR>
