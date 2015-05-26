@@ -2,7 +2,7 @@ package datos;
 
 public class Categoria 
 {
-	private int idCategoria;
+	private long idCategoria;
 	private String nombre;
 	private float sueldoBasico;
 	
@@ -15,12 +15,12 @@ public class Categoria
 		this.sueldoBasico = sueldoBasico;
 	}
 	
-	public int getIdCategoria()
+	public long getIdCategoria()
 	{
 		return this.idCategoria;
 	}
 	
-	protected void setIdCategoria( int idCategoria) 
+	protected void setIdCategoria( long idCategoria) 
 	{
 		this.idCategoria = idCategoria;		
 	}

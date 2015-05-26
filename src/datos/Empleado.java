@@ -9,10 +9,10 @@ import modelo.Funciones;
 
 public class Empleado 
 {
-	private int idEmpleado;
+	private long idEmpleado;
 	private String apellido;
 	private String nombre;
-	private long dni;
+	private int dni;
 	private GregorianCalendar fechaDeIngreso;
 	private String email;
 	private Categoria categoria;
@@ -30,7 +30,7 @@ public class Empleado
 	{
 	}
 	
-	public Empleado(String apellido, String nombre, long dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupo)
+	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupo)
 	{
 		super();
 		this.apellido = apellido;
@@ -44,12 +44,12 @@ public class Empleado
 		this.baja = false;
 	}
 	
-	public int getIdEmpleado()
+	public long getIdEmpleado()
 	{
 		return this.idEmpleado;
 	}
 	
-	protected void setIdEmpleado( int idEmpleado) 
+	protected void setIdEmpleado( long idEmpleado) 
 	{
 		this.idEmpleado = idEmpleado;
 	}
@@ -78,7 +78,7 @@ public class Empleado
 	{
 		return dni;
 	}
-	public void setDni(long dni) 
+	public void setDni(int dni) 
 	{
 		this.dni = dni;
 	}

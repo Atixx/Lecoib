@@ -4,7 +4,7 @@ package datos;
 
 public class Solicitud 
 {
-	private int idSolicitud;
+	private long idSolicitud;
 	private boolean estado;
 	private int idJornadaTitular;
 	private int idJornadaReemplazante;
@@ -23,12 +23,12 @@ public class Solicitud
 		this.confirmaReemplazante = false;
 	}
 	
-	public int getIdSolicitud()
+	public long getIdSolicitud()
 	{
 		return this.idSolicitud;
 	}
 	
-	protected void setIdSolicitud( int idSolicitud) 
+	protected void setIdSolicitud( long idSolicitud) 
 	{
 		this.idSolicitud = idSolicitud;
 	}

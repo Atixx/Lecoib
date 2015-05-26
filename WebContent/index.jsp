@@ -7,6 +7,8 @@
 <title>Proyecto Lecoib: Index</title>
 </head>
 <body>
+	<%@ include file="/cabecera.jsp" %>
 	
+	<%@ include file="/pie.jsp" %>
 </body>
 </html>

@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 public class Turno 
 {
 	
-	private int idTurno;
+	private long idTurno;
 	private String turno;
 	private GregorianCalendar horaInicio;
 	private GregorianCalendar horaFin;
@@ -26,7 +26,7 @@ public class Turno
 		return this.idTurno;
 	}
 	
-	protected void setIdTurno(int idTurno) 
+	protected void setIdTurno(long idTurno) 
 	{
 		this.idTurno = idTurno;
 	}

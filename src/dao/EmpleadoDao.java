@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
 import datos.Empleado;
 
 public class EmpleadoDao 
@@ -84,7 +85,7 @@ public class EmpleadoDao
         }
     }
 
-    public Empleado traerEmpleado(int/*long?*/ idEmpleado) throws HibernateException 
+    public Empleado traerEmpleado(long idEmpleado) throws HibernateException 
     {
         Empleado objeto = null;
         try 
@@ -94,6 +95,17 @@ public class EmpleadoDao
         } 
         finally 
         {
+            session.close();
+        }
+        return objeto;
+    }
+    
+    public Empleado traerEmpleado(int dni) throws HibernateException {
+        Empleado objeto = null;
+        try {
+            iniciaOperacion();
+            objeto = (Empleado) session.createQuery("from Cliente c where c.dni ="+dni).uniqueResult();
+        } finally {
             session.close();
         }
         return objeto;
