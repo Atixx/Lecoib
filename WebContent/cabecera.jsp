@@ -5,7 +5,7 @@
 
 <tr>
 	<td align="left">
-		<img src="/Lecoib/UNLaPasillo.jpg">
+		<img src="images/pasillo.jpg">
 	</td>
 	<td align="center">	
 		<h1>Proyecto LeCoib</h1>

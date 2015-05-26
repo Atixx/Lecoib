@@ -11,7 +11,6 @@
 <meta name="description" content="Redimensiona la ventana para ver como la imagen se adapta a cualquier resolución con Javascript. No solo CSS" lang="ES" />
 <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
 
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Proyecto Lecoib: Index</title>
@@ -97,7 +96,7 @@ h1 p{
 </head>
 <body style="font-family:Arial, Verdana;background-color:#fff;">
 
-<img id="bg" src="UNLaPasillo.jpg"  />	
+<img src='images/pasillo.jpg'/>	
 
 <script> 
 
@@ -117,7 +116,7 @@ window.onload = function() {
 			element.style.width = 'auto';
 			element.style.height = '100%';
 			
-			<!-- si la imagen es mas ancha que la ventana la centro -->
+			//<!-- si la imagen es mas ancha que la ventana la centro -->
 			if (element.width > window.innerWidth){
 			
 				var ajuste = (window.innerWidth - element.width)/2;
@@ -136,9 +135,9 @@ window.onload = function() {
 		}
 		
 	}
-<!-- llamo a la función bgadj() por primera vez al terminar de cargar la página -->
+//<!-- llamo a la función bgadj() por primera vez al terminar de cargar la página -->
 	bgadj();
-	<!-- vuelvo a llamar a la función  bgadj() al redimensionar la ventana -->
+	//<!-- vuelvo a llamar a la función  bgadj() al redimensionar la ventana -->
 	window.onresize = function() { 
 		bgadj();
 
@@ -246,19 +245,19 @@ window.onload = function() {
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 300px; overflow: hidden;">
             <div>
-                <img u="image" src="01.jpg" />
+                <img u="image" src='images/01.jpg' />
             </div>
             <div>
-                <img u="image" src="02.jpg" />
+                <img u="image" src='images/02.jpg' />
             </div>
             <div>
-                <img u="image" src="03.jpg" />
+                <img u="image" src="images/03.jpg" />
             </div>
             <div>
-                <img u="image" src="04.png" />
+                <img u="image" src='images/04.png' />
             </div>
             <div>
-                <img u="image" src="05.jpg" />
+                <img u="image" src="images/05.jpg" />
             </div>
 
         </div>
