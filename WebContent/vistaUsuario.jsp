@@ -14,7 +14,6 @@
 			Ultimo cambio de clave: <%= usuario.getUltimoCambioClave() %><BR>
 			Ultima sesion iniciada: <%= usuario.getUltimaSesion() %><BR>
 			Nivel de privilegio:<%= usuario.getPrivilegio() %><BR><BR>
-		
 		<BR>
 		<%@ include file="pie.jsp" %>
 	</body>

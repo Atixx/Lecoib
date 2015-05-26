@@ -65,7 +65,4 @@ public class Jornada
 		return idJornada+" "+fecha+" "+empleado+" "+turno;
 	}
 	
-	
-	
-
 }

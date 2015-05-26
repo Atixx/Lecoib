@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="datos.Ficha" table="ficha">
+	<id column="idFicha" name="idFicha">
+		<generator class="identity"/>
+	</id>
+	<property column="diaHora" name="diaHora" type="calendar"/>
+	<property column="entrada/salida" name="entrada/salida" type="boolean"/>
+	<property column="idEmpleado" name="idEmpleado" type="int"/>
+	<many-to-one name="empleado" class="datos.Empleado" column="idEmpleado" not-null="true"/>
+  </class>
+</hibernate-mapping>
