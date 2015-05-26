@@ -6,9 +6,10 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import datos.Ficha;
+import datos.Jornada;
 
-public class FichaDao 
+
+public class JornadaDao 
 {
 	private static Session session;
     private Transaction tx;
@@ -23,7 +24,7 @@ public class FichaDao
         throw new HibernateException("ERROR en la capa de acceso a datos", he);
     }
 
-    public int agregar(Ficha objeto) 
+    public int agregar(Jornada objeto) 
     {
         int id = 0;
         try {
@@ -43,7 +44,7 @@ public class FichaDao
         return id;
     }
     
-    public void actualizar(Ficha objeto) throws HibernateException {
+    public void actualizar(Jornada objeto) throws HibernateException {
         try 
         {
             iniciaOperacion();
@@ -60,8 +61,8 @@ public class FichaDao
             session.close();
         }
     }
-    
-    public void eliminar(Ficha objeto) throws HibernateException {
+
+    public void eliminar(Jornada objeto) throws HibernateException {
         try 
         {
             iniciaOperacion();
@@ -78,26 +79,27 @@ public class FichaDao
             session.close();
         }
     }
-    
-    public Ficha traerFicha(long idFicha) throws HibernateException 
-    {
-        Ficha objeto = null;
+
+	    public Jornada traerJornada(long idJornada) throws HibernateException {
+        Jornada objeto = null;
         try {
             iniciaOperacion();
-            objeto = (Ficha) session.get(Ficha.class, idFicha);
+            objeto = (Jornada) session.get(Jornada.class, idJornada);
         } finally {
             session.close();
         }
         return objeto;
     }
         
-    public List<Ficha> traerFicha() throws HibernateException 
+    //TODO: Tiene que traer todas las jornadas por fecha (y empleado?)
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornada() throws HibernateException 
     {
-    	List<Ficha> lista=null;
+    	List<Jornada> lista=null;
         try 
         {
             iniciaOperacion();                    
-            lista=session.createQuery("from Ficha f order by f.idEmpleado asc f.diaHora asc").list();
+            lista=session.createQuery("from Jornada j order by j.fecha asc").list();
            
         } 
         finally {
@@ -107,4 +109,5 @@ public class FichaDao
         return lista;
     }
     
+
 }
