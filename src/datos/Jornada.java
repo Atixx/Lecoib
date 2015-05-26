@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 
 public class Jornada 
 {
-	private int idJornada;
+	private long idJornada;
 	private GregorianCalendar fecha;
 	private Empleado empleado;
 	private Turno turno;
@@ -20,12 +20,12 @@ public class Jornada
 	}
 	
 
-	public int getIdJornada()
+	public long getIdJornada()
 	{
 		return this.idJornada;
 	}
 	
-	protected void setIdJornada( int idJornada) 
+	protected void setIdJornada( long idJornada) 
 	{
 		this.idJornada = idJornada;
 	}

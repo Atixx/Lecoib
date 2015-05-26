@@ -5,7 +5,7 @@
 
 <tr>
 	<td align="left">
-		<img src="https://www.expodecidir.com/sitio/images/logos/reducidos/UnlaColor_resize.jpg">
+		<img src="/Lecoib/UNLaPasillo.jpg">
 	</td>
 	<td align="center">	
 		<h1>Proyecto LeCoib</h1>

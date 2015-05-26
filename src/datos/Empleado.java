@@ -1,15 +1,18 @@
 package datos;
 
 import java.util.GregorianCalendar;
+import java.util.Set;
+
+
 //import java.util.Set;
 import modelo.Funciones;
 
 public class Empleado 
 {
-	private int idEmpleado;
+	private long idEmpleado;
 	private String apellido;
 	private String nombre;
-	private long dni;
+	private int dni;
 	private GregorianCalendar fechaDeIngreso;
 	private String email;
 	private Categoria categoria;
@@ -20,11 +23,14 @@ public class Empleado
 	//attribute para hibernate
 	//private Set<---> ---;
 	
+	private Set<Ficha> fichas;
+	private Set<BalanceMensual> balancesMensuales;
+	
 	public Empleado()
 	{
 	}
 	
-	public Empleado(String apellido, String nombre, long dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupo)
+	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupo)
 	{
 		super();
 		this.apellido = apellido;
@@ -38,12 +44,12 @@ public class Empleado
 		this.baja = false;
 	}
 	
-	public int getIdEmpleado()
+	public long getIdEmpleado()
 	{
 		return this.idEmpleado;
 	}
 	
-	protected void setIdEmpleado( int idEmpleado) 
+	protected void setIdEmpleado( long idEmpleado) 
 	{
 		this.idEmpleado = idEmpleado;
 	}
@@ -72,7 +78,7 @@ public class Empleado
 	{
 		return dni;
 	}
-	public void setDni(long dni) 
+	public void setDni(int dni) 
 	{
 		this.dni = dni;
 	}
@@ -142,5 +148,21 @@ public class Empleado
 		return idEmpleado+" "+apellido+" "+nombre+" DNI: "+dni+" Fecha de Ingreso: "+Funciones.traerFechaCorta(fechaDeIngreso)+" "+baja;
 	}
 	
+	public Set<Ficha> getFichas()
+	{
+	    return this.fichas;
+	}
+	public void setFichas(Set<Ficha> fichas)
+	{
+	    this.fichas = fichas;
+	}
 	
+	public Set<BalanceMensual> getBalancesMensuales()
+	{
+	    return this.balancesMensuales;
+	}
+	public void setBalancesMensuales(Set<BalanceMensual> balancesMensuales)
+	{
+	    this.balancesMensuales = balancesMensuales;
+	}
 }

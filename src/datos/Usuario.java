@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 public class Usuario 
 {
 	//TODO:atributos	
-	private int idUsuario;
+	private long idUsuario;
 	private String nombreUsr;
 	private String clave;
 	private GregorianCalendar ultimoCambioClave;
@@ -34,7 +34,7 @@ public class Usuario
 		return this.idUsuario;
 	}
 	
-	protected void setIdUsuario(int idUsuario) 
+	protected void setIdUsuario(long idUsuario) 
 	{
 		this.idUsuario = idUsuario;
 	}

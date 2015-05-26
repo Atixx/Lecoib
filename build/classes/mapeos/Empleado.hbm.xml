@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="datos.Empleado" table="empleado">
+	<id column="idEmpleado" name="idEmpleado">
+		<generator class="identity"/>
+	</id>
+	<property column="apellido" name="apellido" type="string"/>
+	<property column="nombre" name="nombre" type="string"/>
+	<property column="dni" name="dni" type="long"/>
+	<property column="fechaDeIngreso" name="fechaDeIngreso" type="calendar"/>
+	<property column="email" name="email" type="string"/>
+	<property column="baja" name="baja" type="boolean"/>
+	
+	<many-to-one name="categoria" class="datos.Categoria" column="idCategoria" not-null="true"/>
+	
+	<one-to-one name="turno" class="datos.Turno" ></one-to-one>
+	
+	<many-to-one name="grupoTrabajo" class="datos.GrupoTrabajo" column="idGrupoTrabajo" not-null="true"/>
+	
+	<set name ="fichas" table="ficha" inverse="true" lazy="true" fetch="select">
+		<key>
+			<column name ="idEmpleado" not-null="true" />
+		</key>
+		<one-to-many class="datos.Ficha" />
+	</set>
+	<set name ="balancesMensuales" table="balanceMensual" inverse="true" lazy="true" fetch="select">
+		<key>
+			<column name ="idBalanceMensual" not-null="true" />
+		</key>
+		<one-to-many class="datos.BalanceMensual" />
+		
+	</set>
+
+</class>
+</hibernate-mapping>

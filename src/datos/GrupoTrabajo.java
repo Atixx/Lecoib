@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GrupoTrabajo
 {
-	private int idGrupoTrabajo;
+	private long idGrupoTrabajo;
 	private String nombreGrupo;
 	private List<Empleado> empleados = new ArrayList<Empleado>();
 	
@@ -17,12 +17,12 @@ public class GrupoTrabajo
 		this.nombreGrupo = nombreGrupo;		
 	}
 	
-	public int getIdGrupoTrabajo()
+	public long getIdGrupoTrabajo()
 	{
 		return this.idGrupoTrabajo;
 	}
 	
-	protected void setIdGrupoTrabajo( int idGrupoTrabajo) 
+	protected void setIdGrupoTrabajo( long idGrupoTrabajo) 
 	{
 		this.idGrupoTrabajo = idGrupoTrabajo;
 	}

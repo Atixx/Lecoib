@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 
 public class Ficha 
 {
-	private int idFicha;
+	private long idFicha;
 	private GregorianCalendar diaHora;
 	private boolean entradaSalida;
 	private Empleado empleado;
@@ -24,7 +24,7 @@ public class Ficha
 		return this.idFicha;
 	}
 	
-	protected void setIdFicha(int idFicha) 
+	protected void setIdFicha(long idFicha) 
 	{
 		this.idFicha = idFicha;
 	}

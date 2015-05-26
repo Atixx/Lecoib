@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 
 public class BalanceMensual
 {
-	private int idBalanceMensual;
+	private long idBalanceMensual;
 	private int horasTrabajadas;
 	private GregorianCalendar mesAnio;
 	private Empleado empleado;	
@@ -14,7 +14,7 @@ public class BalanceMensual
 	public BalanceMensual(GregorianCalendar mesAnio, Empleado empleado)
 	{
 		super();
-		//this.horasTrabajadas= horasTrabajadas;
+		this.horasTrabajadas= 0;
 		this.mesAnio = mesAnio;
 		this.empleado = empleado;
 	}
@@ -24,9 +24,19 @@ public class BalanceMensual
 		return this.idBalanceMensual;
 	}
 	
-	protected void setIdBalanceMensual(int idBalanceMensual) 
+	protected void setIdBalanceMensual(long idBalanceMensual) 
 	{
 		this.idBalanceMensual = idBalanceMensual;
+	}
+
+	public int getHorasTrabajadas() 
+	{
+		return horasTrabajadas;
+	}
+
+	public void setHorasTrabajadas(int horasTrabajadas) 
+	{
+		this.horasTrabajadas = horasTrabajadas;
 	}
 
 	public GregorianCalendar getMesAnio()
