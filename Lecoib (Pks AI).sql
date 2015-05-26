@@ -136,7 +136,7 @@ ENGINE = InnoDB;
 -- Table `lecoib`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lecoib`.`Usuario` (
-  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `idUsuario` INT NOT NULL,
   `nombreUsr` VARCHAR(8) NULL,
   `clave` VARCHAR(8) NULL,
   `ultimoCambioClave` DATETIME NULL,
