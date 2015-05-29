@@ -21,13 +21,13 @@
 	
 	<set name ="fichas" table="ficha" inverse="true" lazy="true" fetch="select">
 		<key>
-			<column name ="idEmpleado" not-null="true" />
+			<column name ="idEmpleado" not-null="false" />
 		</key>
 		<one-to-many class="datos.Ficha" />
 	</set>
 	<set name ="balancesMensuales" table="balanceMensual" inverse="true" lazy="true" fetch="select">
 		<key>
-			<column name ="idBalanceMensual" not-null="true" />
+			<column name ="idBalanceMensual" not-null="false" />
 		</key>
 		<one-to-many class="datos.BalanceMensual" />
 		

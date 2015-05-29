@@ -91,7 +91,8 @@ public class FichaDao
         return objeto;
     }
         
-    public List<Ficha> traerFicha() throws HibernateException 
+    @SuppressWarnings("unchecked")
+	public List<Ficha> traerFicha() throws HibernateException 
     {
     	List<Ficha> lista=null;
         try 
