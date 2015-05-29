@@ -8,13 +8,22 @@
 	    <welcome-file>default.html</welcome-file>
 	    <welcome-file>default.htm</welcome-file>
 	    <welcome-file>default.jsp</welcome-file>
+	    <welcome-file>vistaJornada.jsp</welcome-file>
   	</welcome-file-list>	
 	<servlet>
 		<servlet-name>ControladorMostrarEmpleadoJSP</servlet-name>
 		<servlet-class>controladores.ControladorMostrarEmpleadoJSP</servlet-class>
 	</servlet>
+	<servlet>
+        <servlet-name>ControladorMostrarJornadas</servlet-name>
+        <servlet-class>controladores.ControladorMostrarJornadas</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ControladorMostrarEmpleadoJSP</servlet-name>
 		<url-pattern>/MostrarEmpleadoJSP</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>ControladorMostrarJornadas</servlet-name>
+        <url-pattern>/MostrarJornadas</url-pattern>
 	</servlet-mapping>
 </web-app>
