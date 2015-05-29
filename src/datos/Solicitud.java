@@ -1,25 +1,23 @@
 package datos;
 
-//import datos.Jornada;
-
 public class Solicitud 
 {
 	private long idSolicitud;
 	private boolean estado;
-	private int idJornadaTitular;
-	private int idJornadaReemplazante;
-	private int idAutoriza;
+	private Jornada JornadaTitular;
+	private Jornada JornadaReemplazante;
+	private Empleado Autoriza;
 	private boolean confirmaReemplazante;
 	
 	public Solicitud(){}
 	
-	public Solicitud(int idJornadaTitular, int idJornadaReemplazante, int idAutoriza)
+	public Solicitud(Jornada idJornadaTitular, Jornada idJornadaReemplazante, Empleado idAutoriza)
 	{
 		super();
 		this.estado = false;
-		this.idJornadaTitular = idJornadaTitular; 
-		this.idJornadaReemplazante = idJornadaReemplazante;
-		this.idAutoriza = idAutoriza;
+		this.JornadaTitular = idJornadaTitular; 
+		this.JornadaReemplazante = idJornadaReemplazante;
+		this.Autoriza = idAutoriza;
 		this.confirmaReemplazante = false;
 	}
 	
@@ -43,34 +41,34 @@ public class Solicitud
 		this.estado = estado;
 	}
 
-	public int getIdJornadaTitular()
+	public Jornada getIdJornadaTitular()
 	{
-		return idJornadaTitular;
+		return JornadaTitular;
 	}
 
-	public void setIdJornadaTitular(int idJornadaTitular) 
+	public void setIdJornadaTitular(Jornada JornadaTitular) 
 	{
-		this.idJornadaTitular = idJornadaTitular;
+		this.JornadaTitular = JornadaTitular;
 	}
 
-	public int getIdJornadaReemplazante()
+	public Jornada getIdJornadaReemplazante()
 	{
-		return idJornadaReemplazante;
+		return JornadaReemplazante;
 	}
 
-	public void setIdJornadaReemplazante(int idJornadaReemplazante) 
+	public void setIdJornadaReemplazante(Jornada JornadaReemplazante) 
 	{
-		this.idJornadaReemplazante = idJornadaReemplazante;
+		this.JornadaReemplazante = JornadaReemplazante;
 	}
 
-	public int getIdAutoriza() 
+	public Empleado getIdAutoriza() 
 	{
-		return idAutoriza;
+		return Autoriza;
 	}
 
-	public void setIdAutoriza(int idAutoriza) 
+	public void setIdAutoriza(Empleado Autoriza) 
 	{
-		this.idAutoriza = idAutoriza;
+		this.Autoriza = Autoriza;
 	}
 
 	public boolean isConfirmaReemplazante() 

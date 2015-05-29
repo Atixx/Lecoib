@@ -8,8 +8,6 @@
 </id>
 <property column="fecha" name="fecha" type="calendar"/>
 <property column="idEmpleado" name="idEmpleado" type="int"/>
-<property column="idTurno" name="idTurno" type="int"/>
-
 <many-to-one name="turno" class="datos.Turno" column="idTurno" not-null="true"/>
 
 </class>

@@ -7,7 +7,7 @@
 <generator class="identity"/>
 </id>
 <property column="nombreCat" name="nombreCat" type="string"/>
-<property column="sueldoBasico" name="sueldoBasico" type="Float"/> 
+<property column="sueldoBasico" name="sueldoBasico" type="float"/> 
 
 </class>
 </hibernate-mapping>

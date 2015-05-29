@@ -7,7 +7,6 @@
 	</id>
 	<property column="diaHora" name="diaHora" type="calendar"/>
 	<property column="entrada/salida" name="entrada/salida" type="boolean"/>
-	<property column="idEmpleado" name="idEmpleado" type="int"/>
 	<many-to-one name="empleado" class="datos.Empleado" column="idEmpleado" not-null="true"/>
   </class>
 </hibernate-mapping>
