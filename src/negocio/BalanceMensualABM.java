@@ -6,10 +6,8 @@ import java.util.List;
 
 import dao.BalanceMensualDao;
 import datos.BalanceMensual;
-import datos.Categoria;
 import datos.Empleado;
-import datos.GrupoTrabajo;
-import datos.Turno;
+
 
 public class BalanceMensualABM 
 {
@@ -20,7 +18,7 @@ public class BalanceMensualABM
 		BalanceMensual bm = bmDao.traerBalanceMensual(idBalanceMensual);
 		if (bm == null)
 		{
-		    throw new Exception("No se encontro un empleado con ID: "+idBalanceMensual);
+		    throw new Exception("No se encontro un balance mensual con ID: "+idBalanceMensual);
 		}
 		return bm;
 	}	
@@ -34,22 +32,11 @@ public class BalanceMensualABM
 
 	public void modificarBalanceMensual(BalanceMensual bm) throws Exception
 	{
-		
-	    List<BalanceMensual> lista = bmDao.traerBalanceMensual();
-	    boolean encontrado = false;
-	    for (BalanceMensual t : lista)
+		if (bmDao.traerBalanceMensual(bm.getIdBalanceMensual()) == null)
 	    {
-	        if (t.getIdBalanceMensual() == bm.getIdBalanceMensual()) 
-	        {
-	        	encontrado = true;
-                bmDao.actualizar(bm);
-            }
-            else
-            {
-                throw new Exception("Ya existe un empleado con el DNI: "+bm.getIdBalanceMensual()+"bajo otro ID");
-            }	        
-	    }
-		if(encontrado == true) throw new Exception("No se encontro el Balance Mensual Id:"+bm.getIdBalanceMensual()+" a modificarse");
+            throw new Exception("No se encontro el Balance Mensual Id:"+bm.getIdBalanceMensual()+" a modificarse");	
+        }
+		bmDao.actualizar(bm);		
 	}
 	
 	public void eliminarBalanceMensual(long idBalanceMensual) throws Exception
@@ -72,7 +59,6 @@ public class BalanceMensualABM
 	        throw new Exception("No existen empleados en la base de datos");
 	    }
 	    return lista;
-	}
-		
+	}		
 	
 }

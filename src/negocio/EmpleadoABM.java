@@ -49,15 +49,15 @@ public class EmpleadoABM
 	{
 		
 	    List<Empleado> lista = traerEmpleado();
-	    boolean encontrado = false;
+	    
 	    for (Empleado t : lista)
 	    {
 	        if (t.getDni() == e.getDni()) 
 	        {
-	        	encontrado = true;
+	        	
 	            if (t.getIdEmpleado() == e.getIdEmpleado())
 	            {
-	                dao.actualizar(e);
+	            	dao.actualizar(e);
 	            }
 	            else
 	            {
@@ -65,9 +65,7 @@ public class EmpleadoABM
 	            }
 	        }
 	    }
-		if (encontrado == false){ throw new Exception("No se encontro el Empleado con DNI:"+e.getDni()+"que desea modificarse");}  
-	    
-	    //dao.actualizar(e);
+		dao.actualizar(e);
 	}
 	
 	public void eliminarEmpleado(long idEmpleado) throws Exception

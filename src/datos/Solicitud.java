@@ -11,13 +11,13 @@ public class Solicitud
 	
 	public Solicitud(){}
 	
-	public Solicitud(Jornada idJornadaTitular, Jornada idJornadaReemplazante, Empleado idAutoriza)
+	public Solicitud(Jornada JornadaTitular, Jornada JornadaReemplazante, Empleado Autoriza)
 	{
 		super();
 		this.estado = false;
-		this.JornadaTitular = idJornadaTitular; 
-		this.JornadaReemplazante = idJornadaReemplazante;
-		this.Autoriza = idAutoriza;
+		this.JornadaTitular = JornadaTitular; 
+		this.JornadaReemplazante = JornadaReemplazante;
+		this.Autoriza = Autoriza;
 		this.confirmaReemplazante = false;
 	}
 	
