@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="datos.Solicitud" table="solicitud">
+    <id column="idSolicitud" name="idSolicitud">
+        <generator class="identity"/>
+    </id>
+    <property column="estado" name="estado" type="boolean"/>
+    <many-to-one name="jornadaTitular" class="datos.Jornada" column="idJornadaTitular" not-null="true"/>
+    <many-to-one name="jornadaReemplazante" class="datos.Jornada" column="idJornadaReemplazante" not-null="true"/>
+    <many-to-one name="autoriza" class="datos.Empleado" column="idAutoriza" not-null="false"/>
+    <property column="confirmaReemplazante" name="confirmaReemplazante" type="boolean" />
+    
+    
+</class>
+</hibernate-mapping>

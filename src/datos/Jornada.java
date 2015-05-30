@@ -1,14 +1,17 @@
 package datos;
 
 import java.util.GregorianCalendar;
+//import java.util.Set;
 
 public class Jornada 
 {
 	private long idJornada;
 	private GregorianCalendar fecha;
 	private Empleado empleado;
+
+	//private Set<Turno> turnos;
 	private Turno turno;
-	
+
 	public Jornada(){}
 	
 	public Jornada(GregorianCalendar fecha, Empleado empleado, Turno turno)

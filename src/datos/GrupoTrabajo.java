@@ -7,7 +7,7 @@ public class GrupoTrabajo
 {
 	private long idGrupoTrabajo;
 	private String nombreGrupo;
-	private List<Empleado> empleados = new ArrayList<Empleado>();
+	//private List<Empleado> empleados = new ArrayList<Empleado>();
 	
 	public GrupoTrabajo(){}
 	
@@ -35,7 +35,7 @@ public class GrupoTrabajo
 		this.nombreGrupo = nombreGrupo;
 	}
 
-	public List<Empleado> getEmpleados() 
+	/*public List<Empleado> getEmpleados() 
 	{
 		return empleados;
 	}	
@@ -45,7 +45,7 @@ public class GrupoTrabajo
 	public String toString()
 	{
 		return idGrupoTrabajo+nombreGrupo+empleados; //ver bien
-	}
+	}*/
 	
 	
 }
