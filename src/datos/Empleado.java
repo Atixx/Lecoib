@@ -17,21 +17,22 @@ public class Empleado
 	private String email;
 	private Categoria categoria;
 	private Turno turno;
-	private GrupoTrabajo grupo;
+	private GrupoTrabajo grupoTrabajo;
 	private boolean baja;
 	private Usuario usuario;
 	
 	//attribute para hibernate
 	//private Set<---> ---;
-	
+	private Set<Jornada> jornadas;
 	private Set<Ficha> fichas;
 	private Set<BalanceMensual> balancesMensuales;
+	private Set<Solicitud> solicitudes;
 	
 	public Empleado()
 	{
 	}
 	
-	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupo, Usuario usuario)
+	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupoTrabajo, Usuario usuario)
 	{
 		super();
 		this.apellido = apellido;
@@ -41,7 +42,7 @@ public class Empleado
 		this.email = email;
 		this.categoria = categoria;
 		this.turno = turno;
-		this.grupo = grupo;		
+		this.grupoTrabajo = grupoTrabajo;		
 		this.baja = false;
 		this.usuario = usuario;
 	}
@@ -125,14 +126,14 @@ public class Empleado
 		this.turno = turno;
 	}
 
-	public GrupoTrabajo getGrupo() 
+	public GrupoTrabajo getGrupoTrabajo() 
 	{
-		return grupo;
+		return grupoTrabajo;
 	}
 
-	public void setGrupo(GrupoTrabajo grupo) 
+	public void setGrupoTrabajo(GrupoTrabajo grupoTrabajo) 
 	{
-		this.grupo = grupo;
+		this.grupoTrabajo = grupoTrabajo;
 	}
 
 	public boolean isBaja() 
@@ -176,5 +177,23 @@ public class Empleado
 	public void setBalancesMensuales(Set<BalanceMensual> balancesMensuales)
 	{
 	    this.balancesMensuales = balancesMensuales;
+	}
+	
+	public Set<Jornada> getJornadas()
+	{
+	    return this.jornadas;
+	}
+	public void setJornadas(Set<Jornada> jornadas)
+	{
+	    this.jornadas = jornadas;
+	}
+	
+	public Set<Solicitud> getSolicitudes()
+	{
+	    return this.solicitudes;
+	}
+	public void setJSolicitudes(Set<Solicitud> solicitudes)
+	{
+	    this.solicitudes = solicitudes;
 	}
 }

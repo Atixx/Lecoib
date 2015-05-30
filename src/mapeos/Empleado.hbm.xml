@@ -18,21 +18,32 @@
 	<many-to-one name="turno" class="datos.Turno" column="idturno" not-null="true"/>
 	
 	<many-to-one name="grupoTrabajo" class="datos.GrupoTrabajo" column="idGrupoTrabajo" not-null="true"/>
-	
+	<set name ="jornadas" table="jornada" inverse="true" lazy="true" fetch="select">
+		<key>
+			<column name ="idEmpleado" not-null="false" />
+		</key>
+		<one-to-many class="datos.Jornada" />
+	</set>
+	<set name ="solicitudes" table="solicitud" inverse="true" lazy="true" fetch="select">
+		<key>
+			<column name ="idEmpleado" not-null="false" />
+		</key>
+		<one-to-many class="datos.Jornada" />
+	</set>
 	<set name ="fichas" table="ficha" inverse="true" lazy="true" fetch="select">
 		<key>
 			<column name ="idEmpleado" not-null="false" />
 		</key>
 		<one-to-many class="datos.Ficha" />
 	</set>
-	<set name ="balancesMensuales" table="balanceMensual" inverse="true" lazy="true" fetch="select">
+	<set name ="balancesMensuales" table="balancemensual" inverse="true" lazy="true" fetch="select">
 		<key>
-			<column name ="idBalanceMensual" not-null="false" />
+			<column name ="idEmpleado" not-null="false" />
 		</key>
 		<one-to-many class="datos.BalanceMensual" />
 		
 	</set>
-	<many-to-one name="jornada" class="datos.Jornada" column="idJornada" not-null="true"/>
+	
 	<one-to-one name="usuario" class="usuario"></one-to-one>
 	
 

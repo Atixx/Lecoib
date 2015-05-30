@@ -4,20 +4,20 @@ public class Solicitud
 {
 	private long idSolicitud;
 	private boolean estado;
-	private Jornada JornadaTitular;
-	private Jornada JornadaReemplazante;
-	private Empleado Autoriza;
+	private Jornada jornadaTitular;
+	private Jornada jornadaReemplazante;
+	private Empleado autoriza;
 	private boolean confirmaReemplazante;
 	
 	public Solicitud(){}
 	
-	public Solicitud(Jornada JornadaTitular, Jornada JornadaReemplazante, Empleado Autoriza)
+	public Solicitud(Jornada jornadaTitular, Jornada jornadaReemplazante, Empleado autoriza)
 	{
 		super();
 		this.estado = false;
-		this.JornadaTitular = JornadaTitular; 
-		this.JornadaReemplazante = JornadaReemplazante;
-		this.Autoriza = Autoriza;
+		this.jornadaTitular = jornadaTitular; 
+		this.jornadaReemplazante = jornadaReemplazante;
+		this.autoriza = autoriza;
 		this.confirmaReemplazante = false;
 	}
 	
@@ -43,32 +43,32 @@ public class Solicitud
 
 	public Jornada getIdJornadaTitular()
 	{
-		return JornadaTitular;
+		return jornadaTitular;
 	}
 
-	public void setIdJornadaTitular(Jornada JornadaTitular) 
+	public void setIdJornadaTitular(Jornada jornadaTitular) 
 	{
-		this.JornadaTitular = JornadaTitular;
+		this.jornadaTitular = jornadaTitular;
 	}
 
 	public Jornada getIdJornadaReemplazante()
 	{
-		return JornadaReemplazante;
+		return jornadaReemplazante;
 	}
 
-	public void setIdJornadaReemplazante(Jornada JornadaReemplazante) 
+	public void setIdJornadaReemplazante(Jornada jornadaReemplazante) 
 	{
-		this.JornadaReemplazante = JornadaReemplazante;
+		this.jornadaReemplazante = jornadaReemplazante;
 	}
 
 	public Empleado getIdAutoriza() 
 	{
-		return Autoriza;
+		return autoriza;
 	}
 
-	public void setIdAutoriza(Empleado Autoriza) 
+	public void setIdAutoriza(Empleado autoriza) 
 	{
-		this.Autoriza = Autoriza;
+		this.autoriza = autoriza;
 	}
 
 	public boolean isConfirmaReemplazante() 

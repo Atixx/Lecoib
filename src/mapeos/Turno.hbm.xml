@@ -9,24 +9,17 @@
 	<property column="horaInicio" name="horaInicio" type="string"/>
 	<property column="horaFin" name="horaFin" type="string"/>
 	<property column="cupos" name="cupos" type="int"/>
-	
-	 <set name ="jornadas" table="jornada" inverse="true" lazy="true" fetch="select">
+	<set name ="jornadas" table="jornada" inverse="true" lazy="true" fetch="select">
 		<key>
-			<column name ="idTurno" not-null="false" />
+			<column name ="idTurno" not-null="true" />
 		</key>
 		<one-to-many class="datos.Jornada" />
 	</set>
-		
-	<!--  <one-to-many class="datos.Jornada" /> -->
-	
-	<!-- <set name ="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+	<set name ="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
 		<key>
 			<column name ="idTurno" not-null="false" />
 		</key>
 		<one-to-many class="datos.Empleado" />
-	</set>
-	
-	 <one-to-many class="datos.Empleado" /> -->
-	
+	</set>	
   </class>
 </hibernate-mapping>

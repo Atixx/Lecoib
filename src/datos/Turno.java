@@ -11,7 +11,8 @@ public class Turno
 	private String horaInicio;
 	private String horaFin;
 	private int cupos;
-	//private Set<Jornada> jornadas;
+	private Set<Jornada> jornadas;
+	private Set<Empleado> empleados;
 	
 	public Turno(){}
 	
@@ -73,7 +74,7 @@ public class Turno
 		this.cupos = cupos;
 	}
 	
-	/*public Set<Jornada> getJornadas()
+	public Set<Jornada> getJornadas()
 	{
 		return jornadas;
 	}
@@ -81,7 +82,17 @@ public class Turno
 	public void setJornadas(Set<Jornada> jornadas)
 	{
 		this.jornadas = jornadas;
-	}*/
+	}
+
+	public Set<Empleado> getEmpleados()
+	{
+		return empleados;
+	}
+
+	public void setEmpleados(Set<Empleado> empleados)
+	{
+		this.empleados = empleados;
+	}
 
 	public String toString()
 	{
