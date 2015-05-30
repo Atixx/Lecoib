@@ -79,7 +79,8 @@ public class UsuarioDao
         }
     }
 
-	    public Usuario traerUsuario(long idUsuario) throws HibernateException {
+    public Usuario traerUsuario(long idUsuario) throws HibernateException 
+    {
         Usuario objeto = null;
         try {
             iniciaOperacion();
@@ -89,6 +90,22 @@ public class UsuarioDao
         }
         return objeto;
     }
+	    
+	public Usuario traerUsuario(String nombreUsuario) throws HibernateException
+	{
+		Usuario obj = null;
+		try
+		{
+			iniciaOperacion();
+			obj = (Usuario) session.createQuery("from usuaio u where u.nombreUsr ="+nombreUsuario).uniqueResult();
+		}
+		finally
+		{
+			session.close();
+		}
+		return obj;
+	}
+	    
     @SuppressWarnings("unchecked")
     public List<Usuario> traerUsuario() throws HibernateException 
     {

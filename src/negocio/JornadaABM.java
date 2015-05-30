@@ -14,6 +14,10 @@ public class JornadaABM
 	public Jornada traerJornada(long idJornada) throws Exception
 	{
 		Jornada j = dao.traerJornada(idJornada);
+		if (j == null)
+		{
+		    throw new Exception("No se encontro la jornada con ID: "+idJornada);
+		}
 		return j;
 	}
 	
@@ -23,8 +27,12 @@ public class JornadaABM
 		return dao.agregar(j);
 	}
 	
-	public void modificarJornada(Jornada j)
+	public void modificarJornada(Jornada j) throws Exception
 	{
+		if (dao.traerJornada(j.getIdJornada()) == null)
+		{
+			throw new Exception("No existe la jornada con ID "+j.getIdJornada()+" para modificar");
+		}
 		dao.actualizar(j);
 	}
 }
