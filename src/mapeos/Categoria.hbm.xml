@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name="datos.Categoria" table="categoria">
-<id column="idCategoria" name="idCategoria">
-<generator class="identity"/>
-</id>
-<property column="nombreCat" name="nombreCat" type="string"/>
-<property column="sueldoBasico" name="sueldoBasico" type="float"/> 
-
-</class>
+	<class name="datos.Categoria" table="categoria">
+	   <id column="idCategoria" name="idCategoria">
+	       <generator class="identity"/>
+	   </id>
+	<property column="nombreCat" name="nombreCat" type="string"/>
+	<property column="sueldoBasico" name="sueldoBasico" type="float"/> 
+	
+	<set name ="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+        <key>
+            <column name ="idCategoria" not-null="false" /> <!-- TODO: Cambiar a true?  -->
+        </key>
+        <one-to-many class="datos.Empleado" />
+    </set>
+    
+  </class>
 </hibernate-mapping>

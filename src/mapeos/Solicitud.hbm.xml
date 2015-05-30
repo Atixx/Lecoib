@@ -7,6 +7,8 @@
         <generator class="identity"/>
     </id>
     <property column="estado" name="estado" type="boolean"/>
+    <property column="confirmaReemplazante" name="confirmaReemplazante" type="boolean"/>
+    
     <many-to-one name="jornadaTitular" class="datos.Jornada" column="idJornadaTitular" not-null="true"/>
     <many-to-one name="jornadaReemplazante" class="datos.Jornada" column="idJornadaReemplazante" not-null="true"/>
     <many-to-one name="autoriza" class="datos.Empleado" column="idAutoriza" not-null="false"/>

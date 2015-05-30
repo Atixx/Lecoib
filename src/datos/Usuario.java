@@ -12,13 +12,14 @@ public class Usuario
 	private GregorianCalendar ultimaSesion;
 	private boolean baja;
 	private int privilegio;
+	private Empleado empleado;
 	
 	
 	public Usuario() 
 	{	
 	}
 	
-	public Usuario(String nombreUsr, String clave, GregorianCalendar ultimoCambioClave, GregorianCalendar ultimaSesion, int privilegio)
+	public Usuario(String nombreUsr, String clave, GregorianCalendar ultimoCambioClave, GregorianCalendar ultimaSesion, int privilegio, Empleado empleado)
 	{
 		super();
 		this.nombreUsr = nombreUsr;		
@@ -27,6 +28,7 @@ public class Usuario
 		this.ultimaSesion = ultimaSesion;
 		this.baja = false;
 		this.privilegio = privilegio;
+		this.empleado = empleado;
 	}
 	
 	public long getIdUsuario()

@@ -19,6 +19,7 @@ public class Empleado
 	private Turno turno;
 	private GrupoTrabajo grupo;
 	private boolean baja;
+	private Usuario usuario;
 	
 	//attribute para hibernate
 	//private Set<---> ---;
@@ -30,7 +31,7 @@ public class Empleado
 	{
 	}
 	
-	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupo)
+	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupo, Usuario usuario)
 	{
 		super();
 		this.apellido = apellido;
@@ -42,6 +43,7 @@ public class Empleado
 		this.turno = turno;
 		this.grupo = grupo;		
 		this.baja = false;
+		this.usuario = usuario;
 	}
 	
 	public long getIdEmpleado()
@@ -143,6 +145,16 @@ public class Empleado
 		this.baja = baja;
 	}
 		
+	public Usuario getUsuario()
+	{
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario)
+	{
+		this.usuario = usuario;
+	}
+
 	public String toString()
 	{
 		return idEmpleado+" "+apellido+" "+nombre+" DNI: "+dni+" Fecha de Ingreso: "+Funciones.traerFechaCorta(fechaDeIngreso)+" "+baja;

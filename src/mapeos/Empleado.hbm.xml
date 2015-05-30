@@ -32,6 +32,9 @@
 		<one-to-many class="datos.BalanceMensual" />
 		
 	</set>
+	<many-to-one name="jornada" class="datos.Jornada" column="idJornada" not-null="true"/>
+	<one-to-one name="usuario" class="usuario"></one-to-one>
+	
 
 </class>
 </hibernate-mapping>

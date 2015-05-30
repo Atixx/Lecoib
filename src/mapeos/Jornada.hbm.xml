@@ -7,8 +7,13 @@
 		  <generator class="identity"/>
 		</id>
 		<property column="fecha" name="fecha" type="calendar"/>
-		<property column="idEmpleado" name="idEmpleado" type="int"/>
-		<!--  <many-to-one name="turno" class="datos.Turno" column="idTurno" not-null="true"/>
-	-->
+		<!--<property column="idEmpleado" name="empleado" type="int"/> -->
+		<many-to-one name="turno" class="datos.Turno" column="idTurno" not-null="true"/>
+		<set name ="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+        <key>
+            <column name ="idJornada" not-null="false" />
+        </key>
+        <one-to-many class="datos.Empleado" />
+        </set>
 	</class>
 </hibernate-mapping>

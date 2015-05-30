@@ -12,5 +12,7 @@
 <property column="ultimaSesion" name="ultimaSesion" type="calendar"/>
 <property column="baja" name="baja" type="boolean"/>
 <property column="privilegio" name="privilegio" type="int"/>
+
+<one-to-one name="empleado" class="empleado"></one-to-one>
 </class>
 </hibernate-mapping>

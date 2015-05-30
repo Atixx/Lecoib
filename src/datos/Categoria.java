@@ -3,15 +3,15 @@ package datos;
 public class Categoria 
 {
 	private long idCategoria;
-	private String nombre;
+	private String nombreCat;
 	private float sueldoBasico;
 	
 	public Categoria(){}
 	
-	public Categoria(String nombre, float sueldoBasico)
+	public Categoria(String nombreCat, float sueldoBasico)
 	{
 		super();
-		this.nombre = nombre;
+		this.nombreCat = nombreCat;
 		this.sueldoBasico = sueldoBasico;
 	}
 	
@@ -25,14 +25,14 @@ public class Categoria
 		this.idCategoria = idCategoria;		
 	}
 
-	public String getNombre()
+	public String getnombreCat()
 	{
-		return nombre;
+		return nombreCat;
 	}
 
-	public void setNombre(String nombre)
+	public void setnombreCat(String nombreCat)
 	{
-		this.nombre = nombre;
+		this.nombreCat = nombreCat;
 	}
 
 	public float getSueldoBasico()
@@ -47,7 +47,7 @@ public class Categoria
 	
 	public String toString()
 	{
-		return idCategoria+" "+nombre+" "+sueldoBasico;
+		return idCategoria+" "+nombreCat+" "+sueldoBasico;
 	}
 	
 	
