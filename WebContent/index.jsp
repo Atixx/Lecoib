@@ -96,7 +96,7 @@ h1 p{
 </head>
 <body style="font-family:Arial, Verdana;background-color:#fff;">
 
-<img src='images/pasillo.jpg'/>	
+<img src='static/img/pasillo.jpg'/>	
 
 <script> 
 
@@ -150,7 +150,7 @@ window.onload = function() {
 
 </script>
 
-	<%@ include file="/cabecera.jsp" %>
+	<%@ include file="/jsp/cabecera.jsp" %>
 
 <!-- it works the same with all jquery version from 1.x to 2.x -->
     <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
@@ -245,19 +245,19 @@ window.onload = function() {
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 300px; overflow: hidden;">
             <div>
-                <img u="image" src='images/01.jpg' />
+                <img u="image" src='static/img/01.jpg' />
             </div>
             <div>
-                <img u="image" src='images/02.jpg' />
+                <img u="image" src='static/img/02.jpg' />
             </div>
             <div>
-                <img u="image" src="images/03.jpg" />
+                <img u="image" src="static/img/03.jpg" />
             </div>
             <div>
-                <img u="image" src='images/04.png' />
+                <img u="image" src='static/img/04.png' />
             </div>
             <div>
-                <img u="image" src="images/05.jpg" />
+                <img u="image" src="static/img/05.jpg" />
             </div>
 
         </div>
@@ -355,6 +355,6 @@ window.onload = function() {
 			</TABLE>
 		</FORM>
 		-->
-	<%@ include file="/pie.jsp" %>
+	<%@ include file="/jsp/pie.jsp" %>
 </body>
 </html>

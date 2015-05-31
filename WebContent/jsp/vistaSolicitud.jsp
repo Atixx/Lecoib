@@ -8,7 +8,7 @@
 		<title>Proyecto LeCoib: Solicitud</title>
 	</head>
 	<body>
-		<%@ include file="/cabecera.jsp" %>
+		<%@ include file="/jsp/cabecera.jsp" %>
 		<% Solicitud solicitud= (Solicitud)request.getAttribute("solicitud"); %>
 		<BR>
 			Estado: <%= solicitud.isEstado() %><BR>
