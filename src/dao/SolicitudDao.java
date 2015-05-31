@@ -109,4 +109,21 @@ public class SolicitudDao
         return lista;
     }
     
+    @SuppressWarnings("unchecked")
+    public List<Solicitud> traerSolicitud(boolean estado, long idEmpleado) throws HibernateException 
+    {
+    	List<Solicitud> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Solicitud s join Jornada j on s.idJornadaTitular=j.idJornada where j.idEmpleado="+idEmpleado+" and s.estado="+estado).list();
+           /////// Hay que probar la consulta. 
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+    
 }

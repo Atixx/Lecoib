@@ -284,6 +284,32 @@ public class Funciones
 		return ( (traerDia(c) == traerDia(d)) && (traerMes(c) == traerMes(d)) && (traerAnio(c) == traerAnio(d)) );
 	}
 	
+	public static boolean esFechaFutura(GregorianCalendar c)
+	{
+		GregorianCalendar hoy = new GregorianCalendar();
+		//GregorianCalendar hoy = Funciones.traerFecha("30/05/2015");
+		boolean es = true;
+		if ( traerAnio(c)==traerAnio(hoy)){
+			if(traerMes(c)==traerMes(hoy)){
+				if(traerDia(c)==traerDia(hoy)){//si Anio, mes y dia son iguales
+					es = false;
+				}
+				else if(traerDia(c)<traerDia(hoy)){//si Anio y mes son iguales, pero diacC < diaHoy
+					es = false;
+				}
+				//sino diaC > diaHoy es futura
+			}
+			else if(traerMes(c)<traerMes(hoy)){
+				es = false;
+			}
+			//sino mesC > mesHoy es futura
+		}
+		else if(traerAnio(c)<traerAnio(hoy)){
+			es = false;
+		}
+		return es;
+	}
+	
 	public static GregorianCalendar primerDiaHabil(GregorianCalendar input)
 	{
 	    while(!esDiaHabil(input))
