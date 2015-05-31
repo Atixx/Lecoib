@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<HR><p>Proyecto Universitario para la materia Orientacion a Objetos II. UNLa 2015.</p>
+</body>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <footer class="footer">
+                <p>Proyecto Universitario para la materia Orientacion a Objetos II. UNLa 2015.</p>
+    </footer>
+</nav>
+</html>
