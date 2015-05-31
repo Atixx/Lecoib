@@ -20,6 +20,6 @@
 			<column name ="idTurno" not-null="false" />
 		</key>
 		<one-to-many class="datos.Empleado" />
-	</set>	
+	</set>  
   </class>
 </hibernate-mapping>

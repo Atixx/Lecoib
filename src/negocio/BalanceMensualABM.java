@@ -23,7 +23,7 @@ public class BalanceMensualABM
 		return bm;
 	}	
 
-	public int agregarBalanceMensual( int horasTrabajadas, GregorianCalendar mesAnio, Empleado empleado) throws Exception
+	public int agregarBalanceMensual(GregorianCalendar mesAnio, Empleado empleado) throws Exception
 	{		
 		//hay que corroborar algo?
 	    BalanceMensual bm = new BalanceMensual(mesAnio, empleado);

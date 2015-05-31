@@ -21,7 +21,8 @@ public class UsuarioABM
 		return u;
 	}	
 	
-	public int agregarUsuario(String nombreUsr, String clave, GregorianCalendar ultimoCambioClave, GregorianCalendar ultimaSesion, int privilegio) throws Exception
+	public int agregarUsuario(String nombreUsr, String clave, GregorianCalendar ultimoCambioClave, 
+			GregorianCalendar ultimaSesion, int privilegio) throws Exception
 	{
 	    Usuario e = dao.traerUsuario(nombreUsr);
 	    if (e != null)

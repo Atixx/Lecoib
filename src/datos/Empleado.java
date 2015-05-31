@@ -32,7 +32,8 @@ public class Empleado
 	{
 	}
 	
-	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso, String email, Categoria categoria, Turno turno, GrupoTrabajo grupoTrabajo, Usuario usuario)
+	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso,
+						String email, Categoria categoria, Turno turno, GrupoTrabajo grupoTrabajo)
 	{
 		super();
 		this.apellido = apellido;
@@ -44,7 +45,6 @@ public class Empleado
 		this.turno = turno;
 		this.grupoTrabajo = grupoTrabajo;		
 		this.baja = false;
-		this.usuario = usuario;
 	}
 	
 	public long getIdEmpleado()
