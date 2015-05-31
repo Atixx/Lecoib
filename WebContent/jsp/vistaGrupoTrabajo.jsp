@@ -12,7 +12,7 @@
 		<% GrupoTrabajo grupoTrabajo= (GrupoTrabajo)request.getAttribute("grupoTrabajo"); %>
 		<BR>
 			Nombre del Grupo: <%= grupoTrabajo.getNombreGrupo() %><BR>
-			<!-- para hacer: tomaLista Empleados: <unir%= grupoTrabajo.getEmpleados() %> --> <BR><BR>
+			<!-- TODO: tomaLista Empleados: <%= grupoTrabajo.getEmpleados() %>--><BR><BR>
 		<a href="/LeCoib/index.jsp">Regresar</a>
 		<BR>
 		<%@ include file="pie.jsp" %>

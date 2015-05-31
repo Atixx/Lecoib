@@ -1,0 +1,80 @@
+body{
+    font-family: 'Architects Daughter', cursive;
+    color:#333;
+    font-size:25px;
+    font-weight:bold;
+    background-color:#A60000;
+}
+
+a{
+    text-decoration:none;
+    font-family: 'Black Ops One', cursive;
+    font-size:20px;
+    color:#222;
+
+}
+a:hover{
+
+    color:#DF7401;
+    
+}
+
+.nsc{
+    position:absolute;
+    bottom:0;
+    right:10px;
+
+}
+.center{
+    position:absolute;
+    padding:0 10px 0 10px;
+    width:500px;
+    height:500px;
+    top:50%;
+    left:50%;
+    margin-left:-250px;
+    margin-top:-250px;
+    background-color: rgba(245, 218, 129, 0.50);
+    
+
+}
+h1{
+    font-size:20px;
+}
+h1 p{
+
+    background:#222;
+    color:#fff;
+    padding:10px;
+    
+
+
+}
+#bg{
+
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+
+}
+
+.bgwidth{
+
+    width:100%;
+    height:auto;
+
+}
+
+.bgheight{
+
+    height:100%;
+    width:auto;
+
+
+}
+
+.footer
+{
+	text-align:center;
+}

@@ -8,7 +8,7 @@
 		<title>Proyecto LeCoib: Empleado</title>
 	</head>
 	<body>
-		<%@ include file="/cabecera.jsp" %>
+		<%@ include file="/jsp/cabecera.jsp" %>
 		<% Empleado empleado = (Empleado) request.getAttribute("empleado"); %>
 		<BR>
 			Apellido: <%= empleado.getApellido() %><BR>
