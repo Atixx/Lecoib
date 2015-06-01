@@ -8,8 +8,8 @@ public class Jornada
 	private int idJornada;
 	private GregorianCalendar fecha;
 	private Empleado empleado;
-	private Set<Solicitud> solicitudesTit;
-	private Set<Solicitud> solicitudesReemp;
+	//private Set<Solicitud> solicitudesTit;
+	//private Set<Solicitud> solicitudesReemp;
 	//private Set<Turno> turnos;
 	private Turno turno;
 
@@ -63,7 +63,7 @@ public class Jornada
 	{
 		this.turno = turno;
 	}
-	
+	/*
 	public Set<Solicitud> getSolicitudTit() {
 		return solicitudesTit;
 	}
@@ -79,7 +79,7 @@ public class Jornada
 	public void setSolicitudReemp(Set<Solicitud> solicitudesReemp) {
 		this.solicitudesReemp = solicitudesReemp;
 	}
-	
+	*/
 	public String toString()
 	{
 		return idJornada+" "+fecha+" "+empleado+" "+turno;

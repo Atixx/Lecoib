@@ -15,13 +15,12 @@ public class Solicitud
 	
 	public Solicitud(){}
 	
-	public Solicitud(Jornada jornadaTitular, Jornada jornadaReemplazante, Empleado autoriza)
+	public Solicitud(Jornada jornadaTitular, Jornada jornadaReemplazante) //Constructor por defecto no incluye autoriza, no se sabe en el momento de crearla
 	{
 		super();
 		this.estado = false;
 		this.jornadaTitular = jornadaTitular; 
 		this.jornadaReemplazante = jornadaReemplazante;
-		this.autoriza = autoriza;
 		this.confirmaReemplazante = false;
 	}
 	

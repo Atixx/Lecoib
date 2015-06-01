@@ -23,9 +23,9 @@ public class SolicitudABM
 		return s;
 	}
 	
-	public int agregarSolicitud(Jornada JornadaTitular, Jornada JornadaReemplazante, Empleado Autoriza) throws Exception
+	public int agregarSolicitud(Jornada JornadaTitular, Jornada JornadaReemplazante) throws Exception
 	{
-		Solicitud s = new Solicitud(JornadaTitular, JornadaReemplazante, Autoriza);
+		Solicitud s = new Solicitud(JornadaTitular, JornadaReemplazante);
 		return dao.agregar(s);
 	}
 		
