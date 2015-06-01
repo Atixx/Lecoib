@@ -1,32 +1,35 @@
 package datos;
 
+//import java.util.Set;
+
 public class Solicitud 
 {
-	private long idSolicitud;
+	private int idSolicitud;
 	private boolean estado;
-	private Jornada jornadaTitular;
-	private Jornada jornadaReemplazante;
 	private Empleado autoriza;
 	private boolean confirmaReemplazante;
 	
+	private Jornada jornadaTitular;
+	private Jornada jornadaReemplazante;
+	//private Set<Jornada> jornadas;
+	
 	public Solicitud(){}
 	
-	public Solicitud(Jornada jornadaTitular, Jornada jornadaReemplazante, Empleado autoriza)
+	public Solicitud(Jornada jornadaTitular, Jornada jornadaReemplazante) //Constructor por defecto no incluye autoriza, no se sabe en el momento de crearla
 	{
 		super();
 		this.estado = false;
 		this.jornadaTitular = jornadaTitular; 
 		this.jornadaReemplazante = jornadaReemplazante;
-		this.autoriza = autoriza;
 		this.confirmaReemplazante = false;
 	}
 	
-	public long getIdSolicitud()
+	public int getIdSolicitud()
 	{
 		return this.idSolicitud;
 	}
 	
-	protected void setIdSolicitud( long idSolicitud) 
+	protected void setIdSolicitud( int idSolicitud) 
 	{
 		this.idSolicitud = idSolicitud;
 	}
@@ -40,33 +43,42 @@ public class Solicitud
 	{
 		this.estado = estado;
 	}
-
-	public Jornada getIdJornadaTitular()
+/*	
+	public Set<Jornada> getJornadas()
+	{
+	    return this.jornadas;
+	}
+	public void setJornadas(Set<Jornada> jornadas)
+	{
+	    this.jornadas = jornadas;
+	}
+*/
+	public Jornada getJornadaTitular()
 	{
 		return jornadaTitular;
 	}
 
-	public void setIdJornadaTitular(Jornada jornadaTitular) 
+	public void setJornadaTitular(Jornada jornadaTitular) 
 	{
 		this.jornadaTitular = jornadaTitular;
 	}
 
-	public Jornada getIdJornadaReemplazante()
+	public Jornada getJornadaReemplazante()
 	{
 		return jornadaReemplazante;
 	}
-
-	public void setIdJornadaReemplazante(Jornada jornadaReemplazante) 
+	
+	public void setJornadaReemplazante(Jornada jornadaReemplazante) 
 	{
 		this.jornadaReemplazante = jornadaReemplazante;
 	}
 
-	public Empleado getIdAutoriza() 
+	public Empleado getAutoriza() 
 	{
 		return autoriza;
 	}
 
-	public void setIdAutoriza(Empleado autoriza) 
+	public void setAutoriza(Empleado autoriza) 
 	{
 		this.autoriza = autoriza;
 	}

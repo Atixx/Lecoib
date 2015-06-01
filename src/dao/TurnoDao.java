@@ -79,7 +79,7 @@ public class TurnoDao
         }
     }
     
-    public Turno traerTurno(long idTurno) throws HibernateException 
+    public Turno traerTurno(int idTurno) throws HibernateException 
     {
         Turno objeto = null;
         try {

@@ -4,15 +4,17 @@
 <hibernate-mapping>
 <class name="datos.Usuario" table="usuario">
 <id column="idUsuario" name="idUsuario">
-<generator class="identity"/>
+	<generator class="foreign">
+	<param name="property">empleado</param>
+	</generator>
 </id>
 <property column="nombreUsr" name="nombreUsr" type="string"/>
 <property column="clave" name="clave" type="string"/> <!-- TODO: como se guarda un password? -->
 <property column="ultimoCambioClave" name="ultimoCambioClave" type="calendar"/>
 <property column="ultimaSesion" name="ultimaSesion" type="calendar"/>
-<property column="baja" name="baja" type="boolean"/>
+<property column="bajaLogica" name="baja" type="boolean"/>
 <property column="privilegio" name="privilegio" type="int"/>
 
-<one-to-one name="empleado" class="empleado"></one-to-one>
+<one-to-one name="empleado" class="datos.Empleado"></one-to-one>
 </class>
 </hibernate-mapping>

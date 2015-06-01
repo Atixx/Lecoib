@@ -11,7 +11,7 @@ public class JornadaABM
 {
 	JornadaDao dao = new JornadaDao();
 	
-	public Jornada traerJornada(long idJornada) throws Exception
+	public Jornada traerJornada(int idJornada) throws Exception
 	{
 		Jornada j = dao.traerJornada(idJornada);
 		if (j == null)

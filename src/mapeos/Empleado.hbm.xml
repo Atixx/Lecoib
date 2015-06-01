@@ -9,27 +9,19 @@
 	<property column="apellido" name="apellido" type="string"/>
 	<property column="nombre" name="nombre" type="string"/>
 	<property column="dni" name="dni" type="long"/>
-	<property column="fechaDeIngreso" name="fechaDeIngreso" type="calendar"/>
-	<property column="email" name="email" type="string"/>
+	<property column="fechaIngreso" name="fechaDeIngreso" type="calendar"/>
+	<property column="email" name="email" type="string"/>	
 	<property column="baja" name="baja" type="boolean"/>
 	
+	
+	
+	
+	
 	<many-to-one name="categoria" class="datos.Categoria" column="idCategoria" not-null="true"/>
-	
+	<many-to-one name="grupoTrabajo" class="datos.GrupoTrabajo" column="idGrupo" not-null="true"/>
 	<many-to-one name="turno" class="datos.Turno" column="idturno" not-null="true"/>
+	<one-to-one name="usuario" class="datos.Usuario"></one-to-one>
 	
-	<many-to-one name="grupoTrabajo" class="datos.GrupoTrabajo" column="idGrupoTrabajo" not-null="true"/>
-	<set name ="jornadas" table="jornada" inverse="true" lazy="true" fetch="select">
-		<key>
-			<column name ="idEmpleado" not-null="false" />
-		</key>
-		<one-to-many class="datos.Jornada" />
-	</set>
-	<set name ="solicitudes" table="solicitud" inverse="true" lazy="true" fetch="select">
-		<key>
-			<column name ="idEmpleado" not-null="false" />
-		</key>
-		<one-to-many class="datos.Jornada" />
-	</set>
 	<set name ="fichas" table="ficha" inverse="true" lazy="true" fetch="select">
 		<key>
 			<column name ="idEmpleado" not-null="false" />
@@ -40,11 +32,26 @@
 		<key>
 			<column name ="idEmpleado" not-null="false" />
 		</key>
-		<one-to-many class="datos.BalanceMensual" />
+		<one-to-many class="datos.BalanceMensual" />	
 		
 	</set>
+	<set name ="jornadas" table="jornada" inverse="true" lazy="true" fetch="select">
+		<key>
+			<column name ="idEmpleado" not-null="false" />
+		</key>
+		<one-to-many class="datos.Jornada" />
+	</set>
+	<!--
 	
-	<one-to-one name="usuario" class="usuario"></one-to-one>
+	<set name ="solicitudes" table="solicitud" inverse="true" lazy="true" fetch="select">
+		<key>
+			<column name ="idEmpleado" not-null="false" />
+		</key>
+		<one-to-many class="datos.Solicitud" />
+	</set>
+	
+	
+	-->
 	
 
 </class>

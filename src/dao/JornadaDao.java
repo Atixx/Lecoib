@@ -80,7 +80,7 @@ public class JornadaDao
         }
     }
 
-	    public Jornada traerJornada(long idJornada) throws HibernateException {
+	    public Jornada traerJornada(int idJornada) throws HibernateException {
         Jornada objeto = null;
         try {
             iniciaOperacion();

@@ -1,13 +1,16 @@
 package datos;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Set;
+
+import datos.Empleado;
 
 public class GrupoTrabajo
 {
-	private long idGrupoTrabajo;
+	private int idGrupo;
 	private String nombreGrupo;
-	//private List<Empleado> empleados = new ArrayList<Empleado>();
+	
+	private Set<Empleado> empleados;
 	
 	public GrupoTrabajo(){}
 	
@@ -17,14 +20,14 @@ public class GrupoTrabajo
 		this.nombreGrupo = nombreGrupo;		
 	}
 	
-	public long getIdGrupoTrabajo()
+	public int getidGrupo()
 	{
-		return this.idGrupoTrabajo;
+		return this.idGrupo;
 	}
 	
-	protected void setIdGrupoTrabajo( long idGrupoTrabajo) 
+	protected void setidGrupo( int idGrupo) 
 	{
-		this.idGrupoTrabajo = idGrupoTrabajo;
+		this.idGrupo = idGrupo;
 	}
 
 	public String getNombreGrupo() {
@@ -35,17 +38,20 @@ public class GrupoTrabajo
 		this.nombreGrupo = nombreGrupo;
 	}
 
-	/*public List<Empleado> getEmpleados() 
-	{
-		return empleados;
-	}	
 	
-	//TODO:definir lista empleados
+	public Set<Empleado> getEmpleados()
+	{
+	    return this.empleados;
+	}
+	public void setEmpleados(Set<Empleado> empleados)
+	{
+	    this.empleados = empleados;
+	}
 	
 	public String toString()
 	{
-		return idGrupoTrabajo+nombreGrupo+empleados; //ver bien
-	}*/
+		return idGrupo+nombreGrupo/*+empleados*/; //ver bien
+	}
 	
 	
 }

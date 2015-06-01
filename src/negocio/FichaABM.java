@@ -12,7 +12,7 @@ public class FichaABM
 {
 	FichaDao dao = new FichaDao();
 	
-	public Ficha traerFicha(long idFicha) throws Exception
+	public Ficha traerFicha(int idFicha) throws Exception
 	{
 	
 		Ficha f = dao.traerFicha(idFicha);		
@@ -41,7 +41,7 @@ public class FichaABM
 	}
 	
 
-	public void eliminarFicha(long idFicha) throws Exception
+	public void eliminarFicha(int idFicha) throws Exception
 	{
 		
 		Ficha c = dao.traerFicha(idFicha);

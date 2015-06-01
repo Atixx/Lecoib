@@ -79,7 +79,7 @@ public class CategoriaDao
         }
     }
 
-	    public Categoria traerCategoria(long idCategoria) throws HibernateException {
+	    public Categoria traerCategoria(int idCategoria) throws HibernateException {
         Categoria objeto = null;
         try {
             iniciaOperacion();

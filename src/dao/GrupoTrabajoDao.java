@@ -79,11 +79,11 @@ public class GrupoTrabajoDao
         }
     }
 
-	    public GrupoTrabajo traerGrupoTrabajo(long idGrupoTrabajo) throws HibernateException {
+	    public GrupoTrabajo traerGrupoTrabajo(int idGrupo) throws HibernateException {
         GrupoTrabajo objeto = null;
         try {
             iniciaOperacion();
-            objeto = (GrupoTrabajo) session.get(GrupoTrabajo.class, idGrupoTrabajo);
+            objeto = (GrupoTrabajo) session.get(GrupoTrabajo.class, idGrupo);
         } finally {
             session.close();
         }

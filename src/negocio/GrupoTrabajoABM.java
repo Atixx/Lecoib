@@ -8,12 +8,12 @@ public class GrupoTrabajoABM
 {
 	GrupoTrabajoDao dao = new GrupoTrabajoDao();
 	
-	public GrupoTrabajo traerGrupoTrabajo(long idGrupoTrabajo) throws Exception
+	public GrupoTrabajo traerGrupoTrabajo(int idGrupo) throws Exception
 	{
-		GrupoTrabajo g = dao.traerGrupoTrabajo(idGrupoTrabajo);
+		GrupoTrabajo g = dao.traerGrupoTrabajo(idGrupo);
 		if (g == null)
 		{
-		    throw new Exception("No se encontro el grupo de trabajo con ID: "+idGrupoTrabajo);
+		    throw new Exception("No se encontro el grupo de trabajo con ID: "+idGrupo);
 		}
 		return g;
 	}
@@ -26,9 +26,9 @@ public class GrupoTrabajoABM
 	
 	public void modificarGrupoTrabajo(GrupoTrabajo g) throws Exception
 	{
-		if (dao.traerGrupoTrabajo(g.getIdGrupoTrabajo()) == null)
+		if (dao.traerGrupoTrabajo(g.getidGrupo()) == null)
 		{
-			throw new Exception("No existe el grupo de trabajo con ID "+g.getIdGrupoTrabajo()+" para modificar");
+			throw new Exception("No existe el grupo de trabajo con ID "+g.getidGrupo()+" para modificar");
 		}
 		dao.actualizar(g);
 	}
