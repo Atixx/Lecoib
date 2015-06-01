@@ -13,7 +13,7 @@ import negocio.EmpleadoABM;
 import modelo.Funciones;
 
 
-public class SolicitudABM 
+public class GestionSolicitud 
 {
 	/*TODO: 
 	+ traerSolicitud(idEmpleado : int) : Solicitud    <---- Con  traerSolicitud(boolean estado, long idEmpleado)  estaría, pero falta probar el dao/query de esa funcion
@@ -34,7 +34,7 @@ public class SolicitudABM
 			int idSolicitud = 0;
 			JornadaABM jABM = new JornadaABM();
 			EmpleadoABM eABM = new EmpleadoABM();
-			SolicitudABM sABM = new SolicitudABM();
+			GestionSolicitud sABM = new GestionSolicitud();
 			List<Solicitud> listaT = new ArrayList<Solicitud>();
 			List<Solicitud> listaR = new ArrayList<Solicitud>();
 			

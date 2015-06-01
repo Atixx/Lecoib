@@ -25,7 +25,7 @@ public class TestAGREGAR
 			GrupoTrabajo gt = new GrupoTrabajo();
 			JornadaABM jAbm = new JornadaABM();
 			Jornada j = new Jornada();
-			SolicitudABM sAbm = new SolicitudABM();			
+			GestionSolicitud sAbm = new GestionSolicitud();			
 			Solicitud s = new Solicitud();
 			TurnoABM tAbm = new TurnoABM();
 			Turno t = new Turno();
