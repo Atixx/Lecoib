@@ -21,6 +21,7 @@
 	<mapping resource="mapeos/Jornada.hbm.xml"/>
 	<mapping resource="mapeos/Usuario.hbm.xml"/> 
 	<mapping resource="mapeos/Solicitud.hbm.xml"/>
+
 <!--	
 	-->
 	

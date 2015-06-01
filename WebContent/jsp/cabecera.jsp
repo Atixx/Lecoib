@@ -13,14 +13,26 @@
         <script src="static/js/bootstrap.min.js"></script>
         <script src="static/js/jssor.slider.mini.js"></script>
         <script src="static/js/Lecoib.js"></script>
+<% 
+	String titulo;
+	if (request.getAttribute("titulo") == null) 
+	{
+	titulo = "Lecoib";
+	}
+	else
+	{
+	    titulo = (String) request.getAttribute("titulo");
+	}
+%>
         
-<title>Insert title here</title>
+<title><%= titulo %></title>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container-fluid">
-    <button type="button" class="btn btn-default navbar-btn">Loguearse</button>
-    <button type="button" class="btn btn-default navbar-btn">Crear Solicitud</button>
-    <button type="button" class="btn btn-default navbar-btn">Estadisticas</button>
+    <a role="button" class="btn btn-default navbar-btn" href="/LecoibWeb/">Loguearse</a>
+    <a role="button" class="btn btn-default navbar-btn" href="#">Crear Solicitud</a>
+    <a role="button" class="btn btn-default navbar-btn" href="#">Estadisticas</a>
+    <a role="button" class="btn btn-default navbar-btn" href="MostrarJornadas">Jornadas</a>
   </div>
 </nav>

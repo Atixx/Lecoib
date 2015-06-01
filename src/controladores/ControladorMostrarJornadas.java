@@ -22,14 +22,16 @@ public class ControladorMostrarJornadas extends HttpServlet
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		String titulo = "Jornadas";
+		request.setAttribute("titulo", titulo);
 		//procesarPeticion(request, response);
-		request.getRequestDispatcher("agregarJornada.jsp").forward(request, response);
+		request.getRequestDispatcher("jsp/agregarJornada.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
-		procesarPeticion(request, response);
+		//procesarPeticion(request, response);
+		request.getRequestDispatcher("jsp/vistaJornada.jsp").forward(request , response);
 	}
 
 	private void procesarPeticion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -37,20 +39,6 @@ public class ControladorMostrarJornadas extends HttpServlet
 		response.setContentType("text/html;charset=UTF-8");
 		try
 		{
-			
-			GregorianCalendar fecha = Funciones.traerFecha("13/02/2015");
-			GregorianCalendar ingreso = Funciones.traerFecha("1/1/2015");
-			GregorianCalendar inicio = new GregorianCalendar();
-			GregorianCalendar fin	= new GregorianCalendar();
-			//Turno turno = new Turno("Noche", inicio, fin);
-			Categoria categoria = new Categoria("Agente", 4000);
-			GrupoTrabajo grupo = new GrupoTrabajo("SuperNonos");
-			Empleado empleado = new Empleado("Levy", "Maor", 34564345, ingreso, "email@example.com", categoria, turno, grupo);
-			JornadaABM jornadaAbm = new JornadaABM();
-			int idJornada = jornadaAbm.agregarJornada(fecha, empleado, turno);
-			
-			request.setAttribute("idJornada", idJornada);
-			request.getRequestDispatcher("/vistaJornada.jsp").forward(request , response);
 		}
 		catch (Exception e)
 		{
