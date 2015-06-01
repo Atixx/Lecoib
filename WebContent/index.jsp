@@ -4,17 +4,17 @@
 <!-- Aca empieza Body -->
 <%-- include file="jsp/slider.html" --%>
 
-<table>
+<table class="container-fluid">
   <tr>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Balance">Balance Mensual</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Categoria">Categoria</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Empleado">Empleado</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Ficha">Ficha</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Grupo">Grupo Trabajo</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Jornada">Jornada</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Solicitud">Solicitud</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Turno">Turno</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="Usuario">Usuario</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="balance">Balance Mensual</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="categoria">Categoria</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="empleado">Empleado</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="ficha">Ficha</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="grupo">Grupo Trabajo</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="jornada">Jornada</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="solicitud">Solicitud</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="turno">Turno</a></th>
+    <th><a role="button" class="btn btn-default navbar-btn" href="usuario">Usuario</a></th>
 </table>
 
 

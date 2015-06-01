@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.Date" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,6 +24,7 @@
 	{
 	    titulo = "Lecoib: " +(String) request.getAttribute("titulo");
 	}
+	String fecha = new Date().toLocaleString(); //TODO: Hacer un formato de fecha mas lindo
 %>
         
 <title><%= titulo %></title>
@@ -30,9 +32,12 @@
 <body>
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container-fluid">
-    <a role="button" class="btn btn-default navbar-btn" href="/LecoibWeb/">Loguearse</a>
+    <a role="button" class="btn btn-default navbar-btn" href="/LecoibWeb/">Inicio</a>
     <a role="button" class="btn btn-default navbar-btn" href="#">Crear Solicitud</a>
     <a role="button" class="btn btn-default navbar-btn" href="#">Estadisticas</a>
     <a role="button" class="btn btn-default navbar-btn" href="MostrarJornadas">Jornadas</a>
+    <p class="navbar-text navbar-right"><%=fecha %></p>
+	<p class="navbar-text navbar-right">Logueado como <a href="#" class="navbar-link">Mark Otto</a></p>
   </div>
 </nav>
+<div class="wrapper">

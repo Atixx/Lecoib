@@ -18,6 +18,12 @@
         <servlet-name>ControladorMostrarJornadas</servlet-name>
         <servlet-class>controladores.ControladorMostrarJornadas</servlet-class>
 	</servlet>
+	<servlet>
+	   <servlet-name>ControladorTurnos</servlet-name>
+	   <servlet-class>controladores.ControladorTurnos</servlet-class>
+	</servlet>
+	
+	
 	<servlet-mapping>
 		<servlet-name>ControladorMostrarEmpleadoJSP</servlet-name>
 		<url-pattern>/MostrarEmpleadoJSP</url-pattern>
@@ -26,42 +32,43 @@
         <servlet-name>ControladorMostrarJornadas</servlet-name>
         <url-pattern>/MostrarJornadas</url-pattern>
 	</servlet-mapping>
-	
-	<!-- <servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorTurnos</servlet-name>
+        <url-pattern>/turno</url-pattern>
+    </servlet-mapping>
+ 
+ <!-- 	
+    <servlet-mapping>
         <servlet-name></servlet-name>
-        <url-pattern>/Balance</url-pattern>
+        <url-pattern>/balance</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
         <servlet-name></servlet-name>
-        <url-pattern>/Categoria</url-pattern>	
+        <url-pattern>/categoria</url-pattern>	
     </servlet-mapping>   
     <servlet-mapping>
         <servlet-name></servlet-name>
-        <url-pattern>/Empleado</url-pattern>
+        <url-pattern>/empleado</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name></servlet-name>
-        <url-pattern>/Ficha</url-pattern>
+        <url-pattern>/ficha</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name></servlet-name>
-        <url-pattern>/Grupo</url-pattern>
+        <url-pattern>/grupo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name></servlet-name>
-        <url-pattern>/Jornada</url-pattern>
+        <url-pattern>/jornada</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name></servlet-name>
-        <url-pattern>/Solicitud</url-pattern>
+        <url-pattern>/solicitud</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name></servlet-name>
-        <url-pattern>/Turno</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name></servlet-name>
-        <url-pattern>/Usuario</url-pattern>
+        <url-pattern>/usuario</url-pattern>
     </servlet-mapping>
 	 -->
 </web-app>
