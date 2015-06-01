@@ -22,14 +22,10 @@ public class GestionSolicitud
 	+ autorizaSupervisor (idSolicitud:int)
 	*/
 
-	
-
-
 
 	SolicitudDao dao = new SolicitudDao();
 	
-	
-	public int altaSolicitud(long idJornadaTitular, long idJornadaReemplazante, long idAutoriza)throws Exception{
+	public int altaSolicitud(int idJornadaTitular, int idJornadaReemplazante, int idAutoriza)throws Exception{
 
 			int idSolicitud = 0;
 			JornadaABM jABM = new JornadaABM();
@@ -62,7 +58,7 @@ public class GestionSolicitud
 			return idSolicitud;
 	}
 	
-	public Solicitud traerSolicitud(long idSolicitud) throws Exception
+	public Solicitud traerSolicitud(int idSolicitud) throws Exception
 	{
 	
 		Solicitud s = dao.traerSolicitud(idSolicitud);		
@@ -91,7 +87,7 @@ public class GestionSolicitud
 	}
 	
 
-	public void eliminarSolicitud(long idSolicitud) throws Exception
+	public void eliminarSolicitud(int idSolicitud) throws Exception
 	{
 		
 		Solicitud s = dao.traerSolicitud(idSolicitud);
@@ -102,12 +98,11 @@ public class GestionSolicitud
 		dao.eliminar(s);
 	}
 	
-	public List<Solicitud> traerSolicitud(boolean estado, long idEmpleado) throws Exception
+	public List<Solicitud> traerSolicitud(boolean estado, int idEmpleado) throws Exception
 	{
 	    List<Solicitud> lista = new ArrayList<Solicitud>();
 	    lista = dao.traerSolicitud();
 	    if (lista == null || lista.isEmpty())
-	    {
 	        throw new Exception("No existen solicitudes en la base de datos");
 	    }
 	    
