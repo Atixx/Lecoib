@@ -10,10 +10,9 @@
 	<property column="nombre" name="nombre" type="string"/>
 	<property column="dni" name="dni" type="long"/>
 	<property column="fechaIngreso" name="fechaDeIngreso" type="calendar"/>
-	<property column="email" name="email" type="string"/>
-	<!--
+	<property column="email" name="email" type="string"/>	
 	<property column="baja" name="baja" type="boolean"/>
-	-->
+	
 	
 	
 	

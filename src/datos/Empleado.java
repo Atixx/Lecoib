@@ -15,10 +15,10 @@ public class Empleado
 	private long dni;
 	private GregorianCalendar fechaDeIngreso;
 	private String email;
+	private boolean baja;
 	private Categoria categoria;
 	private Turno turno;
 	private GrupoTrabajo grupoTrabajo;
-	//private boolean baja;
 	private Usuario usuario;
 	
 	//attribute para hibernate
@@ -41,10 +41,10 @@ public class Empleado
 		this.dni = dni;
 		this.fechaDeIngreso = fechaDeIngreso;
 		this.email = email;
+		this.baja = false;
 		this.categoria = categoria;
 		this.turno = turno;
 		this.grupoTrabajo = grupoTrabajo;		
-		//this.baja = false;
 	}
 	
 	public int getIdEmpleado()
@@ -135,7 +135,7 @@ public class Empleado
 	{
 		this.grupoTrabajo = grupoTrabajo;
 	}
-	/*
+	
 	public boolean isBaja() 
 	{
 		return baja;
@@ -145,7 +145,7 @@ public class Empleado
 	{
 		this.baja = baja;
 	}
-	*/	
+	
 	public Usuario getUsuario()
 	{
 		return usuario;
