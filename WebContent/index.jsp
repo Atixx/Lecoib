@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ include file="jsp/cabecera.jsp" %>
 <!-- Aca empieza Body -->
-<%-- include file="jsp/slider.html" --%>
+<%@ include file="jsp/slider.html" %>
 
 
 

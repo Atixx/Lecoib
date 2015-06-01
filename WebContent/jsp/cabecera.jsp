@@ -15,13 +15,13 @@
         <script src="static/js/Lecoib.js"></script>
 <% 
 	String titulo;
-	if (request.getAttribute("titulo") == null) 
+	if (request.getAttribute("titulo") == null)
 	{
 	titulo = "Lecoib";
 	}
 	else
 	{
-	    titulo = (String) request.getAttribute("titulo");
+	    titulo = "Lecoib: " +(String) request.getAttribute("titulo");
 	}
 %>
         
