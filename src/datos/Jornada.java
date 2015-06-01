@@ -29,7 +29,7 @@ public class Jornada
 		return this.idJornada;
 	}
 	
-	protected void setIdJornada( long idJornada) 
+	protected void setIdJornada( int idJornada) 
 	{
 		this.idJornada = idJornada;
 	}
