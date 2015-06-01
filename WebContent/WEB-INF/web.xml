@@ -26,4 +26,42 @@
         <servlet-name>ControladorMostrarJornadas</servlet-name>
         <url-pattern>/MostrarJornadas</url-pattern>
 	</servlet-mapping>
+	
+	<!-- <servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Balance</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Categoria</url-pattern>	
+    </servlet-mapping>   
+    <servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Empleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Ficha</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Grupo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Jornada</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Solicitud</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Turno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name></servlet-name>
+        <url-pattern>/Usuario</url-pattern>
+    </servlet-mapping>
+	 -->
 </web-app>
