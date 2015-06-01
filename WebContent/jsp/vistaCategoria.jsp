@@ -11,7 +11,7 @@
 		<%@ include file="cabecera.jsp" %>
 		<% Categoria categoria=(Categoria)request.getAttribute("categoria"); %>
 		<BR>
-				Nombre: <%= categoria.getNombre() %><BR>
+				Nombre: <%= categoria.getNombreCat() %><BR>
 				Sueldo Basico: <%= categoria.getSueldoBasico() %><BR>
 				
 			<BR>

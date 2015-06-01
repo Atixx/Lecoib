@@ -18,7 +18,7 @@
 			Email: <%= empleado.getEmail() %><BR>
 			Categoria: <%= empleado.getCategoria() %><BR>
 			Turno: <%= empleado.getTurno() %><BR>
-			Grupo:	<%= empleado.getGrupo() %><BR>
+			Grupo:	<%= empleado.getGrupoTrabajo() %><BR>
 		<BR>	
 		<a href="/Lecoib/index.jsp">Regresar</a>	
 		<BR>

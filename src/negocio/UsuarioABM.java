@@ -5,13 +5,14 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import dao.UsuarioDao;
+import datos.Empleado;
 import datos.Usuario;
 
 public class UsuarioABM 
 {
 	UsuarioDao dao=new UsuarioDao();
 	
-	public Usuario traerUsuario(long idUsuario) throws Exception
+	public Usuario traerUsuario(int idUsuario) throws Exception
 	{
 		Usuario u = dao.traerUsuario(idUsuario);
 		if (u == null)
@@ -22,18 +23,18 @@ public class UsuarioABM
 	}	
 	
 	public int agregarUsuario(String nombreUsr, String clave, GregorianCalendar ultimoCambioClave, 
-			GregorianCalendar ultimaSesion, int privilegio) throws Exception
+			GregorianCalendar ultimaSesion, int privilegio, Empleado empleado) throws Exception
 	{
 	    Usuario e = dao.traerUsuario(nombreUsr);
 	    if (e != null)
 	    {
 	        throw new Exception("Ya existe el Usuario con el nombre: "+nombreUsr);
 	    }
-	    Usuario m = new Usuario(nombreUsr, clave, ultimoCambioClave, ultimaSesion, privilegio);
+	    Usuario m = new Usuario(nombreUsr, clave, ultimoCambioClave, ultimaSesion, privilegio, empleado);
 	    return dao.agregar(m);
 	}	
 	
-	public void eliminarUsuario(long idUsuario) throws Exception
+	public void eliminarUsuario(int idUsuario) throws Exception
 	{
 		
 		Usuario e = dao.traerUsuario(idUsuario);

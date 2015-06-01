@@ -11,7 +11,7 @@ public class SolicitudABM
 {
 	SolicitudDao dao = new SolicitudDao();
 	
-	public Solicitud traerSolicitud(long idSolicitud) throws Exception
+	public Solicitud traerSolicitud(int idSolicitud) throws Exception
 	{
 	
 		Solicitud s = dao.traerSolicitud(idSolicitud);		
@@ -40,7 +40,7 @@ public class SolicitudABM
 	}
 	
 
-	public void eliminarSolicitud(long idSolicitud) throws Exception
+	public void eliminarSolicitud(int idSolicitud) throws Exception
 	{
 		
 		Solicitud s = dao.traerSolicitud(idSolicitud);

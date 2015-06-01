@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Jornada 
 {
-	private long idJornada;
+	private int idJornada;
 	private GregorianCalendar fecha;
 	private Empleado empleado;
 	private Set<Solicitud> solicitudesTit;
@@ -24,12 +24,12 @@ public class Jornada
 	}
 	
 
-	public long getIdJornada()
+	public int getIdJornada()
 	{
 		return this.idJornada;
 	}
 	
-	protected void setIdJornada( long idJornada) 
+	protected void setIdJornada( int idJornada) 
 	{
 		this.idJornada = idJornada;
 	}

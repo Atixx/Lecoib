@@ -6,7 +6,7 @@ import java.util.Set;
 public class Turno 
 {
 	
-	private long idTurno;
+	private int idTurno;
 	private String turno;
 	private String horaInicio;
 	private String horaFin;
@@ -24,12 +24,12 @@ public class Turno
 		this.horaFin = horaFin;
 	}
 	
-	public long getIdTurno()
+	public int getIdTurno()
 	{
 		return this.idTurno;
 	}
 	
-	protected void setIdTurno(long idTurno) 
+	protected void setIdTurno(int idTurno) 
 	{
 		this.idTurno = idTurno;
 	}

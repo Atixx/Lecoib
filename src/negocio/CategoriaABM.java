@@ -10,7 +10,7 @@ public class CategoriaABM
 {
 	CategoriaDao cDao=new CategoriaDao();
 	
-	public Categoria traerCategoria(long idCategoria) throws Exception
+	public Categoria traerCategoria(int idCategoria) throws Exception
 	{
 		Categoria c = cDao.traerCategoria(idCategoria);
 		if (c == null)
@@ -38,7 +38,7 @@ public class CategoriaABM
 	}
 	
 
-	public void eliminarCategoria(long idCategoria) throws Exception
+	public void eliminarCategoria(int idCategoria) throws Exception
 	{
 		
 		Categoria c = cDao.traerCategoria(idCategoria);

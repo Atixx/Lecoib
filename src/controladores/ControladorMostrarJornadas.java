@@ -42,7 +42,7 @@ public class ControladorMostrarJornadas extends HttpServlet
 			GregorianCalendar ingreso = Funciones.traerFecha("1/1/2015");
 			GregorianCalendar inicio = new GregorianCalendar();
 			GregorianCalendar fin	= new GregorianCalendar();
-			Turno turno = new Turno("Noche", inicio, fin);
+			//Turno turno = new Turno("Noche", inicio, fin);
 			Categoria categoria = new Categoria("Agente", 4000);
 			GrupoTrabajo grupo = new GrupoTrabajo("SuperNonos");
 			Empleado empleado = new Empleado("Levy", "Maor", 34564345, ingreso, "email@example.com", categoria, turno, grupo);

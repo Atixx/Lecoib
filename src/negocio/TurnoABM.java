@@ -7,7 +7,7 @@ public class TurnoABM
 {
 	TurnoDao dao = new TurnoDao();
 	
-	public Turno traerTurno(long idTurno) throws Exception
+	public Turno traerTurno(int idTurno) throws Exception
 	{
 		Turno t = dao.traerTurno(idTurno);
 		if (t == null)

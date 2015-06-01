@@ -1,10 +1,14 @@
 package datos;
 
+import java.util.Set;
+
 public class Categoria 
 {
-	private long idCategoria;
+	private int idCategoria;
 	private String nombreCat;
 	private float sueldoBasico;
+	
+	private Set<Empleado> empleados;
 	
 	public Categoria(){}
 	
@@ -15,22 +19,22 @@ public class Categoria
 		this.sueldoBasico = sueldoBasico;
 	}
 	
-	public long getIdCategoria()
+	public int getIdCategoria()
 	{
 		return this.idCategoria;
 	}
 	
-	protected void setIdCategoria( long idCategoria) 
+	protected void setIdCategoria( int idCategoria) 
 	{
 		this.idCategoria = idCategoria;		
 	}
 
-	public String getnombreCat()
+	public String getNombreCat()
 	{
 		return nombreCat;
 	}
 
-	public void setnombreCat(String nombreCat)
+	public void setNombreCat(String nombreCat)
 	{
 		this.nombreCat = nombreCat;
 	}
@@ -43,6 +47,16 @@ public class Categoria
 	public void setSueldoBasico(float sueldoBasico)
 	{
 		this.sueldoBasico = sueldoBasico;
+	}
+	
+	public Set<Empleado> getEmpleados()
+	{
+		return empleados;
+	}
+
+	public void setEmpleados(Set<Empleado> empleados)
+	{
+		this.empleados = empleados;
 	}
 	
 	public String toString()

@@ -9,16 +9,16 @@ import modelo.Funciones;
 
 public class Empleado 
 {
-	private long idEmpleado;
+	private int idEmpleado;
 	private String apellido;
 	private String nombre;
-	private int dni;
+	private long dni;
 	private GregorianCalendar fechaDeIngreso;
 	private String email;
 	private Categoria categoria;
 	private Turno turno;
 	private GrupoTrabajo grupoTrabajo;
-	private boolean baja;
+	//private boolean baja;
 	private Usuario usuario;
 	
 	//attribute para hibernate
@@ -32,7 +32,7 @@ public class Empleado
 	{
 	}
 	
-	public Empleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso,
+	public Empleado(String apellido, String nombre, long dni, GregorianCalendar fechaDeIngreso,
 						String email, Categoria categoria, Turno turno, GrupoTrabajo grupoTrabajo)
 	{
 		super();
@@ -44,15 +44,15 @@ public class Empleado
 		this.categoria = categoria;
 		this.turno = turno;
 		this.grupoTrabajo = grupoTrabajo;		
-		this.baja = false;
+		//this.baja = false;
 	}
 	
-	public long getIdEmpleado()
+	public int getIdEmpleado()
 	{
 		return this.idEmpleado;
 	}
 	
-	protected void setIdEmpleado( long idEmpleado) 
+	protected void setIdEmpleado( int idEmpleado) 
 	{
 		this.idEmpleado = idEmpleado;
 	}
@@ -81,7 +81,7 @@ public class Empleado
 	{
 		return dni;
 	}
-	public void setDni(int dni) 
+	public void setDni(long dni) 
 	{
 		this.dni = dni;
 	}
@@ -135,7 +135,7 @@ public class Empleado
 	{
 		this.grupoTrabajo = grupoTrabajo;
 	}
-
+	/*
 	public boolean isBaja() 
 	{
 		return baja;
@@ -145,7 +145,7 @@ public class Empleado
 	{
 		this.baja = baja;
 	}
-		
+	*/	
 	public Usuario getUsuario()
 	{
 		return usuario;
@@ -158,7 +158,7 @@ public class Empleado
 
 	public String toString()
 	{
-		return idEmpleado+" "+apellido+" "+nombre+" DNI: "+dni+" Fecha de Ingreso: "+Funciones.traerFechaCorta(fechaDeIngreso)+" "+baja;
+		return idEmpleado+" "+apellido+" "+nombre+" DNI: "+dni+" Fecha de Ingreso: "+Funciones.traerFechaCorta(fechaDeIngreso)+" ";//+baja;
 	}
 	
 	public Set<Ficha> getFichas()

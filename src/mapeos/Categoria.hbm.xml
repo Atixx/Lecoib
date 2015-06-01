@@ -10,10 +10,10 @@
 	<!--
 	<set name ="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
         <key>
-            <column name ="idCategoria" not-null="false" />   -->
-    <!--    </key>
+            <column name ="idCategoria" not-null="false" />  
+        </key>
         <one-to-many class="datos.Empleado" />
     </set>
-    -->
+   -->
   </class>
 </hibernate-mapping>

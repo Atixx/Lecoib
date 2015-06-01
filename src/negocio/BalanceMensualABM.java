@@ -13,7 +13,7 @@ public class BalanceMensualABM
 {
 	BalanceMensualDao bmDao = new BalanceMensualDao();
 	
-	public BalanceMensual traerBalanceMensual(long idBalanceMensual) throws Exception
+	public BalanceMensual traerBalanceMensual(int idBalanceMensual) throws Exception
 	{
 		BalanceMensual bm = bmDao.traerBalanceMensual(idBalanceMensual);
 		if (bm == null)
@@ -39,7 +39,7 @@ public class BalanceMensualABM
 		bmDao.actualizar(bm);		
 	}
 	
-	public void eliminarBalanceMensual(long idBalanceMensual) throws Exception
+	public void eliminarBalanceMensual(int idBalanceMensual) throws Exception
 	{
 		
 		BalanceMensual bm = bmDao.traerBalanceMensual(idBalanceMensual);

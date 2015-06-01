@@ -3,15 +3,18 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="datos.GrupoTrabajo" table="grupotrabajo">
-	   <id column="idGrupo" name="idGrupoTrabajo">
+	   <id column="idGrupo" name="idGrupo">
 	       <generator class="identity"/>
 	   </id>
+	   
 	   <property column="nombreGrupo" name="nombreGrupo" type="string"/>
-	   <set name ="empleado" table="empleado" inverse="true" lazy="true" fetch="select">
+	   
+	   <set name ="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
 		<key>
-			<column name ="idEmpleado" not-null="false" />
+			<column name ="idGrupo" not-null="true" />
 		</key>
 		<one-to-many class="datos.Empleado" />
 	</set>
+	
 	</class>
 </hibernate-mapping>

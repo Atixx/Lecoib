@@ -79,7 +79,7 @@ public class UsuarioDao
         }
     }
 
-    public Usuario traerUsuario(long idUsuario) throws HibernateException 
+    public Usuario traerUsuario(int idUsuario) throws HibernateException 
     {
         Usuario objeto = null;
         try {
@@ -97,7 +97,7 @@ public class UsuarioDao
 		try
 		{
 			iniciaOperacion();
-			obj = (Usuario) session.createQuery("from usuaio u where u.nombreUsr ="+nombreUsuario).uniqueResult();
+			obj = (Usuario) session.createQuery("from Usuario u where u.nombreUsr ="+nombreUsuario).uniqueResult();
 		}
 		finally
 		{

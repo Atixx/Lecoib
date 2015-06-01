@@ -80,7 +80,7 @@ public class SolicitudDao
         }
     }
 
-	    public Solicitud traerSolicitud(long idSolicitud) throws HibernateException {
+	    public Solicitud traerSolicitud(int idSolicitud) throws HibernateException {
         Solicitud objeto = null;
         try {
             iniciaOperacion();

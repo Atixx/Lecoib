@@ -14,7 +14,7 @@ public class EmpleadoABM
 {
 	EmpleadoDao dao=new EmpleadoDao();
 	
-	public Empleado traerEmpleado(long idEmpleado) throws Exception
+	public Empleado traerEmpleado(int idEmpleado) throws Exception
 	{
 		Empleado e = dao.traerEmpleado(idEmpleado);
 		if (e == null)
@@ -24,7 +24,7 @@ public class EmpleadoABM
 		return e;
 	}	
 	
-	public Empleado traerEmpleado(int dni) throws Exception
+	public Empleado traerEmpleado(long dni) throws Exception
 	{
 		Empleado e = dao.traerEmpleado(dni);
 		if (e == null)
@@ -69,7 +69,7 @@ public class EmpleadoABM
 		dao.actualizar(e);
 	}
 	
-	public void eliminarEmpleado(long idEmpleado) throws Exception
+	public void eliminarEmpleado(int idEmpleado) throws Exception
 	{
 		
 		Empleado e = dao.traerEmpleado(idEmpleado);

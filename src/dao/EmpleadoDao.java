@@ -85,7 +85,7 @@ public class EmpleadoDao
         }
     }
 
-    public Empleado traerEmpleado(long idEmpleado) throws HibernateException 
+    public Empleado traerEmpleado(int idEmpleado) throws HibernateException 
     {
         Empleado objeto = null;
         try 
@@ -100,11 +100,11 @@ public class EmpleadoDao
         return objeto;
     }
     
-    public Empleado traerEmpleado(int dni) throws HibernateException {
+    public Empleado traerEmpleado(long dni) throws HibernateException {
         Empleado objeto = null;
         try {
             iniciaOperacion();
-            objeto = (Empleado) session.createQuery("from Cliente c where c.dni ="+dni).uniqueResult();
+            objeto = (Empleado) session.createQuery("from Empleado e where e.dni ="+dni).uniqueResult();
         } finally {
             session.close();
         }
@@ -119,7 +119,7 @@ public class EmpleadoDao
         try 
         {
             iniciaOperacion();                    
-            lista=session.createQuery("from Empleado c order by c.apellido asc c.nombre asc").list();
+            lista=session.createQuery("from Empleado e order by e.apellido asc e.nombre asc").list();
            
         } 
         finally 

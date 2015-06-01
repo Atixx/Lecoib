@@ -79,7 +79,7 @@ public class FichaDao
         }
     }
     
-    public Ficha traerFicha(long idFicha) throws HibernateException 
+    public Ficha traerFicha(int idFicha) throws HibernateException 
     {
         Ficha objeto = null;
         try {

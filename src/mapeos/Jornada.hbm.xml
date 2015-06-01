@@ -7,9 +7,12 @@
 		  <generator class="identity"/>
 		</id>
 		<property column="fecha" name="fecha" type="calendar"/>
+		
 		<many-to-one name="turno" class="datos.Turno" column="idTurno" not-null="true"/>
+		
 		<many-to-one name="empleado" class="datos.Empleado" column="idEmpleado" not-null="true"/>
-		<set name ="solicitudesTit" table="solicitud" inverse="true" lazy="true" fetch="select">
+		
+		<!--<set name ="solicitudesTit" table="solicitud" inverse="true" lazy="true" fetch="select">
 			<key>
 				<column name ="idJornadaTitular" not-null="false" />
 			</key>
@@ -21,5 +24,9 @@
 			</key>
 			<one-to-many class="datos.Solicitud" />
 		</set>
+		
+		<many-to-one name="solicitud" class="datos.Solicitud" column="idSolicitud" not-null="true"/>
+		-->
+		
 	</class>
 </hibernate-mapping>

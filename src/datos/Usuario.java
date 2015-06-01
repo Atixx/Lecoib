@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 public class Usuario 
 {
 	//TODO:atributos	
-	private long idUsuario;
+	private int idUsuario;
 	private String nombreUsr;
 	private String clave;
 	private GregorianCalendar ultimoCambioClave;
@@ -20,7 +20,7 @@ public class Usuario
 	}
 	
 	public Usuario(String nombreUsr, String clave, GregorianCalendar ultimoCambioClave,
-								GregorianCalendar ultimaSesion, int privilegio)
+								GregorianCalendar ultimaSesion, int privilegio, Empleado empleado)
 	{
 		super();
 		this.nombreUsr = nombreUsr;		
@@ -29,14 +29,15 @@ public class Usuario
 		this.ultimaSesion = ultimaSesion;
 		this.baja = false;
 		this.privilegio = privilegio;
+		this.empleado = empleado;
 	}
 	
-	public long getIdUsuario()
+	public int getIdUsuario()
 	{
 		return this.idUsuario;
 	}
 	
-	protected void setIdUsuario(long idUsuario) 
+	protected void setIdUsuario(int idUsuario) 
 	{
 		this.idUsuario = idUsuario;
 	}
@@ -100,6 +101,16 @@ public class Usuario
 	{
 		this.privilegio = privilegio;
 	}
+	public Empleado getEmpleado()
+	{
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) 
+	{
+		this.empleado = empleado;
+	}
+
 	//TODO: completar metodo toString
 	public String toString()
 	{

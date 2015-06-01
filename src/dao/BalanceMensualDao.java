@@ -84,7 +84,7 @@ public class BalanceMensualDao
         }
     }
 
-    public BalanceMensual traerBalanceMensual(long idBalanceMensual) throws HibernateException 
+    public BalanceMensual traerBalanceMensual(int idBalanceMensual) throws HibernateException 
     {
         BalanceMensual objeto = null;
         try 
