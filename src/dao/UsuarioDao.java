@@ -97,7 +97,7 @@ public class UsuarioDao
 		try
 		{
 			iniciaOperacion();
-			obj = (Usuario) session.createQuery("from Usuario u where u.nombreUsr ="+nombreUsuario).uniqueResult();
+			obj = (Usuario) session.createQuery("from Usuario u where u.nombreUsr = '"+nombreUsuario+"'").uniqueResult();
 		}
 		finally
 		{

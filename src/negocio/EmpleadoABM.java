@@ -34,7 +34,7 @@ public class EmpleadoABM
 		return e;
 	}
 	
-	public int agregarEmpleado(String apellido, String nombre, int dni, GregorianCalendar fechaDeIngreso,
+	public int agregarEmpleado(String apellido, String nombre, long dni, GregorianCalendar fechaDeIngreso,
 			String email, Categoria categoria, Turno turno, GrupoTrabajo grupo) throws Exception
 	{
 	    Empleado e = dao.traerEmpleado(dni);

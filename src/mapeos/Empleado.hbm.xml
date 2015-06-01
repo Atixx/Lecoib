@@ -8,7 +8,7 @@
 	</id>
 	<property column="apellido" name="apellido" type="string"/>
 	<property column="nombre" name="nombre" type="string"/>
-	<property column="dni" name="dni" type="int"/>
+	<property column="dni" name="dni" type="long"/>
 	<property column="fechaIngreso" name="fechaDeIngreso" type="calendar"/>
 	<property column="email" name="email" type="string"/>
 	<!--

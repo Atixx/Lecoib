@@ -50,7 +50,7 @@ public class GrupoTrabajo
 	
 	public String toString()
 	{
-		return idGrupo+nombreGrupo+empleados; //ver bien
+		return idGrupo+nombreGrupo/*+empleados*/; //ver bien
 	}
 	
 	

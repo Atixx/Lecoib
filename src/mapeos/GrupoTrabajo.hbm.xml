@@ -11,7 +11,7 @@
 	   
 	   <set name ="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
 		<key>
-			<column name ="idGrupo" not-null="true" />
+			<column name ="idGrupo" not-null="false" />
 		</key>
 		<one-to-many class="datos.Empleado" />
 	</set>

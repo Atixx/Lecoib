@@ -4,7 +4,9 @@
 <hibernate-mapping>
 <class name="datos.Usuario" table="usuario">
 <id column="idUsuario" name="idUsuario">
-<generator class="identity"/>
+	<generator class="foreign">
+	<param name="property">empleado</param>
+	</generator>
 </id>
 <property column="nombreUsr" name="nombreUsr" type="string"/>
 <property column="clave" name="clave" type="string"/> <!-- TODO: como se guarda un password? -->

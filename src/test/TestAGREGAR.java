@@ -59,20 +59,30 @@ public class TestAGREGAR
 		    System.out.println("Nro Turno: "+idTurno+"\n\n"); 
 		    t = tAbm.traerTurno(idTurno);
 		    System.out.println("El turno es"+t+"\n\n");*/
+		   
+		    /*
 		    c = cAbm.traerCategoria(3);
 		    System.out.println("La Categoria es"+c+"\n\n");
+		   
 		    gt = gtAbm.traerGrupoTrabajo(2);
+		    System.out.println("GT es"+gt+"\n\n");
+		    
 		    t = tAbm.traerTurno(1);
-		    /*
+		    System.out.println("Turno es"+t+"\n\n");
 		    int idJ1 = jAbm.agregarJornada(mesAnio, e, t);
 		    System.out.println("Nro Jornada1: "+idJ1+"\n\n");		    
 		    //no impacta en bd, por lo tanto usuario tampoco
 		    */
-		    int dni = 31569934;
-		    int idEmp = eAbm.agregarEmpleado("nionio","pepe",dni, fechaDeIngreso, "niope@aol.com", c, t, gt);
-		    System.out.println("Nro empl:"+idEmp+"\n\n");
-		    e = eAbm.traerEmpleado(31569934);
+		    //int idEmp = eAbm.agregarEmpleado("nionio","pepe",dni, fechaDeIngreso, "niope@aol.com", c, t, gt);
+		    //System.out.println("Nro empl:"+idEmp+"\n\n");
+
+
+		    //long dni = 31554934;		    
+		    e = eAbm.traerEmpleado(2);
 		    System.out.println("El empleado es:"+e+"\n\n");
+		    
+		    
+		    
 		    int idUser = uAbm.agregarUsuario("Usr", "1234", fechaDeIngreso, mesAnio, 1,e);
 		    System.out.println("Nro User: "+idUser+"\n\n");		    
 		   

@@ -6,11 +6,11 @@ public class Solicitud
 {
 	private int idSolicitud;
 	private boolean estado;
-	private Jornada jornadaTitular;
-	private Jornada jornadaReemplazante;
 	private Empleado autoriza;
 	private boolean confirmaReemplazante;
 	
+	private Jornada jornadaTitular;
+	private Jornada jornadaReemplazante;
 	//private Set<Jornada> jornadas;
 	
 	public Solicitud(){}
