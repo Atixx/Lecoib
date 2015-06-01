@@ -13,7 +13,6 @@
 	
 <!--Mapeo Entidades -->
 	<mapping resource="mapeos/Categoria.hbm.xml"/>
-<!--	
 	<mapping resource="mapeos/Turno.hbm.xml"/>
 	<mapping resource="mapeos/Jornada.hbm.xml"/>
 	<mapping resource="mapeos/Empleado.hbm.xml"/>
@@ -22,6 +21,7 @@
 	<mapping resource="mapeos/GrupoTrabajo.hbm.xml"/>
     <mapping resource="mapeos/BalanceMensual.hbm.xml"/> 
 	<mapping resource="mapeos/Usuario.hbm.xml"/> 
+<!--	
 	-->
 	
 </session-factory>
