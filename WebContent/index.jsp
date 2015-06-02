@@ -4,7 +4,10 @@
 <!-- Aca empieza Body -->
 <%-- include file="jsp/slider.html" --%>
 
+<h1 id="titulo">Lecoib</h1>
 
-
+<div class="col-md-6 col-md-push-3">
+<%@ include file="jsp/slider.html" %>
+</div>
 <!-- Aca termina Body -->
 <%@ include file="jsp/pie.jsp" %>
