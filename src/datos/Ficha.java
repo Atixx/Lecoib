@@ -1,6 +1,7 @@
 package datos;
 
 import java.util.GregorianCalendar;
+import modelo.Funciones;
 
 public class Ficha 
 {
@@ -11,11 +12,11 @@ public class Ficha
 	
 	public Ficha(){}
 	
-	public Ficha(GregorianCalendar diaHora, Empleado empleado)
+	public Ficha(GregorianCalendar diaHora, Empleado empleado, boolean entradaSalida)
 	{
 		super();
 		this.diaHora = diaHora;
-		this.entradaSalida = true;
+		this.entradaSalida = entradaSalida;//entrada true, salida false
 		this.empleado = empleado;
 	}
 	
@@ -56,5 +57,27 @@ public class Ficha
 	public String toString()
 	{
 		return idFicha+" "+diaHora+" "+entradaSalida+" "+empleado;
+	}
+	
+	protected  int calcularCodigoVerificador(long dni){
+		String dniS = Long.toString(dni);
+		int dniArray[]={0,0,0,0,0,0,0,0,0};
+		for(int i=0; i<dniS.length(); i++){
+			dniArray[i] = Integer.parseInt(dniS.substring(i,i+1));
+		}
+		int sumaDni = 0, resultadoMultiParcial = 0;
+		for(int i=0; i<(dniArray.length) ; i++){
+			if(i%2==0){resultadoMultiParcial = dniArray[i] * 2;}
+			else{resultadoMultiParcial = dniArray[i];}
+			sumaDni += resultadoMultiParcial;
+		}
+		int codigo = Funciones.obtenerUltimoDigito(sumaDni);
+		return codigo;
+	}
+	
+	public boolean esCodigoValido(long dni, int codVerificado){
+		boolean es = false;
+		if(calcularCodigoVerificador(dni)==codVerificado)es = true;
+		return es;
 	}
 }

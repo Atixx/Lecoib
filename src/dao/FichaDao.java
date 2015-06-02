@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Ficha;
+import datos.Empleado;
 
 public class FichaDao 
 {
@@ -99,6 +100,23 @@ public class FichaDao
         {
             iniciaOperacion();                    
             lista=session.createQuery("from Ficha f order by f.idEmpleado asc f.diaHora asc").list();
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+    
+    @SuppressWarnings("unchecked")
+	public List<Ficha> traerFicha(Empleado empleado) throws HibernateException 
+    {
+    	List<Ficha> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Ficha f join Empleado e on f.idEmpleado = e.idEmpleado order by f.diaHora asc").list();
            
         } 
         finally {
