@@ -26,6 +26,10 @@
     <servlet-name>ControladorSolicitud</servlet-name>
     <servlet-class>controladores.ControladorSolicitud</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ControladorBalance</servlet-name>
+    <servlet-class>controladores.ControladorBalance</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>ControladorMostrarEmpleadoJSP</servlet-name>
@@ -42,5 +46,9 @@
   <servlet-mapping>
     <servlet-name>ControladorSolicitud</servlet-name>
     <url-pattern>/solicitud</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ControladorBalance</servlet-name>
+    <url-pattern>/estadistica</url-pattern>
   </servlet-mapping>
 </web-app>

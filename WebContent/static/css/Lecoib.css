@@ -36,8 +36,6 @@ a:hover{
     
 
 }
-h1{
-    font-size:20px;
 }
 h1 p{
 
@@ -103,4 +101,9 @@ h1 p{
 #copyright
 {
 	font-size:12px;
+}
+
+#titulo
+{
+	text-align:center;
 }

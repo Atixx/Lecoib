@@ -4,20 +4,10 @@
 <!-- Aca empieza Body -->
 <%-- include file="jsp/slider.html" --%>
 
-<table class="container-fluid">
-  <tr>
-    <th><a role="button" class="btn btn-default navbar-btn" href="balance">Balance Mensual</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="categoria">Categoria</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="empleado">Empleado</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="ficha">Ficha</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="grupo">Grupo Trabajo</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="jornada">Jornada</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="solicitud">Solicitud</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="turno">Turno</a></th>
-    <th><a role="button" class="btn btn-default navbar-btn" href="usuario">Usuario</a></th>
-</table>
+<h1 id="titulo">Lecoib</h1>
 
-
-
+<div class="col-md-6 col-md-push-3">
+<%@ include file="jsp/slider.html" %>
+</div>
 <!-- Aca termina Body -->
 <%@ include file="jsp/pie.jsp" %>

@@ -3,6 +3,6 @@
 <%@ include file="cabecera.jsp" %>
 
 <% String msg = (String) request.getAttribute("msg"); %>
-<h1><%= msg %></h1>
+<h3><%= msg %></h3>
 <a href="/LecoibWeb/">Volver..</a>
 <%@ include file="pie.jsp" %>

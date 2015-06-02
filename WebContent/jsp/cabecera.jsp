@@ -35,9 +35,10 @@
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container-fluid">
     <a role="button" class="btn btn-default navbar-btn" href="/LecoibWeb/">Inicio</a>
-    <a role="button" class="btn btn-default navbar-btn" href="#">Crear Solicitud</a>
-    <a role="button" class="btn btn-default navbar-btn" href="#">Estadisticas</a>
-    <a role="button" class="btn btn-default navbar-btn" href="MostrarJornadas">Jornadas</a>
+    <a role="button" class="btn btn-default navbar-btn" href="solicitud">Solicitud</a>
+    <a role="button" class="btn btn-default navbar-btn" href="estadistica">Estadisticas</a>
+    <a role="button" class="btn btn-default navbar-btn" href="turno">Turno</a>
+    <span class="navbar-text col-md-4">Lecoib</span>
     <p class="navbar-text navbar-right"><%=fecha %></p>
 	<p class="navbar-text navbar-right">Logueado como <a href="#" class="navbar-link">Mark Otto</a></p>
   </div>
