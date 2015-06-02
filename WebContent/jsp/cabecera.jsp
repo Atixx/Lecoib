@@ -9,11 +9,13 @@
         <link type = "text/css" href="static/css/bootstrap.min.css" rel="stylesheet"></link>
         <link type = "text/css" href="static/css/bootstrap-theme.min.css" rel="stylesheet"></link>
         <link type= "text/css" href="static/css/Lecoib.css" rel="stylesheet"></link>
+        <link type= "text/css" href="static/css/bootstrap-select.min.css" rel="stylesheet"></link>
         <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
         <script src="static/js/jquery-2.1.4.min.js"></script>
         <script src="static/js/bootstrap.min.js"></script>
         <script src="static/js/jssor.slider.mini.js"></script>
         <script src="static/js/Lecoib.js"></script>
+        <script src="static/js/bootstrap-select.min.js"></script>
 <% 
 	String titulo;
 	if (request.getAttribute("titulo") == null)

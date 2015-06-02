@@ -20,7 +20,7 @@ public class ControladorTurnos extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String titulo = "Buscar Turno";
+		String titulo = "Turno";
 		request.setAttribute("titulo", titulo);
 		request.getRequestDispatcher("jsp/vistaTurno.jsp").forward(request, response);
 	}
@@ -45,11 +45,13 @@ public class ControladorTurnos extends HttpServlet {
 			String nombre = request.getParameter("nombreTurno");
 			String inicio = request.getParameter("horaInicio");
 			String fin = request.getParameter("horaFin");
-			int id = tABM.agregarTurno(nombre, inicio, fin);
+			int id = tABM.agregarTurno(nombre, inicio, fin); //Deberia verificar que no exista otro turno con el mismo nombre en la BD
 			request.setAttribute("nombre", nombre);
 			request.setAttribute("inicio", inicio);
 			request.setAttribute("fin", fin);
 			request.setAttribute("id",id);
+			String titulo = "Agregado Turno "+ id;
+			request.setAttribute("titulo", titulo);
 			request.getRequestDispatcher("jsp/vistaTurno.jsp").forward(request, response);
 		}
 		} catch (Exception e)
