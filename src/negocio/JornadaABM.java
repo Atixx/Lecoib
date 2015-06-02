@@ -47,14 +47,14 @@ public class JornadaABM
 
 			for(Empleado e : lstEmpleados){
 				if(e.getCategoria().getIdCategoria() == 1) { // idCategoria=1 es supervisor
-					if(e.getTurno().getTurno()=="MA") lstSupMA.add(e);
-					else if(e.getTurno().getTurno()=="TA") lstSupTA.add(e);
-					else if(e.getTurno().getTurno()=="NO") lstSupNO.add(e);
+					if(e.getTurno().getTurno().equals("MA")) lstSupMA.add(e);
+					else if(e.getTurno().getTurno().equals("TA")) lstSupTA.add(e);
+					else if(e.getTurno().getTurno().equals("NO")) lstSupNO.add(e);
 				}
 				if(e.getCategoria().getIdCategoria() == 2) { // idCategoria=2 es operario
-					if(e.getTurno().getTurno()=="MA") lstOpMA.add(e);
-					else if(e.getTurno().getTurno()=="TA") lstOpTA.add(e);
-					else if(e.getTurno().getTurno()=="NO") lstOpNO.add(e);
+					if(e.getTurno().getTurno().equals("MA")) lstOpMA.add(e);
+					else if(e.getTurno().getTurno().equals("TA")) lstOpTA.add(e);
+					else if(e.getTurno().getTurno().equals("NO")) lstOpNO.add(e);
 				}
 			}
 			

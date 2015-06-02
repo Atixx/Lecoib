@@ -158,7 +158,7 @@ public class Empleado
 
 	public String toString()
 	{
-		return idEmpleado+" "+apellido+" "+nombre+" DNI: "+dni+" Fecha de Ingreso: "+Funciones.traerFechaCorta(fechaDeIngreso)+" ";//+baja;
+		return idEmpleado+" "+apellido+" "+nombre+" DNI: "+dni+" Fecha de Ingreso: "+Funciones.traerFechaCorta(fechaDeIngreso)+" "+turno;//+baja;
 	}
 	
 	public Set<Ficha> getFichas()

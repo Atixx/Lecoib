@@ -17,9 +17,9 @@
 	
 	
 	
-	<many-to-one name="categoria" class="datos.Categoria" column="idCategoria" not-null="true"/>
-	<many-to-one name="grupoTrabajo" class="datos.GrupoTrabajo" column="idGrupo" not-null="true"/>
-	<many-to-one name="turno" class="datos.Turno" column="idturno" not-null="true"/>
+	<many-to-one name="categoria" class="datos.Categoria" column="idCategoria" lazy="false" not-null="true"/>
+	<many-to-one name="grupoTrabajo" class="datos.GrupoTrabajo" column="idGrupo" lazy="false" not-null="true"/>
+	<many-to-one name="turno" class="datos.Turno" column="idturno" lazy="false" not-null="true"/>
 	<one-to-one name="usuario" class="datos.Usuario"></one-to-one>
 	
 	<set name ="fichas" table="ficha" inverse="true" lazy="true" fetch="select">
