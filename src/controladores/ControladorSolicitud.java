@@ -43,5 +43,5 @@ public class ControladorSolicitud extends HttpServlet {
 			request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
 		}
 	}
-
+	//TODO: si Usuario no esta logueado, mandar a index!
 }

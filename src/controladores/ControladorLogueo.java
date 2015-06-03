@@ -51,16 +51,20 @@ public class ControladorLogueo extends HttpServlet {
 				session.setAttribute("grupoTrabajo", u.getEmpleado().getGrupoTrabajo());
 				request.getRequestDispatcher("jsp/loginSuccess.jsp").forward(request, response);
 			}
-		} catch (Exception e)
+			else
+			{
+				String msg = "Corrobore los datos";
+				request.setAttribute("msg", msg);
+				request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
+			}
+		} 
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			String msg = e.getMessage(); //No existe el usuario, manejar!
 			request.setAttribute("msg", msg);
 			request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 		}
-		String msg = "Corrobore los datos";
-		request.setAttribute("msg", msg);
-		request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 	}
 
 	protected void procesar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

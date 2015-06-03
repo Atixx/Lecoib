@@ -13,7 +13,7 @@ public class TestAGREGAR
 	{
 		try
 	    {
-			BalanceMensualABM bmAbm = new BalanceMensualABM();
+			/*BalanceMensualABM bmAbm = new BalanceMensualABM();
 			BalanceMensual bm = new BalanceMensual();		
 			CategoriaABM cAbm = new CategoriaABM();
 			Categoria c = new Categoria();
@@ -28,12 +28,16 @@ public class TestAGREGAR
 			GestionSolicitud sAbm = new GestionSolicitud();			
 			Solicitud s = new Solicitud();
 			TurnoABM tAbm = new TurnoABM();
-			Turno t = new Turno();
+			Turno t = new Turno();*/
 		    UsuarioABM uAbm = new UsuarioABM();
-		    Usuario u = new Usuario();
+		    Usuario u = uAbm.traerUsuario(1);
+		    System.out.println(u);
 		    
-		    GregorianCalendar fechaDeIngreso = Funciones.traerFecha("01/07/2013");
-		    GregorianCalendar mesAnio = (GregorianCalendar)GregorianCalendar.getInstance();
+		    
+		    
+		    
+//		    GregorianCalendar fechaDeIngreso = Funciones.traerFecha("01/07/2013");
+//		    GregorianCalendar mesAnio = (GregorianCalendar)GregorianCalendar.getInstance();
 		    //Categoria cTest = new Categoria("TEST",666);
 		    //Turno tTest = new Turno("xx","01:00","05:00");
 		    //GrupoTrabajo gTest = new GrupoTrabajo("TESTEO");
@@ -69,8 +73,8 @@ public class TestAGREGAR
 		    
 		    t = tAbm.traerTurno(1);
 		    System.out.println("Turno es"+t+"\n\n");*/
-		    int idJ1 = jAbm.agregarJornada(mesAnio, e, t);		    
-		    System.out.println("Nro Jornada2: "+idJ1+"\n\n");		    
+		    //int idJ1 = jAbm.agregarJornada(mesAnio, e, t);		    
+		    //System.out.println("Nro Jornada2: "+idJ1+"\n\n");		    
 		    //no impacta en bd, por lo tanto usuario tampoco
 		    
 		    //int idEmp = eAbm.agregarEmpleado("nionio","pepe",dni, fechaDeIngreso, "niope@aol.com", c, t, gt);
@@ -123,6 +127,7 @@ public class TestAGREGAR
 	    } 
 		catch (Exception e)
 		{
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 

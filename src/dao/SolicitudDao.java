@@ -110,7 +110,7 @@ public class SolicitudDao
     }
     
     @SuppressWarnings("unchecked")
-    public List<Solicitud> traerSolicitud(boolean estado, long idEmpleado) throws HibernateException 
+    public List<Solicitud> traerSolicitud(boolean estado, int idEmpleado) throws HibernateException 
     {
     	List<Solicitud> lista=null;
         try 

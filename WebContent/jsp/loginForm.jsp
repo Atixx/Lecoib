@@ -16,11 +16,17 @@
     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
 </form>
 </div>
+<div class="container col-md-6">
+</div>
+<div class="container col-md-6">
+</div>
+<div class="container col-md-4">
+</div>
 <% String msg = (String) request.getAttribute("msg"); %>
 <% if(msg != null) 
-    {%>
-<div class="alert alert-danger" role="alert">
-  <%= msg %>
-</div>
+    {%>   
+	<div class=" container col-md-4 alert alert-danger" role="alert">
+	  <%= msg %>
+	</div>
  <%} %>
 <%@ include file="pie.jsp" %>

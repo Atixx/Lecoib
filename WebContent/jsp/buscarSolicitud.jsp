@@ -2,6 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="datos.Solicitud"%>
 <%@ include file="cabecera.jsp" %>
+<% int privilegio = (int) session.getAttribute("privilegio");
+
+if (privilegio == 1)
+{
+%>
    <h3>Buscar Solicitud:</h3>
    <form class="form-inline" method="post">
     <div class="form-group">
@@ -10,7 +15,8 @@
         <input type="hidden" name="tipo" value="buscar">
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
-    
+    <br/>
+    <% } %>
     <h3>Agregar Solicitud:</h3>
     <form class="form-inline" method="post">
     <div class="form-group">
