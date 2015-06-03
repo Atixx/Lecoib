@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `lecoib`.`Empleado` (
   `dni` INT NULL,
   `fechaIngreso` DATETIME NULL,
   `email` VARCHAR(45) NULL,
+  `baja` BIT DEFAULT 0,
   `idCategoria` INT NULL,
   `idGrupo` INT NULL,
   `idTurno` INT NULL,
@@ -136,7 +137,7 @@ ENGINE = InnoDB;
 -- Table `lecoib`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lecoib`.`Usuario` (
-  `idUsuario` INT NOT NULL,
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `nombreUsr` VARCHAR(8) NULL,
   `clave` VARCHAR(8) NULL,
   `ultimoCambioClave` DATETIME NULL,
@@ -192,3 +193,99 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- DATA INSERT
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Table `lecoib`.`Categoria` -Supervisor y Agente
+-- -----------------------------------------------------
+INSERT INTO `lecoib`.`Categoria` (`nombreCat`, `sueldoBasico`) VALUES ('Supervisor', '10000');
+INSERT INTO `lecoib`.`Categoria` (`nombreCat`, `sueldoBasico`) VALUES ('Agente', '8000');
+-- -----------------------------------------------------
+-- Table `lecoib`.`GrupoTrabajo` - 3 Grupos
+-- -----------------------------------------------------
+INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('PrimerGrupo');
+INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('SegundoGrupo');
+INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('TercerGrupo');
+-- -----------------------------------------------------
+-- Table `lecoib`.`Turno`. MAñana, TArde y NOche
+-- -----------------------------------------------------
+INSERT INTO `lecoib`.`Turno` (`turno`, `horaInicio`, `horaFin`, `cupos`) VALUES ('MA', '06:00', '14:00', '2');
+INSERT INTO `lecoib`.`Turno` (`turno`, `horaInicio`, `horaFin`, `cupos`) VALUES ('TA', '14:00', '22:00', '2');
+INSERT INTO `lecoib`.`Turno` (`turno`, `horaInicio`, `horaFin`, `cupos`) VALUES ('NO', '22:00', '06:00', '2');
+-- -----------------------------------------------------
+-- Table `lecoib`.`Empleado`. Varios.
+-- -----------------------------------------------------
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Colombo', 'Maximiliano', '33333333', '20150101', 'mcolombo87@gmail.com', '2', '2', '2');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Bascu', 'Sebastian', '33333336', '20140301', 'sebas.bascu@gmail.com', '2', '2', '2');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Levy', 'Maor', '33333332', '20140601', 'levym10@gmail.com', '2', '1', '1');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Irione', 'Araceli', '33333331', '20150201', 'irione.a.91@gmail.com', '2', '1', '1');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Sanchez', 'Juan', '11111112', '20130701', 'none@none.com', '2', '3', '3');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Perez', 'Marcelo', '11111111', '20130301', 'none@none.com', '2', '3', '3');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Romero', 'Veronica', '22222221', '20120101', 'none@none,com', '1', '1', '1');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Gonzalez', 'Juan', '44444445', '20140101', 'none@none.com', '1', '2', '2');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Martinez', 'Mariano', '11111118', '20150101', 'none@none.com', '1', '3', '3');
+-- -----------------------------------------------------
+-- Table `lecoib`.`Usuario` Solo 1 como supervisor.
+-- -----------------------------------------------------
+INSERT INTO `lecoib`.`Usuario` (`idUsuario`, `nombreUsr`, `clave`, `privilegio`) VALUES ('1', 'maxi', '1234', '2');
+INSERT INTO `lecoib`.`Usuario` (`idUsuario`, `nombreUsr`, `clave`, `privilegio`) VALUES ('2', 'seba', '1234', '2');
+INSERT INTO `lecoib`.`Usuario` (`idUsuario`, `nombreUsr`, `clave`, `privilegio`) VALUES ('3', 'maor', '1234', '2');
+INSERT INTO `lecoib`.`Usuario` (`idUsuario`, `nombreUsr`, `clave`, `privilegio`) VALUES ('4', 'arac', '1234', '2');
+INSERT INTO `lecoib`.`Usuario` (`idUsuario`, `nombreUsr`, `clave`, `privilegio`) VALUES ('7', 'supe', '1234', '1');
+-- -----------------------------------------------------
+-- Table `lecoib`.`Ficha`. Solo para Empleados "Maxi" y "Maor"
+-- -----------------------------------------------------
+-- Maxi
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-20 14:00:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-20 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-21 14:00:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-21 23:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-22 13:51:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-22 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-23 14:00:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-23 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-24 12:00:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-24 23:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-25 13:51:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-25 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-26 14:00:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-26 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-27 14:00:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-27 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-28 13:51:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-28 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-29 14:00:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-29 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-30 14:00:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-30 22:10:12', 1, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-31 13:51:02', 0, '1');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-31 22:10:12', 1, '1');
+-- Maor
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-20 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-20 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-21 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-21 15:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-22 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-22 17:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-23 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-23 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-24 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-24 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-25 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-25 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-26 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-26 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-27 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-27 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-28 08:31:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-28 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-29 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-29 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-30 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-30 14:10:00', 1, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-31 06:00:00', 0, '3');
+INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-31 14:10:00', 1, '3');
+
