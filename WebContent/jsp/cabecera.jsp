@@ -38,9 +38,28 @@
     <a role="button" class="btn btn-default navbar-btn" href="solicitud">Solicitud</a>
     <a role="button" class="btn btn-default navbar-btn" href="estadistica">Estadisticas</a>
     <a role="button" class="btn btn-default navbar-btn" href="turno">Turno</a>
-    <span class="navbar-text col-md-4">Lecoib</span>
+    
+    <% String s = (String) session.getAttribute("session"); %>
+    <% if (s != null) 
+    {%>
+    <a role="button" class="btn btn-default navbar-btn" href="logout">Log Out</a>
+    <% 
+    }
+    else 
+    {%>
+    <a role="button" class="btn btn-default navbar-btn" href="login">Login</a>
+    <%} %>
+    
+    <p class="navbar-text navbar-link col-md-4">Lecoib</a>
     <p class="navbar-text navbar-right"><%=fecha %></p>
-	<p class="navbar-text navbar-right">Logueado como <a href="#" class="navbar-link">Mark Otto</a></p>
+	
+    <%
+	   if (s != null)
+	   {
+	%>
+	<p class="navbar-text navbar-right">Logueado como <a href="#" class="navbar-link"><%= session.getAttribute("userNombre") %></a></p> -->
+    <% }
+	%> 
   </div>
 </nav>
 <div class="wrapper">
