@@ -442,4 +442,11 @@ public class Funciones
         num = Double.parseDouble(partes[0]);
         return num /100;
     }
+	
+	public static int obtenerUltimoDigito(int numero){
+		while(numero>=10) numero -= 10;
+		return numero;
+	}
+	
+	
 }
