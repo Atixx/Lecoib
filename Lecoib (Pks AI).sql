@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `lecoib`.`Usuario` (
   `clave` VARCHAR(8) NULL,
   `ultimoCambioClave` DATETIME NULL,
   `ultimaSesion` DATETIME NULL,
-  `bajaLogica` BIT NULL,
+  `bajaLogica` BIT DEFAULT 0,
   `privilegio` INT NULL,
   PRIMARY KEY (`idUsuario`),
   CONSTRAINT `fk_Usuario_1`
