@@ -66,6 +66,16 @@ public class UsuarioABM
 	    dao.actualizar(u);
 	}
 	
+	public Usuario traerUsuario(String nombreUsuario) throws Exception
+	{
+		Usuario u = dao.traerUsuario(nombreUsuario);
+		if (u == null)
+		{
+		    throw new Exception("No se encontro un Usuario con Nombre: "+nombreUsuario);
+		}
+		return u;
+	}	
+	
 	public List<Usuario> traerUsuario() throws Exception
 	{
 	    List<Usuario> lista = new ArrayList<Usuario>();
