@@ -8,7 +8,6 @@ import datos.Solicitud;
 import datos.Jornada;
 
 
-
 public class SolicitudABM 
 {
 	SolicitudDao dao = new SolicitudDao();

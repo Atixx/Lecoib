@@ -2,6 +2,7 @@ package datos;
 
 import java.util.GregorianCalendar;
 import java.util.Set;
+import modelo.Funciones;
 
 public class Jornada 
 {
@@ -82,7 +83,7 @@ public class Jornada
 	*/
 	public String toString()
 	{
-		return idJornada+" "+fecha+" "+empleado+" "+turno;
+		return Funciones.traerFechaLarga(fecha)+ " " + turno.toString();
 	}
 	
 }

@@ -20,8 +20,6 @@ public class ControladorLogueo extends HttpServlet {
 	{
 		procesar(request,response);
 		HttpSession session = request.getSession();
-		String id = session.getId();
-		request.setAttribute("id", id);
 		request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 	}
 
@@ -71,5 +69,22 @@ public class ControladorLogueo extends HttpServlet {
 	{
 		String titulo = "Login";
 		request.setAttribute("titulo", titulo);
+	}
+	
+	/* Corrobora que la session este logueada, redirecciona en caso de no estar
+	 * retorna true en caso de haber redireccionado, false si no.
+	 * Usar en controladores que necesiten estar logueados para su funcionalidad
+	*/
+	public static boolean checkeaLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		HttpSession session = request.getSession(false);
+		String s = (String) session.getAttribute("session");
+		boolean retval = false;
+		if (s == null)
+		{ 
+			request.getRequestDispatcher("jsp/loginRequerido.jsp").forward(request, response);
+			retval = true;
+		}
+		return retval;
 	}
 }

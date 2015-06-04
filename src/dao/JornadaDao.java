@@ -109,5 +109,38 @@ public class JornadaDao
         return lista;
     }
     
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornadaEmpleado(int idEmpleado) throws HibernateException 
+    {
+    	List<Jornada> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Jornada j where idEmpleado="+idEmpleado+" order by j.fecha asc").list();
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornadasFuturasEmpleado(int idEmpleado) throws HibernateException 
+    {
+    	List<Jornada> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Jornada j where idEmpleado="+idEmpleado+" AND fecha > CURDATE() order by j.fecha asc").list();
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
 
 }
