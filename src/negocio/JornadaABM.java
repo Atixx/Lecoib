@@ -119,4 +119,26 @@ public class JornadaABM
 		return j;
 	}
 	
+	public List<Jornada> traerJornadasFuturas() throws Exception
+	{
+		List<Jornada> j = null;
+		j = dao.traerJornadasFuturas();
+		if (j == null)
+		{
+		    throw new Exception("No se encontraron jornadas futuras");
+		}
+		return j;
+	}
+	
+	public List<Jornada> traerJornadasPorFecha(GregorianCalendar fecha) throws Exception
+	{
+		List<Jornada> j = null;
+		j = dao.traerJornadasPorFecha(fecha);
+		if (j == null)
+		{
+		    throw new Exception("No se encontraron jornadas en la fecha");
+		}
+		return j;
+	}
+	
 }

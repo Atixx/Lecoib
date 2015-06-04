@@ -1,6 +1,9 @@
 package dao;
 
+import java.util.GregorianCalendar;
 import java.util.List;
+
+import modelo.Funciones;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -142,5 +145,40 @@ public class JornadaDao
 
         return lista;
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornadasFuturas() throws HibernateException 
+    {
+    	List<Jornada> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Jornada j where fecha > CURDATE() order by j.fecha asc").list();
+           
+        } 
+        finally {
+            session.close();
+        }
 
+        return lista;
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornadasPorFecha(GregorianCalendar fecha) throws HibernateException 
+    {
+    	List<Jornada> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Jornada j where fecha = '"+Funciones.traerFechaHQL(fecha)+"'").list();
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+    
 }

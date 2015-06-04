@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import datos.Empleado;
 import datos.GrupoTrabajo;
 
 public class GrupoTrabajoDao 
@@ -106,5 +107,20 @@ public class GrupoTrabajoDao
         return lista;
     }
     
+    @SuppressWarnings("unchecked")
+	public List<Empleado> traerListaEmpleados(int idGrupo) throws HibernateException 
+    {
+    	List<Empleado> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from empleado e join grupoTrabajo g on e.idGrupo = g.idGrupo where g.idGrupo = "+ idGrupo).list();
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
 
 }

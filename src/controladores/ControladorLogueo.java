@@ -46,7 +46,7 @@ public class ControladorLogueo extends HttpServlet {
 				session.setAttribute("userId", u.getIdUsuario());
 				session.setAttribute("userNombre", u.getEmpleado().getNombre() +" "+ u.getEmpleado().getApellido());
 				session.setAttribute("privilegio", u.getPrivilegio());
-				session.setAttribute("grupoTrabajo", u.getEmpleado().getGrupoTrabajo());
+				session.setAttribute("grupoTrabajo", u.getEmpleado().getGrupoTrabajo().getidGrupo());
 				request.getRequestDispatcher("jsp/loginSuccess.jsp").forward(request, response);
 			}
 			else

@@ -28,15 +28,21 @@ else
 	{%>
     <h3>Agregar Solicitud:</h3>
     <form class="form-inline" method="post">
+    <label>Jornada a cambiar</label>
     <div class="form-group">
-        <select class="selectpicker">
+        <select name="jornada" class="selectpicker">
         
         <% for (Jornada j : jornadas)
         {%>
-            <option><%=j.toString() %></option>
+            <option value="<%= j.getIdJornada()%>"><%=j.toString() %></option>
         <%} %>
         </select>
     </div>
+    <div class="form-group">
+        <label for="fechaReemplaza">Fecha a reemplazar</label>
+        <input type="text" class="form-control" name="fechaReemplaza" id="fechaReemplaza" placeholder="dd/mm/aa">
+    </div>
+    <button type="submit" class="btn btn-default">Solicitar</button>
     </form>
     <%}%>
 <%@ include file="pie.jsp" %>
