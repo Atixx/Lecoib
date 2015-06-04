@@ -12,7 +12,8 @@ public class TestEnviarMail {
 		EnvioCorreo pruebaEnvio = new EnvioCorreo();
 		
 		try {
-			pruebaEnvio.EnviarCorreo(1, "Probando");
+			pruebaEnvio.EnviarCorreo(1, "Probando Correo, asunto pred");
+			pruebaEnvio.EnviarCorreo(1,"Hola!!", "Probando Correo c/asunto");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

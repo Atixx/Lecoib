@@ -17,11 +17,37 @@ public class EnvioCorreo {
 	
 	EmpleadoABM empleado =new EmpleadoABM();
 	
+	//Enviar Correo, idEmpleado (o usuario) y mensaje, el asunto es predeterminado "Estimado: nombre".
 	public void EnviarCorreo (int idEmpleadoDestino, String mensaje) throws Exception
 	{
 		Session session = ConfigurandoPropiedades();
 		//Envio de correo
 		
+		try{
+		String nombre = empleado.traerEmpleado(idEmpleadoDestino).getNombre();
+		String destinatario = empleado.traerEmpleado(idEmpleadoDestino).getEmail();
+		
+		Message message = new MimeMessage(session);
+		message.setFrom(new InternetAddress("gestion.plancarrera@gmail.com"));
+		message.setRecipients(Message.RecipientType.TO,
+			InternetAddress.parse(destinatario));
+		message.setSubject("Estimado "+ nombre);
+		message.setText(mensaje);
+
+		Transport.send(message);
+		
+		//System.out.println("Done");
+		}
+		catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	//Enviar Correo, especificar ID usuario/empleado, Asunto y mensaje
+	public void EnviarCorreo (int idEmpleadoDestino, String asunto, String mensaje) throws Exception
+	{
+		Session session = ConfigurandoPropiedades();
+		//Envio de correo
 		try{
 		String destinatario = empleado.traerEmpleado(idEmpleadoDestino).getEmail();
 		
@@ -29,12 +55,12 @@ public class EnvioCorreo {
 		message.setFrom(new InternetAddress("gestion.plancarrera@gmail.com"));
 		message.setRecipients(Message.RecipientType.TO,
 			InternetAddress.parse(destinatario));
-		message.setSubject("Testing Subject");
+		message.setSubject(asunto);
 		message.setText(mensaje);
 
 		Transport.send(message);
 		
-		System.out.println("Done");
+		//System.out.println("Done");
 		}
 		catch (MessagingException e) {
 			throw new RuntimeException(e);
