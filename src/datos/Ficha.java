@@ -7,7 +7,7 @@ public class Ficha
 {
 	private int idFicha;
 	private GregorianCalendar diaHora;
-	private boolean entradaSalida;
+	private boolean entradaSalida;// 0-false = salida; 1-true=entrada
 	private Empleado empleado;
 	
 	public Ficha(){}
@@ -56,7 +56,7 @@ public class Ficha
 	
 	public String toString()
 	{
-		return idFicha+" "+diaHora+" "+entradaSalida+" "+empleado;
+		return "idFicha: "+idFicha+" Dia Hora: "+Funciones.traerFechaHoraLarga(diaHora)+" Entrada: "+entradaSalida;
 	}
 	
 	protected  int calcularCodigoVerificador(long dni){
