@@ -19,6 +19,7 @@ import datos.Jornada;
 import datos.Solicitud;
 import modelo.Funciones;
 import negocio.EmpleadoABM;
+import negocio.GestionSolicitud;
 import negocio.GrupoTrabajoABM;
 import negocio.SolicitudABM;
 import negocio.JornadaABM;
@@ -71,12 +72,12 @@ public class ControladorSolicitud extends HttpServlet {
 			String reemplaza = request.getParameter("reemplazante");
 			if (reemplaza != null)
 			{
-				int idSolicitud = Integer.parseInt(request.getParameter("idSolicitud"));
+				int idReemplaza = Integer.parseInt(reemplaza);
+				int idJornadaTitular = Integer.parseInt(request.getParameter("jornada"));
 				SolicitudABM sAbm = new SolicitudABM();
-				Solicitud solicitud = sAbm.traerSolicitud(idSolicitud);
-				request.setAttribute("solicitud", solicitud);
-				String titulo = "Solicitud";
-				request.setAttribute("titulo", titulo);
+				JornadaABM jAbm = new JornadaABM();
+				int idSolicitud = sAbm.agregarSolicitud(jAbm.traerJornada(idJornadaTitular), jAbm.traerJornada(idReemplaza));
+				request.setAttribute("solicitud", sAbm.traerSolicitud(idSolicitud));
 				request.getRequestDispatcher("jsp/vistaSolicitud.jsp").forward(request, response);
 			}
 			else
@@ -88,15 +89,26 @@ public class ControladorSolicitud extends HttpServlet {
 				EmpleadoABM eAbm = new EmpleadoABM();
 				
 				List<Jornada> jornadasFecha = jAbm.traerJornadasPorFecha(fecha);
-				List<Empleado> empleados = eAbm.traerEmpleado();
-				empleados.remove(eAbm.traerEmpleado((int) session.getAttribute("userId"))); //saca el usuario de la lista 
+				List<Empleado> empleados = new ArrayList<Empleado>();
+				boolean error = false;
 				for (Jornada j : jornadasFecha )
 				{
-					empleados.remove(j.getEmpleado());
+					if (!error)
+					{
+						empleados.add(j.getEmpleado());
+						if (j.getEmpleado().getIdEmpleado() == (int) session.getAttribute("userId"))
+						{
+							error = true;
+							request.setAttribute("error", "Usted trabaja en la fecha seleccionada");
+						}
+					}
 				}
-				request.setAttribute("empleados", empleados);
-				request.setAttribute("jornada", select);
-				request.setAttribute("fecha", Funciones.traerFechaLarga(fecha));
+				if (!error)
+				{
+					request.setAttribute("empleados", jornadasFecha);
+					request.setAttribute("jornada", select);
+					request.setAttribute("fecha", Funciones.traerFechaLarga(fecha));
+				}
 				request.getRequestDispatcher("jsp/ingresarSolicitud.jsp").forward(request, response);
 			}
 		}

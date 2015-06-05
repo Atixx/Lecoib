@@ -19,9 +19,10 @@ public class GestionSolicitud
 	+ autorizaSupervisor (idSolicitud:int)
 	*/
 	
-	public int altaSolicitud(int idJornadaTitular, int idJornadaReemplazante)throws Exception
+	public Solicitud altaSolicitud(int idJornadaTitular, int idJornadaReemplazante)throws Exception
 	{
 			int idSolicitud;
+			Solicitud sol;
 			JornadaABM jABM = new JornadaABM();
 			SolicitudABM sABM = new SolicitudABM();
 			List<Solicitud> listaT = new ArrayList<Solicitud>();
@@ -43,6 +44,7 @@ public class GestionSolicitud
 					if(Funciones.esFechaFutura(jTit.getFecha()) && Funciones.esFechaFutura(jReemp.getFecha()))
 					{
 						idSolicitud = sABM.agregarSolicitud(jABM.traerJornada(idJornadaTitular),jABM.traerJornada(idJornadaReemplazante));
+						sol = sABM.traerSolicitud(idSolicitud);
 					}
 					else throw new Exception("Error: La fecha de la Jornada del Reemplazante o Titular NO son futuras");
 				}
@@ -50,7 +52,7 @@ public class GestionSolicitud
 			}
 			else throw new Exception("Error: El Empleado Titular tiene tres Solicitudes pendientes");
 
-			return idSolicitud;
+			return sol;
 	}
 	
 }

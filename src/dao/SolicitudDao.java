@@ -116,7 +116,7 @@ public class SolicitudDao
         try 
         {
             iniciaOperacion();                    
-            lista=session.createQuery("from Solicitud s join Jornada j on s.idJornadaTitular=j.idJornada where j.idEmpleado="+idEmpleado+" and s.estado="+estado).list();
+            lista=session.createQuery("from Solicitud s join Jornada j on s.idJornadaTitular=j.idJornada where j.idEmpleado='"+idEmpleado+"' and s.estado="+estado).list();
            /////// Hay que probar la consulta. 
         } 
         finally {

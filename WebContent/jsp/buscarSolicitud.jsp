@@ -42,7 +42,7 @@ else
         <label for="fechaReemplaza">Fecha a reemplazar</label>
         <input type="text" class="form-control" name="fechaReemplaza" id="fechaReemplaza" placeholder="dd/mm/aa">
     </div>
-    <button type="submit" class="btn btn-default">Solicitar</button>
+    <button type="submit" class="btn btn-default">Buscar</button>
     </form>
     <%}%>
 <%@ include file="pie.jsp" %>

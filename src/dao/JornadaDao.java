@@ -181,4 +181,20 @@ public class JornadaDao
         return lista;
     }
     
+    public Jornada traerJornadasPorFecha(GregorianCalendar fecha, int idEmpleado, int idTurno) throws HibernateException 
+    {
+    	Jornada j = null;
+        try 
+        {
+            iniciaOperacion();                    
+            j= (Jornada) session.createQuery("from Jornada j where fecha = '"+Funciones.traerFechaHQL(fecha)+"' and idEmpleado = '"+idEmpleado+"' and idTurno = '"+idTurno+"'");
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return j;
+    }
+    
 }

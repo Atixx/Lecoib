@@ -10,7 +10,7 @@
 <h3 id="titulo">Ingrese los datos:</h3>
 <form class="form-signin" method="post"> 
        <label for="userName">Nombre de Usuario:</label>
-       <input type='text' name="userName" id="userName" class="form-control" maxlength="8" required>
+       <input type='text' name="userName" id="userName" class="form-control" maxlength="8" autofocus required>
        <label for="password">Password:</label>
        <input type="password" name="password" id="password" class="form-control" required>
     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>

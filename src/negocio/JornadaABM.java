@@ -141,4 +141,15 @@ public class JornadaABM
 		return j;
 	}
 	
+	public Jornada traerJornadasPorFecha(GregorianCalendar fecha, int idEmpleado, int idTurno) throws Exception
+	{
+		Jornada j = null;
+		j = dao.traerJornadasPorFecha(fecha, idEmpleado, idTurno);
+		if (j == null)
+		{
+		    throw new Exception("No se encontraron jornadas en la fecha");
+		}
+		return j;
+	}
+	
 }
