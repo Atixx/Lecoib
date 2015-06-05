@@ -42,7 +42,8 @@ else
         <label for="fechaReemplaza">Fecha a reemplazar</label>
         <input type="text" class="form-control" name="fechaReemplaza" id="fechaReemplaza" placeholder="dd/mm/aa">
     </div>
-    <button type="submit" class="btn btn-default">Buscar</button>
+    <button type="submit" class="btn btn-default" <%= request.getAttribute("solicitudes") %>>Buscar</button>
     </form>
     <%}%>
+    <h6 id="aviso">Recuerde: No se podra efectuar busqueda de cambio si ya tiene 3 solicitudes pendientes</h6>
 <%@ include file="pie.jsp" %>

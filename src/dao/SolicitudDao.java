@@ -126,4 +126,22 @@ public class SolicitudDao
         return lista;
     }
     
+    @SuppressWarnings("unchecked")
+    public List<Solicitud> traerSolicitudEmpleado(int idEmpleado) throws HibernateException 
+    {
+    	List<Solicitud> lista=null;
+        try 
+        {
+            iniciaOperacion();          
+            String sql = "select * from solicitud s join Jornada j on s.idJornadaTitular=j.idJornada where idEmpleado=";
+            lista=session.createSQLQuery(sql+idEmpleado).list();
+           /////// Hay que probar la consulta. 
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+    
 }

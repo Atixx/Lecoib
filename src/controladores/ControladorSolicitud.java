@@ -13,11 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import modelo.Funciones;
-import negocio.EmpleadoABM;
 import negocio.JornadaABM;
 import negocio.SolicitudABM;
-import datos.Empleado;
 import datos.Jornada;
+import datos.Solicitud;
 
 /**
  * Servlet implementation class ControladorSolicitud
@@ -35,18 +34,28 @@ public class ControladorSolicitud extends HttpServlet {
 			String titulo = "Buscar Solicitud";
 			request.setAttribute("titulo", titulo);
 			HttpSession session = request.getSession(false);
+			SolicitudABM sAbm = new SolicitudABM();
 			JornadaABM jAbm = new JornadaABM();
 			List<Jornada> jornadas = jAbm.traerJornadasFuturasEmpleado((int) session.getAttribute("userId"));
 			if (!jornadas.isEmpty())
 			{
 				request.setAttribute("jornadas", jornadas);
 			}
+			List<Solicitud> solicitudes = sAbm.traerSolicitudEmpleado((int) session.getAttribute("userId"));
+			if (solicitudes.size() >= 3)
+			{
+				request.setAttribute("solicitudes", "disabled");
+			}
 			request.getRequestDispatcher("jsp/buscarSolicitud.jsp").forward(request, response);
 			}
 			catch (Exception e)
 			{
 				request.setAttribute("msg", e.getMessage());
-				request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
+				//request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
+			}
+			finally
+			{
+				request.getRequestDispatcher("jsp/buscarSolicitud.jsp").forward(request, response);
 			}
 		}
 	}
@@ -68,16 +77,20 @@ public class ControladorSolicitud extends HttpServlet {
 			}
 			else
 			{
+				boolean error = false;
 				HttpSession session = request.getSession(false);
 				String idJornada = request.getParameter("jornada");
 				GregorianCalendar fecha = Funciones.traerFecha(request.getParameter("fechaReemplaza"));
+				if (!Funciones.esFechaFutura(fecha))
+				{
+					error = true;
+					request.setAttribute("error", "La fecha ya paso");
+				}
 				JornadaABM jAbm = new JornadaABM();
-				EmpleadoABM eAbm = new EmpleadoABM();
 				Jornada titular = jAbm.traerJornada(Integer.parseInt(idJornada));
 				List<Jornada> jornadasTitular = jAbm.traerJornadasPorFecha(titular.getFecha());
 				List<Jornada> jornadasFecha = jAbm.traerJornadasPorFecha(fecha);
-				boolean error = false;
-				for (Jornada j : jornadasFecha ) ///sacar de jordanasFecha los epleados que trabajan en fechaTitular
+				for (Jornada j : jornadasFecha )
 				{
 					if (!error)
 					{
@@ -98,11 +111,11 @@ public class ControladorSolicitud extends HttpServlet {
 						{
 							if (j.getEmpleado().equals(jo.getEmpleado()))
 							{
-								remover.add(j);
+								remover.add(j); //Junta lo que hay que remover
 							}
 						}
 					}
-					candidatos.removeAll(remover);
+					candidatos.removeAll(remover);//lo saca
 					request.setAttribute("jornadasCambio", candidatos);
 					request.setAttribute("jornada", idJornada);
 					request.setAttribute("fecha", Funciones.traerFechaLarga(fecha));
