@@ -3,43 +3,58 @@
     <%@page import="datos.Jornada, java.util.ArrayList"%>
 <%@ include file="cabecera.jsp" %>
 
-<% String msg = (String) request.getAttribute("jornada"); %>
+<% String idJornada = (String) request.getAttribute("jornada"); %>
 <% String fechaReemplazo = (String) request.getAttribute("fecha"); %>
-<% if (msg == null) 
+<% if (idJornada == null) 
 {
-   msg = (String) request.getAttribute("error"); %>
-   <h3> <%=msg %></h3>
+   String msg = (String) request.getAttribute("error"); %>
+   <div class="page-header">
+        <h1>Lo sentimos</h1>
+    </div> 
+    <div class="row">
+	    <div class="col-md-4"><div class="alert alert-danger" role="alert"><%=msg %></div></div>
+	    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    </div>
+    <a class="btn btn-default" href="solicitud" role="button">Regresar</a>
 <%}
-else {%>
-<h3><%= msg %></h3>
-<h4><%= fechaReemplazo %></h4>
-<%} %>
-
-<%
-ArrayList<Jornada> empleados = (ArrayList<Jornada>) request.getAttribute("jornadasCambio");
+else 
+	
+{
+	
+	ArrayList<Jornada> empleados = (ArrayList<Jornada>) request.getAttribute("jornadasCambio");
 %>
 <% if (empleados == null || empleados.isEmpty())
     {%>    
-<h3>No hay..</h3>
+    <div class="page-header">
+        <h1>Lo sentimos</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><div class="alert alert-danger" role="alert">No hay compañeros que lo puedan cambiar</div></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    </div>
+    <a class="btn btn-default" href="solicitud" role="button">Regresar</a>    
     <%}
 else
     {%>
-    <h3>Empleados:</h3>
+    <div class="page-header">
+        <h1>Seleccione un compañero</h1>
+    </div>
     <form class="form-inline" method="post">
-    <label>Empleados:</label>
     <div class="form-group">
         <select name="reemplazante" class="selectpicker">
         
         <% for (Jornada e : empleados)
         {%>
-            <option value="<%= e.getIdJornada()%>"><%=e.getEmpleado().toString() %></option>
+            <option value="<%= e.getIdJornada()%>"><%=e.getEmpleado().getApellido()+" ,"+e.getEmpleado().getNombre() %></option>
         <%} %>
         </select>
     </div>
-    <input type="hidden" name="jornada" value=<%= msg %>>
+    <input type="hidden" name="jornada" value=<%= idJornada %>>
     <button type="submit" class="btn btn-default">Solicitar</button>
     </form>
-<%}%>
+<%}
 
-
+} %>
 <%@ include file="pie.jsp" %>

@@ -4,5 +4,5 @@
 
 <h1>BLUEBLUEBLUE</h1>
 
-<a href="/LecoibWeb">Regresar</a>
+<a class="btn btn-default" href="/LecoibWeb" role="button">Regresar</a>
 <%@ include file="pie.jsp" %>

@@ -97,7 +97,7 @@ public class ControladorSolicitud extends HttpServlet {
 				if (!Funciones.esFechaFutura(fecha))
 				{
 					error = true;
-					request.setAttribute("error", "La fecha ya paso");
+					request.setAttribute("error", "La fecha seleccionada ya paso");
 				}
 				JornadaABM jAbm = new JornadaABM();
 				SolicitudABM sAbm = new SolicitudABM();

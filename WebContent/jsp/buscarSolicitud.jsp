@@ -26,8 +26,10 @@ ArrayList<Jornada> jornadas = (ArrayList<Jornada>) request.getAttribute("jornada
     <%}
 else
 	{%>
-    <h3>Agregar Solicitud:</h3>
-    <form class="form-inline" method="post">
+    <div class="page-header">
+        <h1>Buscar cambio</h1>
+    </div>
+    <form method="post">
     <label>Jornada a cambiar</label>
     <div class="form-group">
         <select name="jornada" class="selectpicker">
@@ -38,12 +40,17 @@ else
         <%} %>
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-inline">
         <label for="fechaReemplaza">Fecha a reemplazar</label>
         <input type="text" class="form-control" name="fechaReemplaza" id="fechaReemplaza" placeholder="dd/mm/aa">
     </div>
+    <div class="form-group">
     <button type="submit" class="btn btn-default" <%= request.getAttribute("solicitudes") %>>Buscar</button>
+    </div>
     </form>
     <%}%>
-    <h6 id="aviso">Recuerde: No se podra efectuar busqueda de cambio si ya tiene 3 solicitudes pendientes</h6>
+	<div class="col-md-8 alert alert-info alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>Recuerde!</strong> No se podra efectuar busqueda de cambio si ya tiene 3 solicitudes pendientes
+	</div>
 <%@ include file="pie.jsp" %>
