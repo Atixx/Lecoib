@@ -6,5 +6,5 @@
         <h1>Bienvenido <%=session.getAttribute("userNombre") %></h1>
 </div> 
 <p>Redireccionando...</p>
-<meta http-equiv="Refresh" content="2;url=index.jsp">
+<meta http-equiv="Refresh" content="2;url=/LecoibWeb/">
 <%@ include file="pie.jsp" %>
