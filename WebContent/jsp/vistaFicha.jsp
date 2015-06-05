@@ -2,17 +2,18 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="datos.Ficha"%>
 <%@ include file="cabecera.jsp" %>
-<% if (request.getAttribute("idFicha") != null)
-{ %>
-	<h3>Se ha agregado la siguiente ficha:</h3>
-    <p>
-    Día Hora: <%= request.getParameter("diaHora") %><BR>
-    Tipo:  <%= request.getParameter("entradaSalida") %><BR>
-<%}
-else 
-{%>
-	<h3>Agregar Ficha:</h3>
-    <form method="post"> 
+<% if (request.getAttribute("ficha") != null) 
+   { %>
+	  <h1>Ficha cargada</h1>
+
+		    Dia Hora: <%= request.getAttribute("diaHora") %><BR>
+		    Tipo: <%= request.getAttribute("tipo") %><BR>
+		    <a href="/LecoibWeb/">Volver al inicio</a>
+	<% }
+	else 
+   {%>
+   		<h3>Agregar Ficha:</h3>
+    <form method="post" action="ControladorFichar2"> 
 	    <div class="form-inline" >
 	       <label for="dni">Dni:</label>
 	       <input type='number' name="dni" id="dni" class="form-control" maxlength="9" required>
@@ -24,6 +25,13 @@ else
 	    <input type="hidden" name="tipo" value="fichar">
 	    <button type="submit" class="btn btn-default">Fichar</button>
 	 </form> 
-<%}
+	 <% String msg = (String) request.getAttribute("msg"); %>
+	<% if(msg != null) 
+	    {%>   
+		<div class=" container col-md-4 alert alert-danger" role="alert">
+		  <%= msg %>
+		</div>
+ <%} %>
+   <% } 
 %>
 <%@ include file="pie.jsp" %>

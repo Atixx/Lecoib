@@ -30,7 +30,7 @@
     <servlet-name>ControladorBalance</servlet-name>
     <servlet-class>controladores.ControladorBalance</servlet-class>
   </servlet>
-  <servlet>
+    <servlet>
     <servlet-name>ControladorFichar</servlet-name>
     <servlet-class>controladores.ControladorFichar</servlet-class>
   </servlet>
@@ -64,7 +64,7 @@
     <servlet-name>ControladorBalance</servlet-name>
     <url-pattern>/estadistica</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>ControladorFichar</servlet-name>
     <url-pattern>/ficha</url-pattern>
   </servlet-mapping>

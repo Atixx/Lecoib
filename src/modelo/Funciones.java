@@ -529,10 +529,10 @@ public class Funciones
 	}
 
 
-	public static String pasarBooleanAString(String bool)
+	public static String pasarBooleanAString(boolean bool)
 	{
 		String entradaSalida = "";
-		if(bool=="0") entradaSalida = "Entrada";
+		if(!bool) entradaSalida = "Entrada";
 		else entradaSalida = "Salida";
 		return entradaSalida;
 	}

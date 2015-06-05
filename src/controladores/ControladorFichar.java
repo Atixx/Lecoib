@@ -1,8 +1,7 @@
 package controladores;
 
-import java.util.GregorianCalendar;
-import modelo.Funciones;
 import java.io.IOException;
+import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import datos.Empleado;
 import datos.Ficha;
+import negocio.EmpleadoABM;
 import negocio.FichaABM;
+import modelo.Funciones;
 
 /**
  * Servlet implementation class ControladorFichar
@@ -23,58 +25,72 @@ public class ControladorFichar extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		//if (!ControladorLogueo.checkeaLogin(request, response))
-		//{
-			String titulo = "Fichar";
+		if (!ControladorLogueo.checkeaLogin(request, response))
+		{
+			try
+			{
+			String titulo = "Ficha";
 			request.setAttribute("titulo", titulo);
-			request.getRequestDispatcher("jsp/vistaFicha.jsp").forward(request, response);
-		//}
+			}
+			catch(Exception e)
+			{
+				request.setAttribute("msg", e.getMessage());
+			}
+			finally
+			{
+				request.getRequestDispatcher("jsp/vistaFicha.jsp").forward(request, response);
+			}
+		}		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		try
+		if (!ControladorLogueo.checkeaLogin(request, response))
 		{
-			//if (!ControladorLogueo.checkeaLogin(request, response))
-			//{
-				long dni = Long.parseLong(request.getParameter("dni"));
-				//if(session.getAttribute(dni)==dni)
-				//comparar dni de logueo con dni ingresado
-				int codigoVerificador = Integer.parseInt(request.getParameter("codigoVerificador"));
+			try
+			{
+				FichaABM fABM = new FichaABM();
 				Ficha f = new Ficha();
+				Long dni = Long.parseLong(request.getParameter("dni"));
+				int codigoVerificador = Integer.parseInt(request.getParameter("codigoVerificador"));
+				HttpSession session = request.getSession(false);
 				boolean error = false;
-				if(f.esCodigoValido(dni,codigoVerificador)){
-					HttpSession session = request.getSession(false);
-					if((int) session.getAttribute("dni")!=dni) {
+				long dniUsr = (Long)session.getAttribute("dniUsr");
+				if(dniUsr!=dni)//Se fija que sea del usuario
+				{
 						error = true;
-						request.setAttribute("error", "El DNI ingresado no pertenece al usuario logeado");
-					}
+						error = true;
+						String msg = "El DNI no corresponde al usuario logeado";
+						request.setAttribute("msg", msg); //La busqueda real no va a ser texto abierto error de forma provisoria
+						request.getRequestDispatcher("jsp/vistaFicha.jsp").forward(request, response);
 				}
-				else{
+				else if(!f.esCodigoValido(dniUsr, codigoVerificador)) 
+				{
 					error = true;
-					request.setAttribute("error", "El codigo verficador es inválido");
-				}
-				if (!error){
-					FichaABM fABM = new FichaABM();
-					int idFicha = fABM.agregarFicha(dni, codigoVerificador);
-					request.setAttribute("idFicha",idFicha);
-					GregorianCalendar diaHora = Funciones.traerFechaHora(request.getParameter("diaHora"));
-					request.setAttribute("diaHora", diaHora);
-					String titulo = "Agregada ficha "+ idFicha;
-					request.setAttribute("titulo", titulo);
-					String entradaSalida = Funciones.pasarBooleanAString(request.getParameter("entradaSalida"));
-					request.setAttribute("entradaSalida", entradaSalida);
+					String msg = "El codigo verificador no es valido";
+					request.setAttribute("msg", msg); //La busqueda real no va a ser texto abierto error de forma provisoria
 					request.getRequestDispatcher("jsp/vistaFicha.jsp").forward(request, response);
-	
+				}
+				else
+				{//agrega ficha
+					EmpleadoABM eABM = new EmpleadoABM();
+					Empleado e = eABM.traerEmpleado(dni);
+					GregorianCalendar hoy = new GregorianCalendar();
+					int idFicha = fABM.agregarFicha(hoy, e,fABM.verificarEntradaSalida(e));
+					Ficha ficha = fABM.traerFicha(idFicha);
+					request.setAttribute("diaHora", Funciones.traerFechaHoraLarga(ficha.getDiaHora()));
+					request.setAttribute("tipo", ficha.getEntradaSalida());
+					request.setAttribute("ficha", idFicha);
+					request.getRequestDispatcher("jsp/vistaFicha.jsp").forward(request, response);
 				}
 				
-			//}
-		}
-		catch (Exception e)
-		{
-			request.setAttribute("msg", e.getMessage());
-			request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
+			}
+			catch (Exception e)
+			{
+				request.setAttribute("msg", e.getMessage()); //La busqueda real no va a ser texto abierto error de forma provisoria
+				request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
+			}
 		}
 	}
-
 }
+	

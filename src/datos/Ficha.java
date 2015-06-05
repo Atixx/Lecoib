@@ -46,6 +46,10 @@ public class Ficha
 		this.entradaSalida = entradaSalida;
 	}
 
+	public String getEntradaSalida() {
+		return Funciones.pasarBooleanAString(this.entradaSalida);
+	}
+	
 	public Empleado getEmpleado() {
 		return empleado;
 	}
