@@ -65,13 +65,25 @@ public class SolicitudABM
 		dao.eliminar(s);
 	}
 	
-	public List<Solicitud> traerSolicitudEmpleado(int idEmpleado) throws Exception
+	public List<Solicitud> traerSolicitudEmpleado(int idEmpleado) throws Exception //Retorna null si no hay solicitudes
 	{
 	    List<Solicitud> lista = new ArrayList<Solicitud>();
 	    lista = dao.traerSolicitudEmpleado(idEmpleado);
 	    if (lista == null || lista.isEmpty())
 	    {
-	        throw new Exception("No existen solicitudes del empelado con ID: "+idEmpleado);
+	        lista = null;
+	    }
+	    
+	    return lista;
+	}
+	
+	public List<Solicitud> traerSolicitudJornadaTitular(int idJornadaTitular) throws Exception //Retorna null si no hay solicitudes
+	{
+	    List<Solicitud> lista = new ArrayList<Solicitud>();
+	    lista = dao.traerSolicitudJornadaTitular(idJornadaTitular);
+	    if (lista == null || lista.isEmpty())
+	    {
+	        lista = null;
 	    }
 	    
 	    return lista;

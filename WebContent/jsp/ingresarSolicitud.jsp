@@ -18,7 +18,7 @@ else {%>
 <%
 ArrayList<Jornada> empleados = (ArrayList<Jornada>) request.getAttribute("jornadasCambio");
 %>
-<% if (empleados == null)
+<% if (empleados == null || empleados.isEmpty())
     {%>    
 <h3>No hay..</h3>
     <%}

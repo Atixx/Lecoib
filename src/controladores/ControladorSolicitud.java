@@ -46,7 +46,7 @@ public class ControladorSolicitud extends HttpServlet {
 			{
 				request.setAttribute("solicitudes", "disabled");
 			}
-			request.getRequestDispatcher("jsp/buscarSolicitud.jsp").forward(request, response);
+			 //request.getRequestDispatcher("jsp/buscarSolicitud.jsp").forward(request, response);
 			}
 			catch (Exception e)
 			{
@@ -71,6 +71,19 @@ public class ControladorSolicitud extends HttpServlet {
 				int idJornadaTitular = Integer.parseInt(request.getParameter("jornada"));
 				SolicitudABM sAbm = new SolicitudABM();
 				JornadaABM jAbm = new JornadaABM();
+				
+/*				List<Solicitud> creadas = sAbm.traerSolicitudEmpleado();
+				if (creadas != null)
+				{
+					for (Solicitud s : creadas)
+					{
+						if (s.getJornadaReemplazante().getIdJornada() == idReemplaza)
+						{
+							
+						}
+					}
+				}*/
+				
 				int idSolicitud = sAbm.agregarSolicitud(jAbm.traerJornada(idJornadaTitular), jAbm.traerJornada(idReemplaza));
 				request.setAttribute("solicitud", sAbm.traerSolicitud(idSolicitud));
 				request.getRequestDispatcher("jsp/vistaSolicitud.jsp").forward(request, response);
@@ -87,6 +100,7 @@ public class ControladorSolicitud extends HttpServlet {
 					request.setAttribute("error", "La fecha ya paso");
 				}
 				JornadaABM jAbm = new JornadaABM();
+				SolicitudABM sAbm = new SolicitudABM();
 				Jornada titular = jAbm.traerJornada(Integer.parseInt(idJornada));
 				List<Jornada> jornadasTitular = jAbm.traerJornadasPorFecha(titular.getFecha());
 				List<Jornada> jornadasFecha = jAbm.traerJornadasPorFecha(fecha);
@@ -101,8 +115,10 @@ public class ControladorSolicitud extends HttpServlet {
 						}
 					}
 				}
+				
 				if (!error)
 				{
+					List<Solicitud> creadas = sAbm.traerSolicitudJornadaTitular(Integer.parseInt(idJornada));
 					List<Jornada> candidatos = jornadasFecha;
 					List<Jornada> remover = new ArrayList<Jornada>();
 					for (Jornada j : jornadasFecha )
@@ -112,6 +128,16 @@ public class ControladorSolicitud extends HttpServlet {
 							if (j.getEmpleado().equals(jo.getEmpleado()))
 							{
 								remover.add(j); //Junta lo que hay que remover
+							}
+						}
+						if (creadas != null) 
+						{
+							for (Solicitud s : creadas) //Compara las jornadas candidatos para verificar que no se hayan pedido
+							{
+								if (j.getIdJornada() == s.getJornadaReemplazante().getIdJornada())
+								{
+									remover.add(j);
+								}
 							}
 						}
 					}
