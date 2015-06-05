@@ -492,7 +492,25 @@ public class Funciones
 		}
 		return diaS;
 	}
-
 	
+	public static GregorianCalendar traerFechaHora(String fechaS){
+		String[] fecha = fechaS.split("/");
+		String[] auxDiaHoraMin = fecha[2].split(" ");
+		fecha[2] = auxDiaHoraMin[0];
+		String[] auxHoraMin = auxDiaHoraMin[1].split(":");
+		String hora = auxHoraMin[0];
+		String minutos = auxHoraMin[1];
+		GregorianCalendar fechaHoraGC = new GregorianCalendar (Integer.parseInt(fecha[2]), Integer.parseInt(fecha[1])-1, Integer.parseInt(fecha[0]), Integer.parseInt(hora),Integer.parseInt(minutos));
+		return fechaHoraGC;
+	}
+
+
+	public static String pasarBooleanAString(String bool)
+	{
+		String entradaSalida = "";
+		if(bool=="0") entradaSalida = "Entrada";
+		else entradaSalida = "Salida";
+		return entradaSalida;
+	}
 	
 }
