@@ -16,7 +16,7 @@ else {%>
 <%} %>
 
 <%
-ArrayList<Jornada> empleados = (ArrayList<Jornada>) request.getAttribute("empleados");
+ArrayList<Jornada> empleados = (ArrayList<Jornada>) request.getAttribute("jornadasCambio");
 %>
 <% if (empleados == null)
     {%>    

@@ -3,26 +3,21 @@ package controladores;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.List; 
+import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import datos.Empleado;
-import datos.GrupoTrabajo;
-import datos.Jornada;
-import datos.Solicitud;
 import modelo.Funciones;
 import negocio.EmpleadoABM;
-import negocio.GestionSolicitud;
-import negocio.GrupoTrabajoABM;
-import negocio.SolicitudABM;
 import negocio.JornadaABM;
+import negocio.SolicitudABM;
+import datos.Empleado;
+import datos.Jornada;
 
 /**
  * Servlet implementation class ControladorSolicitud
@@ -35,15 +30,6 @@ public class ControladorSolicitud extends HttpServlet {
 	{
 		if (!ControladorLogueo.checkeaLogin(request, response))
 		{
-			/* Paso 1: Elijo jornada propia para cambiar
-			 * Paso 2: selecciono jornada de otro:
-			 *     Debe ser del mismo grupo de trabajo
-			 *     se deberia mostrar todas las jornadas de los otros empleados en la cual el usuario no esta trabajando(?????)
-			 * Paso 3: mostrar cuales son los empleados que trabajan esa jornada para poder cambiar (no deberian trabajar en la
-			 *     jornada original)
-			 *     
-			 *     Crear solicitud! :D 
-			*/
 			try
 			{
 			String titulo = "Buscar Solicitud";
@@ -83,19 +69,18 @@ public class ControladorSolicitud extends HttpServlet {
 			else
 			{
 				HttpSession session = request.getSession(false);
-				String select = request.getParameter("jornada");
+				String idJornada = request.getParameter("jornada");
 				GregorianCalendar fecha = Funciones.traerFecha(request.getParameter("fechaReemplaza"));
 				JornadaABM jAbm = new JornadaABM();
 				EmpleadoABM eAbm = new EmpleadoABM();
-				
+				Jornada titular = jAbm.traerJornada(Integer.parseInt(idJornada));
+				List<Jornada> jornadasTitular = jAbm.traerJornadasPorFecha(titular.getFecha());
 				List<Jornada> jornadasFecha = jAbm.traerJornadasPorFecha(fecha);
-				List<Empleado> empleados = new ArrayList<Empleado>();
 				boolean error = false;
-				for (Jornada j : jornadasFecha )
+				for (Jornada j : jornadasFecha ) ///sacar de jordanasFecha los epleados que trabajan en fechaTitular
 				{
 					if (!error)
 					{
-						empleados.add(j.getEmpleado());
 						if (j.getEmpleado().getIdEmpleado() == (int) session.getAttribute("userId"))
 						{
 							error = true;
@@ -105,8 +90,21 @@ public class ControladorSolicitud extends HttpServlet {
 				}
 				if (!error)
 				{
-					request.setAttribute("empleados", jornadasFecha);
-					request.setAttribute("jornada", select);
+					List<Jornada> candidatos = jornadasFecha;
+					List<Jornada> remover = new ArrayList<Jornada>();
+					for (Jornada j : jornadasFecha )
+					{
+						for (Jornada jo : jornadasTitular)
+						{
+							if (j.getEmpleado().equals(jo.getEmpleado()))
+							{
+								remover.add(j);
+							}
+						}
+					}
+					candidatos.removeAll(remover);
+					request.setAttribute("jornadasCambio", candidatos);
+					request.setAttribute("jornada", idJornada);
 					request.setAttribute("fecha", Funciones.traerFechaLarga(fecha));
 				}
 				request.getRequestDispatcher("jsp/ingresarSolicitud.jsp").forward(request, response);
