@@ -71,6 +71,30 @@ public class Funciones
 		mostrar += traerAnio(c);
 		return mostrar;
 	}
+	
+	public static String traerFechaHQL(GregorianCalendar c)
+	{
+		String mostrar = "";
+		mostrar += traerAnio(c)+"/";
+		if (traerMes(c) < 10)
+		{
+			mostrar += "0" + traerMes(c)+"/";
+		}
+		else
+		{
+			mostrar += traerMes(c)+"/";
+		}
+		if (traerDia(c) < 10)
+		{
+			mostrar += "0" + traerDia(c);
+		}
+		else
+		{
+			mostrar += traerDia(c);
+		}
+		return mostrar;
+	}
+	
 	public static String traerFechaCorta()
 	{
 		return traerFechaCorta(new GregorianCalendar());

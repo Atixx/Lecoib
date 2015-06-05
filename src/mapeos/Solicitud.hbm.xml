@@ -17,11 +17,11 @@
 	</set>
     
     -->
-    <many-to-one name="jornadaReemplazante" class="datos.Jornada" column="idJornadaReemplazante" not-null="false"/>
-    <many-to-one name="jornadaTitular" class="datos.Jornada" column="idJornadaTitular" not-null="false"/>
+    <many-to-one name="jornadaReemplazante" class="datos.Jornada" lazy="false" column="idJornadaReemplazante" not-null="false"/>
+    <many-to-one name="jornadaTitular" class="datos.Jornada" lazy="false" column="idJornadaTitular" not-null="false"/>
     
     
-    <many-to-one name="autoriza" class="datos.Empleado" column="idAutoriza" not-null="false"/><!-- cambiar a true? (puede asignarse a cualquier supervisor?) -->
+    <many-to-one name="autoriza" class="datos.Empleado" lazy="false" column="idAutoriza" not-null="false"/><!-- cambiar a true? (puede asignarse a cualquier supervisor?) -->
       
     <property column="confirmaReemplazante" name="confirmaReemplazante" type="boolean"/>
     

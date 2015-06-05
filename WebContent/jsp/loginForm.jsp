@@ -10,17 +10,23 @@
 <h3 id="titulo">Ingrese los datos:</h3>
 <form class="form-signin" method="post"> 
        <label for="userName">Nombre de Usuario:</label>
-       <input type='text' name="userName" id="userName" class="form-control" maxlength="8" required>
+       <input type='text' name="userName" id="userName" class="form-control" maxlength="8" autofocus required>
        <label for="password">Password:</label>
        <input type="password" name="password" id="password" class="form-control" required>
     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
 </form>
 </div>
+<div class="container col-md-6">
+</div>
+<div class="container col-md-6">
+</div>
+<div class="container col-md-4">
+</div>
 <% String msg = (String) request.getAttribute("msg"); %>
 <% if(msg != null) 
-    {%>
-<div class="alert alert-danger" role="alert">
-  <%= msg %>
-</div>
+    {%>   
+	<div class=" container col-md-4 alert alert-danger" role="alert">
+	  <%= msg %>
+	</div>
  <%} %>
 <%@ include file="pie.jsp" %>

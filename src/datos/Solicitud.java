@@ -95,7 +95,7 @@ public class Solicitud
 	
 	public String toString()
 	{
-		return "Solicitud nro.: "+idSolicitud+" "+"Estado: "+estado+"Personas involucradas: ---"+"A TERMINAR";
+		return "Solicitud nro.: "+idSolicitud;
 	}
 	
 }

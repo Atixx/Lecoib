@@ -20,8 +20,6 @@ public class ControladorLogueo extends HttpServlet {
 	{
 		procesar(request,response);
 		HttpSession session = request.getSession();
-		String id = session.getId();
-		request.setAttribute("id", id);
 		request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 	}
 
@@ -48,24 +46,45 @@ public class ControladorLogueo extends HttpServlet {
 				session.setAttribute("userId", u.getIdUsuario());
 				session.setAttribute("userNombre", u.getEmpleado().getNombre() +" "+ u.getEmpleado().getApellido());
 				session.setAttribute("privilegio", u.getPrivilegio());
-				session.setAttribute("grupoTrabajo", u.getEmpleado().getGrupoTrabajo());
+				session.setAttribute("grupoTrabajo", u.getEmpleado().getGrupoTrabajo().getidGrupo());
 				request.getRequestDispatcher("jsp/loginSuccess.jsp").forward(request, response);
 			}
-		} catch (Exception e)
+			else
+			{
+				String msg = "Corrobore los datos";
+				request.setAttribute("msg", msg);
+				request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
+			}
+		} 
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			String msg = e.getMessage(); //No existe el usuario, manejar!
 			request.setAttribute("msg", msg);
 			request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 		}
-		String msg = "Corrobore los datos";
-		request.setAttribute("msg", msg);
-		request.getRequestDispatcher("jsp/loginForm.jsp").forward(request, response);
 	}
 
 	protected void procesar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String titulo = "Login";
 		request.setAttribute("titulo", titulo);
+	}
+	
+	/* Corrobora que la session este logueada, redirecciona en caso de no estar
+	 * retorna true en caso de haber redireccionado, false si no.
+	 * Usar en controladores que necesiten estar logueados para su funcionalidad
+	*/
+	public static boolean checkeaLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		HttpSession session = request.getSession(false);
+		String s = (String) session.getAttribute("session");
+		boolean retval = false;
+		if (s == null)
+		{ 
+			request.getRequestDispatcher("jsp/loginRequerido.jsp").forward(request, response);
+			retval = true;
+		}
+		return retval;
 	}
 }

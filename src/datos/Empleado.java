@@ -196,4 +196,11 @@ public class Empleado
 	{
 	    this.solicitudes = solicitudes;
 	}
+	
+	@Override
+	public boolean equals(Object e)
+	{
+		return (this.idEmpleado == ((Empleado) e).getIdEmpleado());
+	}
+	
 }

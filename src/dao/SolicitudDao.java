@@ -110,13 +110,13 @@ public class SolicitudDao
     }
     
     @SuppressWarnings("unchecked")
-    public List<Solicitud> traerSolicitud(boolean estado, long idEmpleado) throws HibernateException 
+    public List<Solicitud> traerSolicitud(boolean estado, int idEmpleado) throws HibernateException 
     {
     	List<Solicitud> lista=null;
         try 
         {
             iniciaOperacion();                    
-            lista=session.createQuery("from Solicitud s join Jornada j on s.idJornadaTitular=j.idJornada where j.idEmpleado="+idEmpleado+" and s.estado="+estado).list();
+            lista=session.createQuery("from Solicitud s join Jornada j on s.idJornadaTitular=j.idJornada where j.idEmpleado='"+idEmpleado+"' and s.estado="+estado).list();
            /////// Hay que probar la consulta. 
         } 
         finally {
@@ -125,5 +125,43 @@ public class SolicitudDao
 
         return lista;
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<Solicitud> traerSolicitudEmpleado(int idEmpleado) throws HibernateException 
+    {
+    	List<Solicitud> lista=null;
+        try 
+        {
+            iniciaOperacion();          
+            String sql = "select * from solicitud s join Jornada j on s.idJornadaTitular=j.idJornada where idEmpleado=";
+            lista=session.createSQLQuery(sql+idEmpleado).list();
+           /////// Hay que probar la consulta. 
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+    
+    @SuppressWarnings("unchecked")
+	public List<Solicitud> traerSolicitudJornadaTitular(int idJornadaTitular) throws HibernateException
+    {
+    	List<Solicitud> lista = null;
+    	try
+    	{
+    		iniciaOperacion();
+    		String sql = "select * from solicitud s where s.idJornadaTitular =";
+    		//String sql = "select * from solicitud s join Jornada j on s.idJornadaTitular=j.idJornada where s.idJornadaTitular =";
+    		lista = session.createSQLQuery(sql+idJornadaTitular).addEntity(Solicitud.class).list();
+//    		lista = session.createQuery("from solicitud where idJornadaTitular="+idJornadaTitular).list();
+    	}
+    	finally
+    	{
+    		session.close();
+    	}
+    	return lista;
+    }
+    
     
 }
