@@ -472,5 +472,69 @@ public class Funciones
 		return numero;
 	}
 	
+	public static String traerFechaHoraLarga(GregorianCalendar fechaHoraGC){
+		String fechaEntera = fechaHoraGC.get(Calendar.DAY_OF_MONTH)+  "/" +fechaHoraGC.get(Calendar.MONTH)+ "/" +fechaHoraGC.get(Calendar.YEAR)+ " " +fechaHoraGC.get(Calendar.HOUR_OF_DAY)+ ":" +fechaHoraGC.get(Calendar.MINUTE);
+		String[] fecha = fechaEntera.split("/");
+		String[] auxDiaHoraMin = fecha[2].split(" ");
+		fecha[2] = auxDiaHoraMin[0];
+		String[] auxHoraMin = auxDiaHoraMin[1].split(":");
+		String hora = auxHoraMin[0];
+		if(hora.length()==1) hora = '0'+hora;
+		String minutos = auxHoraMin[1];
+		if(minutos.length()==1) minutos = '0'+minutos;
+		return traerDiaSemana(fechaHoraGC)+ ", " +fecha[0]+ " de " +traerMesEnLetras(fechaHoraGC)+ " de " +fecha[2]+ " - " +hora+ ":" +minutos;
+	}
+
+	public static String traerDiaSemana(GregorianCalendar fecha){
+		String diaS;
+		switch(fecha.get(Calendar.DAY_OF_WEEK))
+		{
+			case 1:
+				diaS = "Domingo";
+				break;
+			case 2:
+				diaS = "Lunes";
+				break;
+			case 3:
+				diaS = "Martes";
+				break;
+			case 4:
+				diaS = "Miercoles";
+				break;
+			case 5:
+				diaS = "Jueves";
+				break;
+			case 6:
+				diaS = "Viernes";
+				break;
+			case 7:
+				diaS = "Sabado";
+				break;
+			default:
+				diaS = "Error";
+				break;
+		}
+		return diaS;
+	}
+	
+	public static GregorianCalendar traerFechaHora(String fechaS){
+		String[] fecha = fechaS.split("/");
+		String[] auxDiaHoraMin = fecha[2].split(" ");
+		fecha[2] = auxDiaHoraMin[0];
+		String[] auxHoraMin = auxDiaHoraMin[1].split(":");
+		String hora = auxHoraMin[0];
+		String minutos = auxHoraMin[1];
+		GregorianCalendar fechaHoraGC = new GregorianCalendar (Integer.parseInt(fecha[2]), Integer.parseInt(fecha[1])-1, Integer.parseInt(fecha[0]), Integer.parseInt(hora),Integer.parseInt(minutos));
+		return fechaHoraGC;
+	}
+
+
+	public static String pasarBooleanAString(boolean bool)
+	{
+		String entradaSalida = "";
+		if(!bool) entradaSalida = "Salida";
+		else entradaSalida = "Entrada";
+		return entradaSalida;
+	}
 	
 }

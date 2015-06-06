@@ -38,6 +38,7 @@
     <a role="button" class="btn btn-default navbar-btn" href="solicitud">Solicitud</a>
     <a role="button" class="btn btn-default navbar-btn" href="estadistica">Estadisticas</a>
     <a role="button" class="btn btn-default navbar-btn" href="turno">Turno</a>
+    <a role="button" class="btn btn-default navbar-btn" href="ficha">Fichar</a>
     
     <% String s = (String) session.getAttribute("session"); %>
     <% if (s != null) 

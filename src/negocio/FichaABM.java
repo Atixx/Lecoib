@@ -26,32 +26,35 @@ public class FichaABM
 		return f;
 	}
 	
-	public int verificarFicha(int dni, int codVerificador)throws Exception{
-		Ficha ficha = new Ficha();
-		int idFicha = 0;
-		if(ficha.esCodigoValido(dni,codVerificador)){
-			//verificar entrada o salida (traerFichas(Empleado);
-			EmpleadoABM eABM = new EmpleadoABM();
-			Empleado e = eABM.traerEmpleado(dni);
-			List<Ficha> lstFicha = new ArrayList<Ficha>();
-			lstFicha = dao.traerFicha(e);
-			int contFichas = 0;
-			for(Ficha f : lstFicha){
-				contFichas =+1;
-			}
-			boolean entradaSalida;
-			if(contFichas%2==0) entradaSalida = true;//es entrada
-			else entradaSalida = false; //es salida
-			GregorianCalendar hoy = new GregorianCalendar();
-			idFicha = agregarFicha(hoy, e, entradaSalida);
+	public List<Ficha> traerFichaEmpleado(long dni) throws Exception
+	{
+		EmpleadoABM eABM = new EmpleadoABM();
+		List<Ficha> lstFicha = new ArrayList<Ficha>();
+		Empleado e = eABM.traerEmpleado(dni);
+		
+		lstFicha = dao.traerFichaEmpleado(e.getIdEmpleado());		
+		
+		if (lstFicha == null)
+		{
+		    throw new Exception("No se encontro la Ficha del empleado con Id: "+e.getIdEmpleado());	
 		}
-		return idFicha; //devuelve 0 si no cargo
+		return lstFicha;
+	}
+	
+	public boolean verificarEntradaSalida(Empleado e)throws Exception
+	{
+		boolean entradaSalida = false;
+		//verificar entrada o salida (traerFichas(Empleado);
+		List<Ficha> lstFicha = new ArrayList<Ficha>();
+		lstFicha = dao.traerFichaEmpleado(e.getIdEmpleado());
+		if(lstFicha.isEmpty() || lstFicha.size()%2==0)entradaSalida=true;//es entrada
+		return entradaSalida; 
 	}
 	
 	public int agregarFicha(GregorianCalendar diaHora, Empleado empleado, boolean entradaSalida) throws Exception
 	{
 		Ficha f = new Ficha(diaHora, empleado, entradaSalida);
-		return dao.agregar(f);
+		return dao.agregar(f); //devuelve 0 si no cargo
 	}
 		
 	 

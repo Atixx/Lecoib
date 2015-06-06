@@ -110,13 +110,14 @@ public class FichaDao
     }
     
     @SuppressWarnings("unchecked")
-	public List<Ficha> traerFicha(Empleado empleado) throws HibernateException 
+	public List<Ficha> traerFichaEmpleado(int idEmpleado) throws HibernateException 
     {
     	List<Ficha> lista=null;
         try 
         {
-            iniciaOperacion();                    
-            lista=session.createQuery("from Ficha f join Empleado e on f.idEmpleado = e.idEmpleado order by f.diaHora asc").list();
+            iniciaOperacion(); 
+            String hql = "from Ficha f where idEmpleado = "+idEmpleado+"order by f.diaHora asc";
+            lista=session.createQuery(hql).list();
            
         } 
         finally {
