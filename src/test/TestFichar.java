@@ -1,10 +1,13 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
+import datos.Empleado;
 import datos.Ficha;
 import negocio.FichaABM;
 import negocio.EmpleadoABM;
+
 import java.util.List;
 public class TestFichar {
 
@@ -14,9 +17,12 @@ public class TestFichar {
 			long dni = 33333331;
 			int codigoVerificador = 4;
 			if(f.esCodigoValido(dni,codigoVerificador)){
+				EmpleadoABM eABM = new EmpleadoABM();
+				Empleado e = eABM.traerEmpleado(dni);
+				GregorianCalendar hoy = new GregorianCalendar();
 				FichaABM fABM = new FichaABM();
-				int idFicha = fABM.agregarFicha(dni, codigoVerificador);
-				System.out.println(idFicha);
+				int idFicha = fABM.agregarFicha(hoy, e,fABM.verificarEntradaSalida(e));
+				System.out.println(fABM.traerFicha(idFicha));
 			}
 			else{
 				System.out.println("Error: El codigo verificador no coincide");

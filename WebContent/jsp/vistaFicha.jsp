@@ -13,7 +13,7 @@
 	else 
    {%>
    		<h3>Agregar Ficha:</h3>
-    <form method="post" action="ControladorFichar2"> 
+    <form method="post" action="ControladorFichar"> 
 	    <div class="form-inline" >
 	       <label for="dni">Dni:</label>
 	       <input type='number' name="dni" id="dni" class="form-control" maxlength="9" required>
