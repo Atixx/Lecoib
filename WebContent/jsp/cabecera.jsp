@@ -15,6 +15,8 @@
         <script src="static/js/bootstrap.min.js"></script>
         <script src="static/js/jssor.slider.mini.js"></script>
         <script src="static/js/Lecoib.js"></script>
+        <script src="static/js/Chart.min.js"></script>
+        <script src="static/js/horas.js"></script>
         <script src="static/js/bootstrap-select.min.js"></script>
 <% 
 	String titulo;
