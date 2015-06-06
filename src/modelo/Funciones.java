@@ -532,8 +532,8 @@ public class Funciones
 	public static String pasarBooleanAString(boolean bool)
 	{
 		String entradaSalida = "";
-		if(!bool) entradaSalida = "Entrada";
-		else entradaSalida = "Salida";
+		if(!bool) entradaSalida = "Salida";
+		else entradaSalida = "Entrada";
 		return entradaSalida;
 	}
 	

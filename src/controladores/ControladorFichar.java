@@ -79,7 +79,7 @@ public class ControladorFichar extends HttpServlet {
 					int idFicha = fABM.agregarFicha(hoy, e,fABM.verificarEntradaSalida(e));
 					Ficha ficha = fABM.traerFicha(idFicha);
 					request.setAttribute("diaHora", Funciones.traerFechaHoraLarga(ficha.getDiaHora()));
-					request.setAttribute("tipo", ficha.getEntradaSalida());
+					request.setAttribute("tipo", Funciones.pasarBooleanAString(ficha.getEntradaSalida()));
 					request.setAttribute("ficha", idFicha);
 					request.getRequestDispatcher("jsp/vistaFicha.jsp").forward(request, response);
 				}
