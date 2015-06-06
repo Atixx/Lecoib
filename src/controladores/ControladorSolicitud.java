@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import modelo.Funciones;
+import negocio.EnvioCorreo;
 import negocio.JornadaABM;
 import negocio.SolicitudABM;
 import datos.Jornada;
@@ -67,7 +68,7 @@ public class ControladorSolicitud extends HttpServlet {
 			String reemplaza = request.getParameter("reemplazante");
 			if (reemplaza != null)
 			{
-				int idReemplaza = Integer.parseInt(reemplaza);
+				int idJornadaReemplaza = Integer.parseInt(reemplaza);
 				int idJornadaTitular = Integer.parseInt(request.getParameter("jornada"));
 				SolicitudABM sAbm = new SolicitudABM();
 				JornadaABM jAbm = new JornadaABM();
@@ -84,8 +85,12 @@ public class ControladorSolicitud extends HttpServlet {
 					}
 				}*/
 				
-				int idSolicitud = sAbm.agregarSolicitud(jAbm.traerJornada(idJornadaTitular), jAbm.traerJornada(idReemplaza));
-				request.setAttribute("solicitud", sAbm.traerSolicitud(idSolicitud));
+				int idSolicitud = sAbm.agregarSolicitud(jAbm.traerJornada(idJornadaTitular), jAbm.traerJornada(idJornadaReemplaza));
+				Solicitud solicitud = sAbm.traerSolicitud(idSolicitud);
+				request.setAttribute("solicitud", solicitud );
+				EnvioCorreo envio = new EnvioCorreo();
+				String cuerpo = "Se ha creado una nueva solicitud de parte de "+solicitud.getJornadaTitular().getEmpleado().getApellido()+", "+solicitud.getJornadaTitular().getEmpleado().getNombre()+" para un cambio con su jornada, los detalles son:\n"+solicitud.toString();
+				envio.EnviarCorreo(solicitud.getJornadaReemplazante().getEmpleado().getIdEmpleado(), cuerpo);
 				request.getRequestDispatcher("jsp/vistaSolicitud.jsp").forward(request, response);
 			}
 			else

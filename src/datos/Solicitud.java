@@ -95,7 +95,7 @@ public class Solicitud
 	
 	public String toString()
 	{
-		return "Solicitud nro.: "+idSolicitud;
+		return "Solicitud nro.: "+idSolicitud+", Trabaja:"+this.getJornadaTitular()+", Reemplaza:"+this.getJornadaReemplazante();
 	}
 	
 }
