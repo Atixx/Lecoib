@@ -42,7 +42,7 @@ else
     </div>
     <div class="form-inline">
         <label for="fechaReemplaza">Fecha a reemplazar</label>
-        <input type="text" class="form-control" name="fechaReemplaza" id="fechaReemplaza" placeholder="dd/mm/aa">
+        <input type="date" class="form-control" name="fechaReemplaza" id="fechaReemplaza" placeholder="dd/mm/aa">
     </div>
     <div class="form-group">
     <button type="submit" class="btn btn-default" <%= request.getAttribute("solicitudes") %>>Buscar</button>

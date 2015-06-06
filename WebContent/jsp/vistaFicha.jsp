@@ -15,12 +15,12 @@
    		<h3>Agregar Ficha:</h3>
     <form method="post" action="ControladorFichar"> 
 	    <div class="form-inline" >
-	       <label for="dni">Dni:</label>
-	       <input type='number' name="dni" id="dni" class="form-control" maxlength="9" required>
+	       <label for="dni">DNI:</label>
+	       <input type='number' name="dni" id="dni" class="form-control" maxlength="9" min="0" step="1" required>
 	    </div>
 	    <div class="form-inline" >
 	       <label for="codigoVerificador">Código Verificador:</label>
-	       <input type='number' name="codigoVerificador" id="codigoVerificador" class="form-control" maxlength="1" required>
+	       <input type='number' name="codigoVerificador" id="codigoVerificador" class="form-control" min="0" step="1" required>
 	    </div>
 	    <input type="hidden" name="tipo" value="fichar">
 	    <button type="submit" class="btn btn-default">Fichar</button>

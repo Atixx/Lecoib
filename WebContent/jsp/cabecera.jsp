@@ -34,10 +34,10 @@
 <body>
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container-fluid">
+  <div class="col-lg-2"></div>
     <a role="button" class="btn btn-default navbar-btn" href="/LecoibWeb/">Inicio</a>
     <a role="button" class="btn btn-default navbar-btn" href="solicitud">Solicitud</a>
     <a role="button" class="btn btn-default navbar-btn" href="estadistica">Estadisticas</a>
-    <a role="button" class="btn btn-default navbar-btn" href="turno">Turno</a>
     <a role="button" class="btn btn-default navbar-btn" href="ficha">Fichar</a>
     
     <% String s = (String) session.getAttribute("session"); %>
@@ -51,7 +51,7 @@
     <a role="button" class="btn btn-default navbar-btn" href="login">Login</a>
     <%} %>
     
-    <p class="navbar-text navbar-link col-md-4">Lecoib</a>
+    <p class="navbar-text navbar-link col-md-2">Lecoib</a>
     <p class="navbar-text navbar-right"><%=fecha %></p>
 	
     <%
