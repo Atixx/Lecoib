@@ -77,28 +77,33 @@ public class JornadaABM
 		String turno;
 		int grupo;
 		EmpleadoABM eABM = new EmpleadoABM();
-		List<Empleado> lstEmpleados = eABM.traerEmpleado();		
-		List<Empleado> lstGrupo = new ArrayList<Empleado>();
+		List<Empleado> lstEmpleados = eABM.traerEmpleado();
+		List<Empleado> lstEmpleadosAux = lstEmpleados;
 
 		for(Empleado e : lstEmpleados)
 		{
-			//Primer empleado pivote
+			//empleado pivote
+			List<Empleado> lstGrupo = new ArrayList<Empleado>();
 			turno = e.getTurno().getTurno();
 			grupo = e.getGrupoTrabajo().getidGrupo();
-			lstGrupo.add(e);
-			lstEmpleados.remove(e);
-			for(Empleado e1 : lstEmpleados)
+			for(Empleado e1 : lstEmpleadosAux)
 			{
 				if (e1.getGrupoTrabajo().getidGrupo() == grupo)
 				{
 					lstGrupo.add(e1);
-					lstEmpleados.remove(e1);
 				}
-				
 			}
 			//Aca deberia tener un grupo completo para asignar jornadas
-			asignaJornada(lstGrupo, Funciones.traerMes(fecha), Funciones.traerAnio(fecha));
+			if (!(lstGrupo == null))
+			{
+				for(Empleado e2 : lstGrupo)
+				{
+					lstEmpleadosAux.remove(e2);
+				}
+				asignaJornada(lstGrupo, Funciones.traerMes(fecha), Funciones.traerAnio(fecha));
+			}
 		}
+		
 					
 	}
 	
