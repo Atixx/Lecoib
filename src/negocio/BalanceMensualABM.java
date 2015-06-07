@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import modelo.Funciones;
 import dao.BalanceMensualDao;
 import datos.BalanceMensual;
 import datos.Empleado;
@@ -29,7 +30,7 @@ public class BalanceMensualABM
 	public int agregarBalanceMensual(GregorianCalendar mesAnio, Empleado empleado) throws Exception
 	{		
 		BalanceMensual bm = new BalanceMensual(mesAnio, empleado);
-		bm.setHorasTrabajadas(hsTrabEmplPorMes(empleado, mesAnio.get(Calendar.MONTH)));
+		bm.setHorasTrabajadas(hsTrabEmplPorMes(empleado, Funciones.traerMes(mesAnio)));
 	    return bmDao.agregar(bm);
 	}	
 
@@ -68,19 +69,19 @@ public class BalanceMensualABM
 	{
 		FichaABM fAbm = new FichaABM();
 		int suma = 0, horaEntrada = 0, horaSalida, minutosEntrada = 0, minutosSalida;		
-		List<Ficha> lista = fAbm.traerFichasDeEmpleado(empleado);		
+		List<Ficha> lista = fAbm.traerFichasDeEmpleado(empleado.getIdEmpleado());		
 		for(Ficha f : lista)
 		{
-			if(((f.getDiaHora().get(Calendar.MONTH))+1) == mes)
+			if(( Funciones.traerMes(f.getDiaHora()) == mes))
 			{	
 				if(f.isEntradaSalida()==true)
 				{
-					horaEntrada = f.getDiaHora().get(Calendar.HOUR);
+					horaEntrada = f.getDiaHora().get(Calendar.HOUR_OF_DAY);
 					minutosEntrada = f.getDiaHora().get(Calendar.MINUTE);
 				}
 				else if(f.isEntradaSalida()==false)
 				{
-					horaSalida = f.getDiaHora().get(Calendar.HOUR);
+					horaSalida = f.getDiaHora().get(Calendar.HOUR_OF_DAY);
 					minutosSalida= f.getDiaHora().get(Calendar.MINUTE);
 					
 					if((minutosSalida-minutosEntrada) < 0)
@@ -147,7 +148,7 @@ public class BalanceMensualABM
 	public int generarBalcanceMensual(int mes, int anio, Empleado empleado) throws Exception
 	{
 		int idBM;
-		GregorianCalendar mesAnio = new GregorianCalendar(anio,(mes-1),01);
+		GregorianCalendar mesAnio = Funciones.traerFecha(anio, mes, 1);
 		List<BalanceMensual> lista = new ArrayList<BalanceMensual>();
 		Empleado e = empleado;
 		lista = bmDao.traerBalanceMensualPorEmpl(e.getIdEmpleado());	
@@ -160,13 +161,13 @@ public class BalanceMensualABM
 		{
 			for( BalanceMensual bm : lista)
 			{
-				if(((bm.getMesAnio().get(Calendar.MONTH)+1) == mes) && ( bm.getMesAnio().get(Calendar.YEAR) == anio)) 
+				if((Funciones.traerMes(bm.getMesAnio()) == mes) && ( Funciones.traerMes(bm.getMesAnio()) == anio)) 
 				{
 					throw new Exception("Ya existe un Balance Mensual. No puede generarse uno nuevo");
 				}
 			}
 			idBM = agregarBalanceMensual(mesAnio, e);
-			
+		
 			
 		}
 		return idBM;
@@ -179,7 +180,7 @@ public class BalanceMensualABM
 		lista = bmDao.traerBalanceMensualPorEmpl(empleado.getIdEmpleado());
 		for(BalanceMensual bm2 : lista)
 		{
-			if(((bm.getMesAnio().get(Calendar.MONTH)+1) == mes) && ( bm.getMesAnio().get(Calendar.YEAR) == anio)) 
+			if((Funciones.traerMes(bm.getMesAnio()) == mes) && ( Funciones.traerMes(bm.getMesAnio()) == anio))
 			{					
 				bm = bmDao.traerBalanceMensual(bm.getIdBalanceMensual());
 			}

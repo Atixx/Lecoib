@@ -1,15 +1,11 @@
 package test;
 
-import java.util.GregorianCalendar;
-
-import datos.BalanceMensual;
-import datos.Empleado;
-import modelo.Funciones;
 import negocio.BalanceMensualABM;
 import negocio.EmpleadoABM;
+import datos.BalanceMensual;
+import datos.Empleado;
 
-
-public class testBalanceMensual 
+public class testHsTraba
 {
 	public static void main(String[] args)
 	{
@@ -19,9 +15,9 @@ public class testBalanceMensual
 			BalanceMensual bm = new BalanceMensual();
 			EmpleadoABM eAbm = new EmpleadoABM();		
 			Empleado e = new Empleado();
-			e = eAbm.traerEmpleado(1);
+			e = eAbm.traerEmpleado(3);
 			System.out.println("Empleado"+e+"\n\n");
-			int idBM = bmAbm.generarBalcanceMensual(05, 2015, e);
+			int idBM = bmAbm.hsTrabEmplPorMes(e, 5);
 			System.out.println("IdBM: "+idBM+"\n\n");
 	    } 
 		catch (Exception e)
