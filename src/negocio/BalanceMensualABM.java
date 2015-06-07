@@ -146,13 +146,15 @@ public class BalanceMensualABM
 	*/
 	public int generarBalcanceMensual(int mes, int anio, Empleado empleado) throws Exception
 	{
-		int idBM = 0;
+		int idBM;
 		GregorianCalendar mesAnio = new GregorianCalendar(anio,(mes-1),01);
 		List<BalanceMensual> lista = new ArrayList<BalanceMensual>();
-		lista = bmDao.traerBalanceMensualPorEmpl(empleado.getIdEmpleado());		
-		if(lista==null)
+		Empleado e = empleado;
+		lista = bmDao.traerBalanceMensualPorEmpl(e.getIdEmpleado());	
+		
+		if(lista==null || lista.isEmpty())
 		{
-			idBM = agregarBalanceMensual(mesAnio,empleado);			
+			idBM = agregarBalanceMensual(mesAnio, e);			
 		}
 		else	
 		{
@@ -163,7 +165,7 @@ public class BalanceMensualABM
 					throw new Exception("Ya existe un Balance Mensual. No puede generarse uno nuevo");
 				}
 			}
-			idBM = agregarBalanceMensual(mesAnio,empleado);
+			idBM = agregarBalanceMensual(mesAnio, e);
 			
 			
 		}

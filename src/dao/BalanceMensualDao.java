@@ -117,4 +117,23 @@ public class BalanceMensualDao
 
         return lista;
     }
+    
+
+    @SuppressWarnings("unchecked")
+    public List<BalanceMensual> traerBalanceMensualPorEmpl(int idEmpleado) throws HibernateException 
+    {
+    	List<BalanceMensual> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from BalanceMensual where idEmpleado="+idEmpleado).list();
+           
+        } 
+        finally 
+        {
+            session.close();
+        }
+
+        return lista;
+    }
 }
