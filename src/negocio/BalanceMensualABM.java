@@ -1,12 +1,15 @@
 package negocio;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import dao.BalanceMensualDao;
 import datos.BalanceMensual;
 import datos.Empleado;
+import datos.Ficha;
+
 
 
 public class BalanceMensualABM 
@@ -25,8 +28,8 @@ public class BalanceMensualABM
 
 	public int agregarBalanceMensual(GregorianCalendar mesAnio, Empleado empleado) throws Exception
 	{		
-		//hay que corroborar algo?
-	    BalanceMensual bm = new BalanceMensual(mesAnio, empleado);
+		BalanceMensual bm = new BalanceMensual(mesAnio, empleado);
+		bm.setHorasTrabajadas(hsTrabEmplPorMes(empleado, mesAnio.get(Calendar.MONTH)));
 	    return bmDao.agregar(bm);
 	}	
 
@@ -61,4 +64,125 @@ public class BalanceMensualABM
 	    return lista;
 	}		
 	
+	public int hsTrabEmplPorMes(Empleado empleado, int mes) throws Exception
+	{
+		FichaABM fAbm = new FichaABM();
+		int suma = 0, horaEntrada = 0, horaSalida, minutosEntrada = 0, minutosSalida;		
+		List<Ficha> lista = fAbm.traerFichasDeEmpleado(empleado);		
+		for(Ficha f : lista)
+		{
+			if(((f.getDiaHora().get(Calendar.MONTH))+1) == mes)
+			{	
+				if(f.isEntradaSalida()==true)
+				{
+					horaEntrada = f.getDiaHora().get(Calendar.HOUR);
+					minutosEntrada = f.getDiaHora().get(Calendar.MINUTE);
+				}
+				else if(f.isEntradaSalida()==false)
+				{
+					horaSalida = f.getDiaHora().get(Calendar.HOUR);
+					minutosSalida= f.getDiaHora().get(Calendar.MINUTE);
+					
+					if((minutosSalida-minutosEntrada) < 0)
+					{
+						suma =suma+(minutosSalida+60-minutosEntrada)+((horaSalida-1-horaEntrada)*60);
+					}
+					else
+					{
+						suma = suma+(minutosSalida-minutosEntrada)+((horaSalida-horaEntrada)*60); 
+					}				
+				}
+			}
+		}	
+		suma = Math.round(suma/60); 
+		return suma;
+			
+	}		
+		
+	public float promedioHsTrabPorMes(int mes) throws Exception
+	{	//TODO: 
+		BalanceMensualABM bmAbm = new BalanceMensualABM();
+		float suma= 0, promedio = 0;
+		List<BalanceMensual> lista = bmAbm.traerBalanceMensual();		
+		for (BalanceMensual bm : lista)
+		{
+			suma = suma +bm.getHorasTrabajadas();
+		}
+		promedio = suma/(lista.size());
+		return promedio;
+	}
+	/*
+	public int generarBalcanceMensual(Empleado empleado) throws Exception
+	{
+		int idBM = 0;
+		boolean bandera = false;
+		GregorianCalendar mesAnio = new GregorianCalendar();
+		List<BalanceMensual> lista = new ArrayList<BalanceMensual>();
+		lista = bmDao.traerBalanceMensual();		
+		if(lista==null)
+		{
+			idBM = agregarBalanceMensual(mesAnio,empleado);
+			
+		}
+		else	
+		{
+			for( BalanceMensual bm : lista)
+			{
+				if((bm.getMesAnio().get(Calendar.MONTH) == mesAnio.get(Calendar.MONTH))
+										&& ( bm.getMesAnio().get(Calendar.YEAR) == mesAnio.get(Calendar.YEAR))) 
+				{
+					bandera = true;
+					idBM = bm.getIdBalanceMensual();
+				}
+			}
+			if(bandera == false)
+			{
+				idBM = agregarBalanceMensual(mesAnio,empleado);
+			}
+			
+		}
+		return idBM;
+	}
+	*/
+	public int generarBalcanceMensual(int mes, int anio, Empleado empleado) throws Exception
+	{
+		int idBM = 0;
+		GregorianCalendar mesAnio = new GregorianCalendar(anio,(mes-1),01);
+		List<BalanceMensual> lista = new ArrayList<BalanceMensual>();
+		lista = bmDao.traerBalanceMensualPorEmpl(empleado.getIdEmpleado());		
+		if(lista==null)
+		{
+			idBM = agregarBalanceMensual(mesAnio,empleado);			
+		}
+		else	
+		{
+			for( BalanceMensual bm : lista)
+			{
+				if(((bm.getMesAnio().get(Calendar.MONTH)+1) == mes) && ( bm.getMesAnio().get(Calendar.YEAR) == anio)) 
+				{
+					throw new Exception("Ya existe un Balance Mensual. No puede generarse uno nuevo");
+				}
+			}
+			idBM = agregarBalanceMensual(mesAnio,empleado);
+			
+			
+		}
+		return idBM;
+	}
+	
+	public BalanceMensual visualizarBalanceMensual(int mes, int anio, Empleado empleado) throws Exception
+	{
+		BalanceMensual bm = new BalanceMensual();
+		List<BalanceMensual> lista = new ArrayList<BalanceMensual>();
+		lista = bmDao.traerBalanceMensualPorEmpl(empleado.getIdEmpleado());
+		for(BalanceMensual bm2 : lista)
+		{
+			if(((bm.getMesAnio().get(Calendar.MONTH)+1) == mes) && ( bm.getMesAnio().get(Calendar.YEAR) == anio)) 
+			{					
+				bm = bmDao.traerBalanceMensual(bm.getIdBalanceMensual());
+			}
+		}
+		
+		return bm;
+	}
 }
