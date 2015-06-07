@@ -49,6 +49,16 @@ public class Funciones
 		return c;
 	}
 	
+	public static GregorianCalendar traerFechaDateInput(String fecha) //2015-06-20
+	{
+		String[] j= fecha.split("-");
+		int anio = Integer.parseInt(j[0]);
+		int mes = Integer.parseInt(j[1]);
+		int dia = Integer.parseInt(j[2]);
+		GregorianCalendar c = new GregorianCalendar(anio, mes-1, dia);
+		return c;
+	}
+	
 	public static String traerFechaCorta(GregorianCalendar c)
 	{
 		String mostrar = "";

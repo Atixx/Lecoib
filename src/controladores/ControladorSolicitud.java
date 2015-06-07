@@ -98,7 +98,7 @@ public class ControladorSolicitud extends HttpServlet {
 				boolean error = false;
 				HttpSession session = request.getSession(false);
 				String idJornada = request.getParameter("jornada");
-				GregorianCalendar fecha = Funciones.traerFecha(request.getParameter("fechaReemplaza"));
+				GregorianCalendar fecha = Funciones.traerFechaDateInput(request.getParameter("fechaReemplaza"));
 				if (!Funciones.esFechaFutura(fecha))
 				{
 					error = true;
