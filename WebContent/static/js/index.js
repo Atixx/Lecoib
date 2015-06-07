@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-/*
+
     var _SlideshowTransitions = [
     //Fade
     { $Duration: 1200, $Opacity: 2 }
@@ -63,7 +63,5 @@ jQuery(document).ready(function ($) {
     $(window).bind("load", ScaleSlider);
     $(window).bind("resize", ScaleSlider);
     $(window).bind("orientationchange", ScaleSlider);
-*/    //responsive code end
-	drawGraph();
+    //responsive code end
 });
-

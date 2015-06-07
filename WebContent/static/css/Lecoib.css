@@ -84,7 +84,7 @@ h1 p{
     border-style: solid;
     border-width: 2px;
     border-radius:10px;
-    height:400px;
+    height:500px;
     max-width:90%;
     margin-top: auto;
     margin-right: auto;
@@ -112,4 +112,14 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+#horasTrabajadas
+{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 800px;
 }
