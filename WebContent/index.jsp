@@ -3,7 +3,8 @@
 <%@ include file="jsp/cabecera.jsp" %>
 <!-- Aca empieza Body -->
 <%-- include file="jsp/slider.html" --%>
-
+<script src="static/js/jssor.slider.mini.js"></script>
+<script src="static/js/index.js"></script>
 <h1 id="titulo">Lecoib</h1>
 
 <div class="col-md-6 col-md-push-3">
