@@ -96,4 +96,60 @@ public class JornadaABM
 		dao.actualizar(j);
 	}
 	
+	public List<Jornada> traerJornadaEmpleado(int idEmpleado) throws Exception
+	{
+		List<Jornada> j = null;
+		j = dao.traerJornadaEmpleado(idEmpleado);
+		if (j == null)
+		{
+		    throw new Exception("No se encontraron jornadas para el empleado con ID: "+idEmpleado);
+		}
+		return j;
+	}
+	
+	
+	public List<Jornada> traerJornadasFuturasEmpleado(int idEmpleado) throws Exception
+	{
+		List<Jornada> j = null;
+		j = dao.traerJornadasFuturasEmpleado(idEmpleado);
+		if (j == null)
+		{
+		    throw new Exception("No se encontraron jornadas para el empleado con ID: "+idEmpleado);
+		}
+		return j;
+	}
+	
+	public List<Jornada> traerJornadasFuturas() throws Exception
+	{
+		List<Jornada> j = null;
+		j = dao.traerJornadasFuturas();
+		if (j == null)
+		{
+		    throw new Exception("No se encontraron jornadas futuras");
+		}
+		return j;
+	}
+	
+	public List<Jornada> traerJornadasPorFecha(GregorianCalendar fecha) throws Exception
+	{
+		List<Jornada> j = null;
+		j = dao.traerJornadasPorFecha(fecha);
+		if (j == null)
+		{
+		    throw new Exception("No se encontraron jornadas en la fecha");
+		}
+		return j;
+	}
+	
+	public Jornada traerJornadasPorFecha(GregorianCalendar fecha, int idEmpleado, int idTurno) throws Exception
+	{
+		Jornada j = null;
+		j = dao.traerJornadasPorFecha(fecha, idEmpleado, idTurno);
+		if (j == null)
+		{
+		    throw new Exception("No se encontraron jornadas en la fecha");
+		}
+		return j;
+	}
+	
 }

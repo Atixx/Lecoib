@@ -1,6 +1,9 @@
 package dao;
 
+import java.util.GregorianCalendar;
 import java.util.List;
+
+import modelo.Funciones;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -109,5 +112,89 @@ public class JornadaDao
         return lista;
     }
     
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornadaEmpleado(int idEmpleado) throws HibernateException 
+    {
+    	List<Jornada> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Jornada j where idEmpleado="+idEmpleado+" order by j.fecha asc").list();
+           
+        } 
+        finally {
+            session.close();
+        }
 
+        return lista;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornadasFuturasEmpleado(int idEmpleado) throws HibernateException 
+    {
+    	List<Jornada> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Jornada j where idEmpleado="+idEmpleado+" AND fecha > CURDATE() order by j.fecha asc").list();
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornadasFuturas() throws HibernateException 
+    {
+    	List<Jornada> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Jornada j where fecha > CURDATE() order by j.fecha asc").list();
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public List<Jornada> traerJornadasPorFecha(GregorianCalendar fecha) throws HibernateException 
+    {
+    	List<Jornada> lista=null;
+        try 
+        {
+            iniciaOperacion();                    
+            lista=session.createQuery("from Jornada j where fecha = '"+Funciones.traerFechaHQL(fecha)+"'").list();
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return lista;
+    }
+    
+    public Jornada traerJornadasPorFecha(GregorianCalendar fecha, int idEmpleado, int idTurno) throws HibernateException 
+    {
+    	Jornada j = null;
+        try 
+        {
+            iniciaOperacion();                    
+            j= (Jornada) session.createQuery("from Jornada j where fecha = '"+Funciones.traerFechaHQL(fecha)+"' and idEmpleado = '"+idEmpleado+"' and idTurno = '"+idTurno+"'");
+           
+        } 
+        finally {
+            session.close();
+        }
+
+        return j;
+    }
+    
 }

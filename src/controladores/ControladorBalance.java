@@ -28,6 +28,6 @@ public class ControladorBalance extends HttpServlet {
 	{
 		String titulo = "Balance Horas";
 		request.setAttribute("titulo", titulo);
-		request.getRequestDispatcher("jsp/vistaBalanceMensual.jsp").forward(request, response);
+		request.getRequestDispatcher("jsp/horas.jsp").forward(request, response);
 	}
 }

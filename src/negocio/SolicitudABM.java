@@ -1,10 +1,11 @@
 package negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dao.SolicitudDao;
 import datos.Solicitud;
-import datos.Empleado;
 import datos.Jornada;
-
 
 
 public class SolicitudABM 
@@ -23,6 +24,19 @@ public class SolicitudABM
 		return s;
 	}
 	
+	public List<Solicitud> traerSolicitud(boolean estado, int idEmpleado) throws Exception
+	{
+	    List<Solicitud> lista = new ArrayList<Solicitud>();
+	    lista = dao.traerSolicitud(estado, idEmpleado);
+	    if (lista == null || lista.isEmpty())
+	    {
+	        throw new Exception("No existen solicitudes en estado: "+estado+" del empelado con ID: "+idEmpleado);
+	    }
+	    
+	    return lista;
+	}
+	
+	
 	public int agregarSolicitud(Jornada JornadaTitular, Jornada JornadaReemplazante) throws Exception
 	{
 		Solicitud s = new Solicitud(JornadaTitular, JornadaReemplazante);
@@ -34,7 +48,7 @@ public class SolicitudABM
 	{
 		if (dao.traerSolicitud(s.getIdSolicitud()) == null)
 	    {
-            throw new Exception("No se encontro el Balance Mensual Id:"+s.getIdSolicitud()+" a modificarse");	
+            throw new Exception("No se encontro la solicitud con Id:"+s.getIdSolicitud()+" a modificarse");	
         }
 		dao.actualizar(s);		
 	}
@@ -46,9 +60,33 @@ public class SolicitudABM
 		Solicitud s = dao.traerSolicitud(idSolicitud);
 		if (s == null)
 		{
-		    throw new Exception("No existe la Solicitud con ID: "+idSolicitud+" para eliminar");
+		    throw new Exception("No existe la solicitud con ID: "+idSolicitud+" para eliminar");
 		}
 		dao.eliminar(s);
+	}
+	
+	public List<Solicitud> traerSolicitudEmpleado(int idEmpleado) throws Exception //Retorna null si no hay solicitudes
+	{
+	    List<Solicitud> lista = new ArrayList<Solicitud>();
+	    lista = dao.traerSolicitudEmpleado(idEmpleado);
+	    if (lista == null || lista.isEmpty())
+	    {
+	        lista = null;
+	    }
+	    
+	    return lista;
+	}
+	
+	public List<Solicitud> traerSolicitudJornadaTitular(int idJornadaTitular) throws Exception //Retorna null si no hay solicitudes
+	{
+	    List<Solicitud> lista = new ArrayList<Solicitud>();
+	    lista = dao.traerSolicitudJornadaTitular(idJornadaTitular);
+	    if (lista == null || lista.isEmpty())
+	    {
+	        lista = null;
+	    }
+	    
+	    return lista;
 	}
 	
 }

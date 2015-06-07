@@ -49,6 +49,16 @@ public class Funciones
 		return c;
 	}
 	
+	public static GregorianCalendar traerFechaDateInput(String fecha) //2015-06-20
+	{
+		String[] j= fecha.split("-");
+		int anio = Integer.parseInt(j[0]);
+		int mes = Integer.parseInt(j[1]);
+		int dia = Integer.parseInt(j[2]);
+		GregorianCalendar c = new GregorianCalendar(anio, mes-1, dia);
+		return c;
+	}
+	
 	public static String traerFechaCorta(GregorianCalendar c)
 	{
 		String mostrar = "";
@@ -71,6 +81,30 @@ public class Funciones
 		mostrar += traerAnio(c);
 		return mostrar;
 	}
+	
+	public static String traerFechaHQL(GregorianCalendar c)
+	{
+		String mostrar = "";
+		mostrar += traerAnio(c)+"/";
+		if (traerMes(c) < 10)
+		{
+			mostrar += "0" + traerMes(c)+"/";
+		}
+		else
+		{
+			mostrar += traerMes(c)+"/";
+		}
+		if (traerDia(c) < 10)
+		{
+			mostrar += "0" + traerDia(c);
+		}
+		else
+		{
+			mostrar += traerDia(c);
+		}
+		return mostrar;
+	}
+	
 	public static String traerFechaCorta()
 	{
 		return traerFechaCorta(new GregorianCalendar());
@@ -448,5 +482,69 @@ public class Funciones
 		return numero;
 	}
 	
+	public static String traerFechaHoraLarga(GregorianCalendar fechaHoraGC){
+		String fechaEntera = fechaHoraGC.get(Calendar.DAY_OF_MONTH)+  "/" +fechaHoraGC.get(Calendar.MONTH)+ "/" +fechaHoraGC.get(Calendar.YEAR)+ " " +fechaHoraGC.get(Calendar.HOUR_OF_DAY)+ ":" +fechaHoraGC.get(Calendar.MINUTE);
+		String[] fecha = fechaEntera.split("/");
+		String[] auxDiaHoraMin = fecha[2].split(" ");
+		fecha[2] = auxDiaHoraMin[0];
+		String[] auxHoraMin = auxDiaHoraMin[1].split(":");
+		String hora = auxHoraMin[0];
+		if(hora.length()==1) hora = '0'+hora;
+		String minutos = auxHoraMin[1];
+		if(minutos.length()==1) minutos = '0'+minutos;
+		return traerDiaSemana(fechaHoraGC)+ ", " +fecha[0]+ " de " +traerMesEnLetras(fechaHoraGC)+ " de " +fecha[2]+ " - " +hora+ ":" +minutos;
+	}
+
+	public static String traerDiaSemana(GregorianCalendar fecha){
+		String diaS;
+		switch(fecha.get(Calendar.DAY_OF_WEEK))
+		{
+			case 1:
+				diaS = "Domingo";
+				break;
+			case 2:
+				diaS = "Lunes";
+				break;
+			case 3:
+				diaS = "Martes";
+				break;
+			case 4:
+				diaS = "Miercoles";
+				break;
+			case 5:
+				diaS = "Jueves";
+				break;
+			case 6:
+				diaS = "Viernes";
+				break;
+			case 7:
+				diaS = "Sabado";
+				break;
+			default:
+				diaS = "Error";
+				break;
+		}
+		return diaS;
+	}
+	
+	public static GregorianCalendar traerFechaHora(String fechaS){
+		String[] fecha = fechaS.split("/");
+		String[] auxDiaHoraMin = fecha[2].split(" ");
+		fecha[2] = auxDiaHoraMin[0];
+		String[] auxHoraMin = auxDiaHoraMin[1].split(":");
+		String hora = auxHoraMin[0];
+		String minutos = auxHoraMin[1];
+		GregorianCalendar fechaHoraGC = new GregorianCalendar (Integer.parseInt(fecha[2]), Integer.parseInt(fecha[1])-1, Integer.parseInt(fecha[0]), Integer.parseInt(hora),Integer.parseInt(minutos));
+		return fechaHoraGC;
+	}
+
+
+	public static String pasarBooleanAString(boolean bool)
+	{
+		String entradaSalida = "";
+		if(!bool) entradaSalida = "Salida";
+		else entradaSalida = "Entrada";
+		return entradaSalida;
+	}
 	
 }

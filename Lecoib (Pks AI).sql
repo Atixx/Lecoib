@@ -177,11 +177,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `lecoib`.`BalanceMensual` (
   `idBalanceMensual` INT NOT NULL AUTO_INCREMENT,
   `horasTrabajadas` INT NULL,
-  `mesAnio` DATETIME NULL,
+  `mesAnio` DATE NULL,
   `idEmpleado` INT NOT NULL,
   PRIMARY KEY (`idBalanceMensual`),
-  UNIQUE INDEX `idEmpleado_UNIQUE` (`idEmpleado` ASC),
-  UNIQUE INDEX `mesAnio_UNIQUE` (`mesAnio` ASC),
+  UNIQUE INDEX `idEmpleado_UNIQUE` (`idEmpleado` ASC, `mesAnio` ASC),
   CONSTRAINT `fk_BalanceMensual_1`
     FOREIGN KEY (`idEmpleado`)
     REFERENCES `lecoib`.`Empleado` (`idEmpleado`)
@@ -288,4 +287,3 @@ INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES (
 INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-30 14:10:00', 0, '3');
 INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-31 06:00:00', 1, '3');
 INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-31 14:10:00', 0, '3');
-

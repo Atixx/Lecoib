@@ -1,6 +1,9 @@
 package negocio;
 
+import java.util.List;
+
 import dao.GrupoTrabajoDao;
+import datos.Empleado;
 import datos.GrupoTrabajo;
 
 
@@ -31,5 +34,15 @@ public class GrupoTrabajoABM
 			throw new Exception("No existe el grupo de trabajo con ID "+g.getidGrupo()+" para modificar");
 		}
 		dao.actualizar(g);
+	}
+	
+	public List<Empleado>traerListaEmpleados(int idGrupo) throws Exception
+	{
+		List<Empleado> lista = dao.traerListaEmpleados(idGrupo);
+		if (lista == null)
+		{
+		    throw new Exception("No se encontraron empleados");
+		}
+		return lista;
 	}
 }

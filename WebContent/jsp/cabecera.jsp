@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.Date" %>
+<%@ page import="modelo.Funciones" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,8 +13,6 @@
         <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
         <script src="static/js/jquery-2.1.4.min.js"></script>
         <script src="static/js/bootstrap.min.js"></script>
-        <script src="static/js/jssor.slider.mini.js"></script>
-        <script src="static/js/Lecoib.js"></script>
         <script src="static/js/bootstrap-select.min.js"></script>
 <% 
 	String titulo;
@@ -26,7 +24,7 @@
 	{
 	    titulo = "Lecoib: " +(String) request.getAttribute("titulo");
 	}
-	String fecha = new Date().toLocaleString(); //TODO: Hacer un formato de fecha mas lindo
+	String fecha = Funciones.traerFechaCorta(); //TODO: Hacer un formato de fecha mas lindo
 %>
         
 <title><%= titulo %></title>
@@ -34,10 +32,11 @@
 <body>
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container-fluid">
+  <div class="col-lg-2"></div>
     <a role="button" class="btn btn-default navbar-btn" href="/LecoibWeb/">Inicio</a>
     <a role="button" class="btn btn-default navbar-btn" href="solicitud">Solicitud</a>
     <a role="button" class="btn btn-default navbar-btn" href="estadistica">Estadisticas</a>
-    <a role="button" class="btn btn-default navbar-btn" href="turno">Turno</a>
+    <a role="button" class="btn btn-default navbar-btn" href="ficha">Fichar</a>
     
     <% String s = (String) session.getAttribute("session"); %>
     <% if (s != null) 
@@ -50,7 +49,7 @@
     <a role="button" class="btn btn-default navbar-btn" href="login">Login</a>
     <%} %>
     
-    <p class="navbar-text navbar-link col-md-4">Lecoib</a>
+    <p class="navbar-text navbar-link col-md-2">Lecoib</a>
     <p class="navbar-text navbar-right"><%=fecha %></p>
 	
     <%

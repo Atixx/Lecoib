@@ -96,8 +96,9 @@ public class Turno
 
 	public String toString()
 	{
-		return idTurno+" "+turno+" "+horaInicio+" "+horaFin+" "+cupos;
+		return "Turno: "+turno+" desde: "+horaInicio+" hasta: "+horaFin;
 	}
+
 	
 	
 	
