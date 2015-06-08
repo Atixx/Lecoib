@@ -15,9 +15,10 @@ public class testVisualizarBM
 			BalanceMensual bm = new BalanceMensual();
 			EmpleadoABM eAbm = new EmpleadoABM();		
 			Empleado e = new Empleado();
-			
-			float hs = bmAbm.promedioHsTrabPorMes(5);
-			System.out.println("Hs Promedio: "+hs+"\n\n");
+			e = eAbm.traerEmpleado(1);
+			System.out.println("Empleado: "+e+"\n\n");
+			bm = bmAbm.visualizarBalanceMensual(5, 2015, e);
+			System.out.println("Balance mensual: "+bm+"\n\n");
 	    } 
 		catch (Exception e)
 		{

@@ -13,7 +13,7 @@ public class testPromedio
 	    {
 			BalanceMensualABM bmAbm = new BalanceMensualABM();
 			BalanceMensual bm = new BalanceMensual();
-			float hs = bmAbm.promedioHsTrabPorMes(5);
+			float hs = bmAbm.promedioHsTrabPorMes(5,2015);
 			System.out.println("Hs Promedio: "+hs+"\n\n");
 	    } 
 		catch (Exception e)

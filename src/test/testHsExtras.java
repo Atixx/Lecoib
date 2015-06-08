@@ -5,7 +5,7 @@ import negocio.EmpleadoABM;
 import datos.BalanceMensual;
 import datos.Empleado;
 
-public class testHsTraba
+public class testHsExtras 
 {
 	public static void main(String[] args)
 	{
@@ -19,6 +19,8 @@ public class testHsTraba
 			System.out.println("Empleado"+e+"\n\n");
 			int hs = bmAbm.hsTrabEmplPorMes(e, 5,2015);
 			System.out.println("Horas trabajadas por"+e+": "+hs+"\n\n");
+			hs = bmAbm.hsExtras(05,2015, e);
+			System.out.println("Horas extras: "+hs+"\n\n");
 	    } 
 		catch (Exception e)
 		{

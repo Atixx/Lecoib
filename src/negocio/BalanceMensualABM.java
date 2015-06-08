@@ -30,7 +30,7 @@ public class BalanceMensualABM
 	public int agregarBalanceMensual(GregorianCalendar mesAnio, Empleado empleado) throws Exception
 	{		
 		BalanceMensual bm = new BalanceMensual(mesAnio, empleado);
-		bm.setHorasTrabajadas(hsTrabEmplPorMes(empleado, Funciones.traerMes(mesAnio)));
+		bm.setHorasTrabajadas(hsTrabEmplPorMes(empleado, Funciones.traerMes(mesAnio), Funciones.traerAnio(mesAnio)));
 	    return bmDao.agregar(bm);
 	}	
 
@@ -65,7 +65,7 @@ public class BalanceMensualABM
 	    return lista;
 	}		
 	
-	public int hsTrabEmplPorMes(Empleado empleado, int mes) throws Exception
+	public int hsTrabEmplPorMes(Empleado empleado, int mes, int anio) throws Exception
 	{
 		FichaABM fAbm = new FichaABM();
 		float suma = 0; 
@@ -73,7 +73,7 @@ public class BalanceMensualABM
 		List<Ficha> lista = fAbm.traerFichasDeEmpleado(empleado.getIdEmpleado());		
 		for(Ficha f : lista)
 		{
-			if(( Funciones.traerMes(f.getDiaHora()) == mes))
+			if(( Funciones.traerMes(f.getDiaHora()) == mes) && ( Funciones.traerAnio(f.getDiaHora()) == anio))
 			{	
 				if(f.isEntradaSalida()==true)
 				{
@@ -102,14 +102,17 @@ public class BalanceMensualABM
 			
 	}		
 		
-	public float promedioHsTrabPorMes(int mes) throws Exception
+	public float promedioHsTrabPorMes(int mes, int anio) throws Exception
 	{	//TODO: 
 		BalanceMensualABM bmAbm = new BalanceMensualABM();
 		float suma= 0, promedio = 0;
 		List<BalanceMensual> lista = bmAbm.traerBalanceMensual();		
 		for (BalanceMensual bm : lista)
-		{
-			suma = suma +bm.getHorasTrabajadas();
+		{	
+			if( ( Funciones.traerMes( bm.getMesAnio() ) == mes) && ( Funciones.traerAnio(bm.getMesAnio() ) == anio))
+			{
+				suma = suma +bm.getHorasTrabajadas();
+			}
 		}
 		promedio = suma/(lista.size());
 		return promedio;
@@ -178,16 +181,27 @@ public class BalanceMensualABM
 	public BalanceMensual visualizarBalanceMensual(int mes, int anio, Empleado empleado) throws Exception
 	{
 		BalanceMensual bm = new BalanceMensual();
-		List<BalanceMensual> lista = new ArrayList<BalanceMensual>();
-		lista = bmDao.traerBalanceMensualPorEmpl(empleado.getIdEmpleado());
+		int idE =empleado.getIdEmpleado();
+		List<BalanceMensual> lista = bmDao.traerBalanceMensualPorEmpl(idE);
 		for(BalanceMensual bm2 : lista)
 		{
-			if((Funciones.traerMes(bm.getMesAnio()) == mes) && ( Funciones.traerMes(bm.getMesAnio()) == anio))
+			if((Funciones.traerMes(bm2.getMesAnio()) == mes) && ( Funciones.traerAnio(bm2.getMesAnio()) == anio))
 			{					
-				bm = bmDao.traerBalanceMensual(bm.getIdBalanceMensual());
+				bm = bmDao.traerBalanceMensual(bm2.getIdBalanceMensual());
 			}
 		}
 		
 		return bm;
+	}
+	
+	public int hsExtras(int mes, int anio, Empleado empleado) throws Exception
+	{
+		int hs = hsTrabEmplPorMes(empleado, mes, anio);
+		hs = hs-160;
+		if(hs<=0)
+		{
+			hs=0;
+		}
+		return hs;
 	}
 }

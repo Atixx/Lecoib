@@ -2,6 +2,8 @@ package datos;
 
 import java.util.GregorianCalendar;
 
+import modelo.Funciones;
+
 public class BalanceMensual
 {
 	private int idBalanceMensual;
@@ -59,6 +61,6 @@ public class BalanceMensual
 	
 	public String toString()
 	{
-		return idBalanceMensual+" "+horasTrabajadas+" "+mesAnio+" "+empleado;
+		return idBalanceMensual+" "+horasTrabajadas+" Mes: "+Funciones.traerMes(mesAnio)+" Año:"+Funciones.traerAnio(mesAnio)+" "+empleado;
 	}
 }
