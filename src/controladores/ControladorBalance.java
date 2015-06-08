@@ -27,6 +27,8 @@ public class ControladorBalance extends HttpServlet {
 	protected void procesar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String titulo = "Balance Horas";
+		int[] balance = {28, 48, 40, 19, 86, 27, 90, 80, 94, 33, 20, 74};
+		request.setAttribute("balance", balance);
 		request.setAttribute("titulo", titulo);
 		request.getRequestDispatcher("jsp/horas.jsp").forward(request, response);
 	}
