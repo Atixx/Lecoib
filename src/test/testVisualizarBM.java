@@ -5,7 +5,7 @@ import negocio.EmpleadoABM;
 import datos.BalanceMensual;
 import datos.Empleado;
 
-public class testHsTraba
+public class testVisualizarBM
 {
 	public static void main(String[] args)
 	{
@@ -15,10 +15,9 @@ public class testHsTraba
 			BalanceMensual bm = new BalanceMensual();
 			EmpleadoABM eAbm = new EmpleadoABM();		
 			Empleado e = new Empleado();
-			e = eAbm.traerEmpleado(3);
-			System.out.println("Empleado"+e+"\n\n");
-			int hs = bmAbm.hsTrabEmplPorMes(e, 5);
-			System.out.println("Horas trabajadas por"+e+": "+hs+"\n\n");
+			
+			float hs = bmAbm.promedioHsTrabPorMes(5);
+			System.out.println("Hs Promedio: "+hs+"\n\n");
 	    } 
 		catch (Exception e)
 		{

@@ -23,6 +23,11 @@ public class testBalanceMensual
 			System.out.println("Empleado"+e+"\n\n");
 			int idBM = bmAbm.generarBalcanceMensual(05, 2015, e);
 			System.out.println("IdBM: "+idBM+"\n\n");
+			Empleado e2 = new Empleado();
+			e2 = eAbm.traerEmpleado(3);
+			System.out.println("Empleado"+e+"\n\n");
+			idBM = bmAbm.generarBalcanceMensual(05, 2015, e2);
+			System.out.println("IdBM: "+idBM+"\n\n");
 	    } 
 		catch (Exception e)
 		{

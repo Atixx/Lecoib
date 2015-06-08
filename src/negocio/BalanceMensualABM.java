@@ -60,7 +60,7 @@ public class BalanceMensualABM
 	    lista = bmDao.traerBalanceMensual();
 	    if (lista == null || lista.isEmpty())
 	    {
-	        throw new Exception("No existen empleados en la base de datos");
+	        throw new Exception("No existen balances mensuales en la base de datos");
 	    }
 	    return lista;
 	}		
@@ -68,7 +68,8 @@ public class BalanceMensualABM
 	public int hsTrabEmplPorMes(Empleado empleado, int mes) throws Exception
 	{
 		FichaABM fAbm = new FichaABM();
-		int suma = 0, horaEntrada = 0, horaSalida, minutosEntrada = 0, minutosSalida;		
+		float suma = 0; 
+		int horaEntrada = 0, horaSalida, minutosEntrada = 0, minutosSalida,num;		
 		List<Ficha> lista = fAbm.traerFichasDeEmpleado(empleado.getIdEmpleado());		
 		for(Ficha f : lista)
 		{
@@ -95,8 +96,9 @@ public class BalanceMensualABM
 				}
 			}
 		}	
-		suma = Math.round(suma/60); 
-		return suma;
+		suma= suma/60;
+		num = Math.round(suma); 
+		return num;
 			
 	}		
 		
