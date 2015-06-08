@@ -103,8 +103,8 @@ public class JornadaABM
 				{
 					lstEmpleadosAux.remove(e2);
 					lstEmpListos.add(e2);
-				}
-				asignaJornada(lstGrupo, (Funciones.traerMes(fecha)), Funciones.traerAnio(fecha));	
+				}//Se envia con Mes-1 por que Enero es 0
+				asignaJornada(lstGrupo, (Funciones.traerMes(fecha)-1), Funciones.traerAnio(fecha));	
 				for(Empleado e3 : lstEmpListos)
 				{
 					lstGrupo.remove(e3);
@@ -122,31 +122,69 @@ public class JornadaABM
 		int anioPasado = anio;
 		int checkFranco = 0;
 		int diaComienzo = 1;
-		int cantDiasMes = Funciones.traerCantDiasDeUnMes(mes, anio);
+		int diasAnteriores = 0;
+		int z;
+		boolean listo;
+		boolean pasar;
+		int cantDiasMes = Funciones.traerCantDiasDeUnMes(mes+1, anio);
+		int cantDiasMesPasado;
 		
 		//Evaluo si existe jornada mes anterior o es primera
-		if (mes == 1)//Prueba obligatoria para que no pinche en Enero
+		if (mes == 0)//Prueba obligatoria para que no pinche en Enero
 		{
 			anioPasado = anio-1;
-		}else{mesPasado = mesPasado -1;}
-		
-		GregorianCalendar fechaMesPasado = new GregorianCalendar(anioPasado, mesPasado, Funciones.traerCantDiasDeUnMes(mesPasado, anioPasado));
+			mesPasado = 11;
+		}else{mesPasado = mes -1;}
+		cantDiasMesPasado = Funciones.traerCantDiasDeUnMes(mesPasado+1, anioPasado);
+		GregorianCalendar fechaMesPasado = new GregorianCalendar(anioPasado, mesPasado, cantDiasMesPasado);
 		if (evaluarMesAnterior(fechaMesPasado) == true)
 		{
 			//Aca tiene que hacer todo el lio para continuar el mes anterior del grupo
 			//***********
+			listo = false;
+			while (listo == false)
+			{
+				//Para retroceder en dias y al demonio la performance ***ACA CORREGIR CANTDIASMES ES DEL MES PASADO Y ESTA ACTUAL
+				GregorianCalendar fechaPasadaNueva = new GregorianCalendar (anioPasado, mesPasado, cantDiasMesPasado-diasAnteriores);
+				List<Jornada> lstjornadasAnterior = traerJornadasPorFecha(fechaPasadaNueva);
+				z = 0;
+				pasar = false;
+				while ( z < lstjornadasAnterior.size() && pasar == false)
+				{
+					if (lstjornadasAnterior.get(z).getEmpleado().getGrupoTrabajo().getidGrupo() == lstEmpleado.get(1).getGrupoTrabajo().getidGrupo())
+					{
+						diasAnteriores++;
+						pasar = true;
+					}else
+					{
+						z++;
+					}
+				}
+				if (pasar == false)
+				{
+					listo = true;
+				}
+				if (diasAnteriores >= 4)
+				{
+					diaComienzo = 3;
+					diasAnteriores=0;
+					listo = true;
+				}
+			}
+			
 		}
 		else //Debe determinar donde comenzar (Si hay otro grupo asignado buscar Franco)
 		{
-			boolean listo = false;
+			listo = false;
+			diasAnteriores =0;
 			while (listo == false)
 			{
-				GregorianCalendar fechaJornadaEvaluar = new GregorianCalendar(anio, mes-1, diaComienzo);
+				GregorianCalendar fechaJornadaEvaluar = new GregorianCalendar(anio, mes, diaComienzo);
 				List<Jornada> lstjornadasEvaluar = traerJornadasPorFecha(fechaJornadaEvaluar);
 				if (!(lstjornadasEvaluar.isEmpty()))
 				{
-					int z = 0;
-					boolean pasar = false;
+					z = 0;
+					pasar = false;
 					while ( z < lstjornadasEvaluar.size() && pasar == false)
 					{
 						if ( lstjornadasEvaluar.get(z).getTurno().getIdTurno() == lstEmpleado.get(0).getTurno().getIdTurno())
@@ -170,10 +208,10 @@ public class JornadaABM
 		}
 		for(Empleado e : lstEmpleado)
 		{
-			checkFranco = 0;
+			checkFranco=diasAnteriores;
 			for(int i=diaComienzo; i<=cantDiasMes; i++){
 				//asigno jornada
-				GregorianCalendar fechaJornada = new GregorianCalendar(anio, mes-1, i);
+				GregorianCalendar fechaJornada = new GregorianCalendar(anio, mes, i);
 				Jornada jornada = new Jornada(fechaJornada, e, e.getTurno());
 				dao.agregar(jornada);
 				checkFranco++;//cada 4 dias asignados hace 2 saltos de dia
@@ -188,7 +226,8 @@ public class JornadaABM
 	private boolean evaluarMesAnterior(GregorianCalendar fechaMesAnterior) throws Exception
 	{
 		boolean resultado = false;
-		if (!(traerJornadasPorFecha(fechaMesAnterior).isEmpty()))
+		List <Jornada> JornadaEvaluar = traerJornadasPorFecha(fechaMesAnterior);
+		if (!(JornadaEvaluar.isEmpty()))
 		{
 			resultado = true;
 		}
