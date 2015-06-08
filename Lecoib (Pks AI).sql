@@ -208,6 +208,9 @@ INSERT INTO `lecoib`.`Categoria` (`nombreCat`, `sueldoBasico`) VALUES ('Agente',
 INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('PrimerGrupo');
 INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('SegundoGrupo');
 INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('TercerGrupo');
+INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('CuartoGrupo');
+INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('QuintoGrupo');
+INSERT INTO `lecoib`.`GrupoTrabajo` (`nombreGrupo`) VALUES ('SextoGrupo');
 -- -----------------------------------------------------
 -- Table `lecoib`.`Turno`. MAñana, TArde y NOche
 -- -----------------------------------------------------
@@ -226,6 +229,16 @@ INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `e
 INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Romero', 'Veronica', '22222221', '20120101', 'none@none,com', '1', '1', '1');
 INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Gonzalez', 'Juan', '44444445', '20140101', 'none@none.com', '1', '2', '2');
 INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Martinez', 'Mariano', '11111118', '20150101', 'none@none.com', '1', '3', '3');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Sabina', 'Miriam', '12322223', '20140101', 'none@none.com', '2', '4', '1');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Zulani', 'Jose', '19322223', '20140101', 'none@none.com', '2', '4', '1');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Miliani', 'Roberto', '12722223', '20140101', 'none@none.com', '2', '5', '2');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Hilkins', 'Martin', '12762223', '20140101', 'none@none.com', '2', '5', '2');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Gonzalez', 'Carlos', '12322993', '20140101', 'none@none.com', '2', '6', '3');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Sullvert', 'Patricio', '12322923', '20140101', 'none@none.com', '2', '6', '3');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Danilo', 'Esteban', '12331223', '20140101', 'none@none.com', '1', '4', '1');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Stein', 'Estella', '12321123', '20140101', 'none@none.com', '1', '5', '2');
+INSERT INTO `lecoib`.`Empleado` (`apellido`, `nombre`, `dni`, `fechaIngreso`, `email`, `idCategoria`, `idGrupo`, `idTurno`) VALUES ('Maverick', 'Juan', '12322529', '20140101', 'none@none.com', '1', '6', '3');
+
 -- -----------------------------------------------------
 -- Table `lecoib`.`Usuario` Solo 1 como supervisor.
 -- -----------------------------------------------------

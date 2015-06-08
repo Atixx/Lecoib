@@ -1,8 +1,10 @@
 package negocio;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import modelo.Funciones;
 import dao.JornadaDao;
@@ -69,22 +71,167 @@ public class JornadaABM
 			throw new Exception ("Error: La fecha ingresada es incorrecta");
 		}
 	}
+
+	public void generarJornadasMes()throws Exception 
+	{
+		//Alta automatica de jornadas
+		GregorianCalendar fecha = new GregorianCalendar();
+		String turno;
+		int grupo;
+		EmpleadoABM eABM = new EmpleadoABM();
+		List<Empleado> lstEmpleados = eABM.traerEmpleado();
+		List<Empleado> lstEmpleadosAux = eABM.traerEmpleado();
+		List<Empleado> lstGrupo = new ArrayList<Empleado>();
+		List<Empleado> lstEmpListos = new ArrayList<Empleado>();
+
+		for(Empleado e : lstEmpleados)
+		{
+			//empleado pivote
+			turno = e.getTurno().getTurno();
+			grupo = e.getGrupoTrabajo().getidGrupo();
+			for(Empleado e1 : lstEmpleadosAux)
+			{
+				if (e1.getGrupoTrabajo().getidGrupo() == grupo)
+				{
+					lstGrupo.add(e1);
+				}
+			}
+			//Aca deberia tener un grupo completo para asignar jornadas
+			if (!(lstGrupo.isEmpty()))
+			{
+				for(Empleado e2 : lstGrupo)
+				{
+					lstEmpleadosAux.remove(e2);
+					lstEmpListos.add(e2);
+				}//Se envia con Mes-1 por que Enero es 0
+				asignaJornada(lstGrupo, (Funciones.traerMes(fecha)-1), Funciones.traerAnio(fecha));	
+				for(Empleado e3 : lstEmpListos)
+				{
+					lstGrupo.remove(e3);
+				}
+			}				
+		}
+		
+					
+	}
 	
-	public void asignaJornada(List<Empleado> lstEmpleado, int mes, int anio){
-		for(Empleado e : lstEmpleado){
-			int checkFranco = 0;
-			for(int i=1; i<=Funciones.traerCantDiasDeUnMes(mes, anio); i++){
+	
+	public void asignaJornada(List<Empleado> lstEmpleado, int mes, int anio) throws Exception{
+		//Aprovecho el método pero debo hacerle modificaciones
+		int mesPasado = mes;
+		int anioPasado = anio;
+		int checkFranco = 0;
+		int diaComienzo = 1;
+		int diasAnteriores = 0;
+		int z;
+		boolean listo;
+		boolean pasar;
+		int cantDiasMes = Funciones.traerCantDiasDeUnMes(mes+1, anio);
+		int cantDiasMesPasado;
+		
+		//Evaluo si existe jornada mes anterior o es primera
+		if (mes == 0)//Prueba obligatoria para que no pinche en Enero
+		{
+			anioPasado = anio-1;
+			mesPasado = 11;
+		}else{mesPasado = mes -1;}
+		cantDiasMesPasado = Funciones.traerCantDiasDeUnMes(mesPasado+1, anioPasado);
+		GregorianCalendar fechaMesPasado = new GregorianCalendar(anioPasado, mesPasado, cantDiasMesPasado);
+		if (evaluarMesAnterior(fechaMesPasado) == true)
+		{
+			//Aca tiene que hacer todo el lio para continuar el mes anterior del grupo
+			//***********
+			listo = false;
+			while (listo == false)
+			{
+				//Para retroceder en dias y al demonio la performance ***ACA CORREGIR CANTDIASMES ES DEL MES PASADO Y ESTA ACTUAL
+				GregorianCalendar fechaPasadaNueva = new GregorianCalendar (anioPasado, mesPasado, cantDiasMesPasado-diasAnteriores);
+				List<Jornada> lstjornadasAnterior = traerJornadasPorFecha(fechaPasadaNueva);
+				z = 0;
+				pasar = false;
+				while ( z < lstjornadasAnterior.size() && pasar == false)
+				{
+					if (lstjornadasAnterior.get(z).getEmpleado().getGrupoTrabajo().getidGrupo() == lstEmpleado.get(1).getGrupoTrabajo().getidGrupo())
+					{
+						diasAnteriores++;
+						pasar = true;
+					}else
+					{
+						z++;
+					}
+				}
+				if (pasar == false)
+				{
+					listo = true;
+				}
+				if (diasAnteriores >= 4)
+				{
+					diaComienzo = 3;
+					diasAnteriores=0;
+					listo = true;
+				}
+			}
+			
+		}
+		else //Debe determinar donde comenzar (Si hay otro grupo asignado buscar Franco)
+		{
+			listo = false;
+			diasAnteriores =0;
+			while (listo == false)
+			{
+				GregorianCalendar fechaJornadaEvaluar = new GregorianCalendar(anio, mes, diaComienzo);
+				List<Jornada> lstjornadasEvaluar = traerJornadasPorFecha(fechaJornadaEvaluar);
+				if (!(lstjornadasEvaluar.isEmpty()))
+				{
+					z = 0;
+					pasar = false;
+					while ( z < lstjornadasEvaluar.size() && pasar == false)
+					{
+						if ( lstjornadasEvaluar.get(z).getTurno().getIdTurno() == lstEmpleado.get(0).getTurno().getIdTurno())
+						{
+							diaComienzo++;
+							pasar = true;
+						}
+						z++;
+					}
+					if (pasar == false)
+					{
+						listo =true;
+					}
+				}else{listo=true;}
+				if (diaComienzo >= cantDiasMes)
+				{
+					listo=true;
+					diaComienzo=1;
+				}
+			}
+		}
+		for(Empleado e : lstEmpleado)
+		{
+			checkFranco=diasAnteriores;
+			for(int i=diaComienzo; i<=cantDiasMes; i++){
 				//asigno jornada
 				GregorianCalendar fechaJornada = new GregorianCalendar(anio, mes, i);
 				Jornada jornada = new Jornada(fechaJornada, e, e.getTurno());
 				dao.agregar(jornada);
 				checkFranco++;//cada 4 dias asignados hace 2 saltos de dia
 				if(checkFranco==4) {
-					i =+2;
+					i = i+2;
 					checkFranco = 0;
 				}
 			}
 		}
+	}
+	
+	private boolean evaluarMesAnterior(GregorianCalendar fechaMesAnterior) throws Exception
+	{
+		boolean resultado = false;
+		List <Jornada> JornadaEvaluar = traerJornadasPorFecha(fechaMesAnterior);
+		if (!(JornadaEvaluar.isEmpty()))
+		{
+			resultado = true;
+		}
+		return resultado;
 	}
 	
 	public void modificarJornada(Jornada j) throws Exception

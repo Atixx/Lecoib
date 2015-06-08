@@ -1,5 +1,8 @@
 package test;
 
+import java.util.GregorianCalendar;
+import datos.Jornada;
+import java.util.List;
 import datos.Categoria;
 import datos.Empleado;
 import datos.GrupoTrabajo;
@@ -29,7 +32,15 @@ public class TestCrearJornadas
 		eAbm.agregarEmpleado("Irione", "Ara", 12345678, Funciones.traerFecha("01/02/2008"), "ara@example.com", cat , tur, gru);*/
 			
 			JornadaABM jAbm = new JornadaABM();
-			jAbm.generarJornadasMes(6, 2015);
+			jAbm.generarJornadasMes();
+//			GregorianCalendar fechaJornadaEvaluar = new GregorianCalendar(2015, 5, 1);
+//			List <Jornada> jorn = jAbm.traerJornadasPorFecha(fechaJornadaEvaluar);
+//			System.out.println(Funciones.traerMes(fechaJornadaEvaluar));
+//			
+//			for (Jornada j : jorn)
+//			{
+//				System.out.println(j);
+//			}
 			//EmpleadoABM eAbm = new EmpleadoABM();
 			//Empleado emp = eAbm.traerEmpleado(1);
 			//System.out.println(emp);
