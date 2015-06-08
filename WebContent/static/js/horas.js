@@ -15,7 +15,7 @@ $(document).ready(function () {
 		            pointStrokeColor: "#fff",
 		            pointHighlightFill: "#fff",
 		            pointHighlightStroke: "rgba(220,220,220,1)",
-		            data: [65, 59, 80, 81, 56, 55, 40, 30, 20, 90, 66, 42]
+		            data: []
 		        },
 		        {
 		            label: "Azul",
@@ -35,15 +35,25 @@ $(document).ready(function () {
 		            pointStrokeColor: "#fff",
 		            pointHighlightFill: "#fff",
 		            pointHighlightStroke: "rgba(19,209,60,1)",
-		            data: [50, 50, 50, 59, 56, 57, 50, 50, 54, 53, 50, 54]
+		            data: []
 		        
 		        	
 		        }
 		    ]
 		};
+	
+    for (i=0; i<data.labels.length; i++)
+    {
+    	data.datasets[0].data[i] = $("#promedio"+i).text();
+    }
     for (i=0; i<data.labels.length; i++)
     {
     	data.datasets[1].data[i] = $("#balance"+i).text();
+    }
+    
+    for (i=0; i<data.labels.length; i++)
+    {
+    	data.datasets[2].data[i] = $("#extras"+i).text();
     }
     
 	
