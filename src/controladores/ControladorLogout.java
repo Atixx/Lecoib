@@ -30,6 +30,6 @@ public class ControladorLogout extends HttpServlet {
 	{
 		HttpSession session = request.getSession();
 		session.invalidate();
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("/LecoibWeb");
 	}
 }

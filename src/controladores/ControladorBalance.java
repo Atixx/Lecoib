@@ -55,8 +55,10 @@ public class ControladorBalance extends HttpServlet {
 					promedio[i] = bmAbm.promedioHsTrabPorMes(i+1, anio);
 					extras[i] = bmAbm.hsExtras(i+1, anio, e);
 				}				
-				String titulo = "Balance Horas";				
+				String titulo = "Balance Horas";
 				request.setAttribute("balance", balance);
+				request.setAttribute("promedio", promedio);
+				request.setAttribute("extras", extras);
 				request.setAttribute("titulo", titulo);
 				request.getRequestDispatcher("jsp/horas.jsp").forward(request, response);
 			}
