@@ -78,4 +78,11 @@ public class FichaABM
 		}
 		dao.eliminar(c);
 	}	
+	
+	public List<Ficha> traerFichasDeEmpleado(int empleado) throws Exception
+	{
+		List<Ficha> lista = new ArrayList<Ficha>();
+		lista = dao.traerFichaEmpleado(empleado);
+		return lista;		
+	}
 }

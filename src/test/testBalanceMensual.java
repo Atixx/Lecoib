@@ -19,9 +19,14 @@ public class testBalanceMensual
 			BalanceMensual bm = new BalanceMensual();
 			EmpleadoABM eAbm = new EmpleadoABM();		
 			Empleado e = new Empleado();
-			e = eAbm.traerEmpleado(3);
+			e = eAbm.traerEmpleado(1);
 			System.out.println("Empleado"+e+"\n\n");
-			int idBM = bmAbm.generarBalcanceMensual(07, 2015, e);
+			int idBM = bmAbm.generarBalcanceMensual(05, 2015, e);
+			System.out.println("IdBM: "+idBM+"\n\n");
+			Empleado e2 = new Empleado();
+			e2 = eAbm.traerEmpleado(3);
+			System.out.println("Empleado"+e+"\n\n");
+			idBM = bmAbm.generarBalcanceMensual(05, 2015, e2);
 			System.out.println("IdBM: "+idBM+"\n\n");
 	    } 
 		catch (Exception e)

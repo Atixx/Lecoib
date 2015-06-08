@@ -9,7 +9,7 @@
 	<property column="horasTrabajadas" name="horasTrabajadas" type="int"/>
 	<property column="mesAnio" name="mesAnio" type="calendar"/>
 	
-	<many-to-one name="empleado" class="datos.Empleado" column="idEmpleado" not-null="true"/>
+	<many-to-one name="empleado" class="datos.Empleado" column="idEmpleado" lazy="false" not-null="true"/>
 	
 </class>
 </hibernate-mapping>
