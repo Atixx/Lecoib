@@ -27,7 +27,7 @@ if (s != null)
 	<div class="row">
 		<div class="col-md-6">
 			<a class="btn btn-default" href="jornadas" role="button">Generar Jornadas</a>
-			<a class="btn btn-default" href="#" role="button">Generar Balance Mensual</a>
+			<a class="btn btn-default" href="generarBalances" role="button">Generar Balance Mensual</a>
 		</div>
 	</div>
 	

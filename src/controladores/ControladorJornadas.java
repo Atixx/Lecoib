@@ -37,6 +37,7 @@ public class ControladorJornadas extends HttpServlet {
 		{
 			JornadaABM jAbm = new JornadaABM();
 			jAbm.generarJornadasMes();
+			response.sendRedirect("/LecoibWeb");
 		} 
 		catch (Exception e) 
 		{
@@ -45,7 +46,6 @@ public class ControladorJornadas extends HttpServlet {
 			request.setAttribute("msg", msg);
 			request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
 		}
-		response.sendRedirect("/LecoibWeb");
 	}
 
 }

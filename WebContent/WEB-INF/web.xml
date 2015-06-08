@@ -46,6 +46,10 @@
     <servlet-name>ControladorJornadas</servlet-name>
     <servlet-class>controladores.ControladorJornadas</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ControladorEstadistica</servlet-name>
+    <servlet-class>controladores.ControladorEstadistica</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ControladorMostrarEmpleadoJSP</servlet-name>
     <url-pattern>/MostrarEmpleadoJSP</url-pattern>
@@ -81,5 +85,9 @@
   <servlet-mapping>
     <servlet-name>ControladorJornadas</servlet-name>
     <url-pattern>/jornadas</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ControladorEstadistica</servlet-name>
+    <url-pattern>/generarBalances</url-pattern>
   </servlet-mapping>
 </web-app>
