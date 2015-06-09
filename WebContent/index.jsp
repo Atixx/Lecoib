@@ -18,8 +18,7 @@
 	<div class="row">
 		<div class="col-md-1"><p></p></div>
 	</div>
-<%
-if (s != null) 
+<% if (s != null) 
 {
  int privilegio = (int) session.getAttribute("privilegio");
 	if (privilegio == 1) 
