@@ -196,7 +196,8 @@ public class BalanceMensualABM
 	
 	public int hsExtras(int mes, int anio, Empleado empleado) throws Exception
 	{
-		int hs = hsTrabEmplPorMes(empleado, mes, anio);
+//		int hs = hsTrabEmplPorMes(empleado, mes, anio);
+		int hs = visualizarBalanceMensual(mes, anio, empleado).getHorasTrabajadas();
 		hs = hs-160;
 		if(hs<=0)
 		{
