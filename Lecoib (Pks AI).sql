@@ -300,3 +300,13 @@ INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES (
 INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-30 14:10:00', 0, '3');
 INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-31 06:00:00', 1, '3');
 INSERT INTO `lecoib`.`Ficha` (`diaHora`, `entradaSalida`, `idEmpleado`) VALUES ('2015-05-31 14:10:00', 0, '3');
+
+-- -----------------------------------------------------
+-- Table `lecoib`.`balanceMensual`. registros de Balances
+-- -----------------------------------------------------
+
+INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('151', '20150101', '3');
+INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('168', '20150201', '3');
+INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('148', '20150301', '3');
+INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('112', '20150401', '3');
+INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('210', '20150501', '3');
