@@ -309,5 +309,4 @@ INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado
 INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('168', '20150201', '7');
 INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('148', '20150301', '7');
 INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('112', '20150401', '7');
-INSERT INTO `lecoib`.`BalanceMensual` (`horasTrabajadas`, `mesAnio`, `idEmpleado`) VALUES ('210', '20150501', '7');
 
