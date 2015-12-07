@@ -1,8 +1,10 @@
 package negocio;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import modelo.Funciones;
 import dao.JornadaDao;
@@ -78,12 +80,13 @@ public class JornadaABM
 		int grupo;
 		EmpleadoABM eABM = new EmpleadoABM();
 		List<Empleado> lstEmpleados = eABM.traerEmpleado();
-		List<Empleado> lstEmpleadosAux = lstEmpleados;
+		List<Empleado> lstEmpleadosAux = eABM.traerEmpleado();
+		List<Empleado> lstGrupo = new ArrayList<Empleado>();
+		List<Empleado> lstEmpListos = new ArrayList<Empleado>();
 
 		for(Empleado e : lstEmpleados)
 		{
 			//empleado pivote
-			List<Empleado> lstGrupo = new ArrayList<Empleado>();
 			turno = e.getTurno().getTurno();
 			grupo = e.getGrupoTrabajo().getidGrupo();
 			for(Empleado e1 : lstEmpleadosAux)
@@ -94,14 +97,19 @@ public class JornadaABM
 				}
 			}
 			//Aca deberia tener un grupo completo para asignar jornadas
-			if (!(lstGrupo == null))
+			if (!(lstGrupo.isEmpty()))
 			{
 				for(Empleado e2 : lstGrupo)
 				{
 					lstEmpleadosAux.remove(e2);
+					lstEmpListos.add(e2);
 				}
-				asignaJornada(lstGrupo, Funciones.traerMes(fecha), Funciones.traerAnio(fecha));
-			}
+				asignaJornada(lstGrupo, (Funciones.traerMes(fecha)), Funciones.traerAnio(fecha));	
+				for(Empleado e3 : lstEmpListos)
+				{
+					lstGrupo.remove(e3);
+				}
+			}				
 		}
 		
 					
@@ -114,6 +122,7 @@ public class JornadaABM
 		int anioPasado = anio;
 		int checkFranco = 0;
 		int diaComienzo = 1;
+		int cantDiasMes = Funciones.traerCantDiasDeUnMes(mes, anio);
 		
 		//Evaluo si existe jornada mes anterior o es primera
 		if (mes == 1)//Prueba obligatoria para que no pinche en Enero
@@ -125,33 +134,34 @@ public class JornadaABM
 		if (evaluarMesAnterior(fechaMesPasado) == true)
 		{
 			//Aca tiene que hacer todo el lio para continuar el mes anterior del grupo
-			
+			//***********
 		}
 		else //Debe determinar donde comenzar (Si hay otro grupo asignado buscar Franco)
 		{
 			boolean listo = false;
 			while (listo == false)
 			{
-				GregorianCalendar fechaJornadaEvaluar = new GregorianCalendar(anio, mes, diaComienzo);
+				GregorianCalendar fechaJornadaEvaluar = new GregorianCalendar(anio, mes-1, diaComienzo);
 				List<Jornada> lstjornadasEvaluar = traerJornadasPorFecha(fechaJornadaEvaluar);
-				if (lstjornadasEvaluar != null)
+				if (!(lstjornadasEvaluar.isEmpty()))
 				{
-					int z = 1;
+					int z = 0;
 					boolean pasar = false;
-					while ( z <= lstjornadasEvaluar.size() && pasar == false)
+					while ( z < lstjornadasEvaluar.size() && pasar == false)
 					{
-						if ( lstjornadasEvaluar.get(z).getTurno() == lstEmpleado.get(1).getTurno())
+						if ( lstjornadasEvaluar.get(z).getTurno().getIdTurno() == lstEmpleado.get(0).getTurno().getIdTurno())
 						{
 							diaComienzo++;
 							pasar = true;
 						}
+						z++;
 					}
 					if (pasar == false)
 					{
 						listo =true;
 					}
 				}else{listo=true;}
-				if (diaComienzo >= Funciones.traerCantDiasDeUnMes(mes, anio))
+				if (diaComienzo >= cantDiasMes)
 				{
 					listo=true;
 					diaComienzo=1;
@@ -160,14 +170,15 @@ public class JornadaABM
 		}
 		for(Empleado e : lstEmpleado)
 		{
-			for(int i=diaComienzo; i<=Funciones.traerCantDiasDeUnMes(mes, anio); i++){
+			checkFranco = 0;
+			for(int i=diaComienzo; i<=cantDiasMes; i++){
 				//asigno jornada
-				GregorianCalendar fechaJornada = new GregorianCalendar(anio, mes, i);
+				GregorianCalendar fechaJornada = new GregorianCalendar(anio, mes-1, i);
 				Jornada jornada = new Jornada(fechaJornada, e, e.getTurno());
 				dao.agregar(jornada);
 				checkFranco++;//cada 4 dias asignados hace 2 saltos de dia
 				if(checkFranco==4) {
-					i =+2;
+					i = i+2;
 					checkFranco = 0;
 				}
 			}
@@ -177,7 +188,7 @@ public class JornadaABM
 	private boolean evaluarMesAnterior(GregorianCalendar fechaMesAnterior) throws Exception
 	{
 		boolean resultado = false;
-		if ((traerJornadasPorFecha(fechaMesAnterior)) != null)
+		if (!(traerJornadasPorFecha(fechaMesAnterior).isEmpty()))
 		{
 			resultado = true;
 		}
